@@ -1,8 +1,15 @@
+import HeroSection from "./sections/HeroSection";
+import WhyChoseUsSection from "./sections/WhyChoseUsSection";
+import FeatureSection from "./sections/FeatureSection";
+import CtaSection from "./sections/CtaSection";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is a simple home page component.</p>
-    </div>
-  )
+    <main className="w-full">
+      <HeroSection />
+      <WhyChoseUsSection />
+      <FeatureSection />
+      <CtaSection />
+    </main>
+  );
 }

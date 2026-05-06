@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
+import ThemeToggle from "../buttons/ThemeToggle";
 
 export default function Navbar() {
     const navItems = [
-        { path: "/home", label: "Home" },
+        { path: "/", label: "Home" },
         { path: "/profile", label: "Profile" },
         { path: "/match", label: "Match" },
         { path: "/insights", label: "Insights" }
@@ -14,7 +15,7 @@ export default function Navbar() {
         }`;
     };
     return (
-        <nav className="flex items-center justify-between shadow-xl  font-sans font-normal">
+        <nav className="flex items-center justify-between shadow-xl  font-sans font-normal sticky">
             <div className="bg-[#DFE1FF] rounded-r-full p-4">
                 <NavLink to="/">
                     <span>💜</span>
@@ -31,7 +32,8 @@ export default function Navbar() {
                     </li>
                 ))}
             </ul>
-            <div className="pr-4">
+            <div className="pr-4 flex items-center gap-4">
+                <ThemeToggle />
                 <NavLink to="/contact">Login</NavLink>
             </div>
         </nav>
