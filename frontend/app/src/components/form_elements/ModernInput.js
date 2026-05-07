@@ -33,7 +33,7 @@ const styles = {
   wrapper: {
     position: "relative",
     width: "320px",
-    marginTop: "40px",
+    marginTop: "24px",
     fontFamily: "Arial, sans-serif",
   },
 
