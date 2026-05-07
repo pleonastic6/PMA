@@ -12,30 +12,30 @@ export default function Login() {
   return (
     <main className="w-full">
       <div className="flex justify-center">
-        <div className="flex overflow-hidden rounded-2xl my-32 shadow-2xl">
-          {/* Left Panel */}
+        <div className="flex overflow-hidden rounded-md my-32 shadow-lg">
           <div className="bg-violet-900 w-64 text-stone-100 text-center">
-            <img src={img_epstein} className="w-full h-full object-cover object-[-320px]"/>
+            <img src={img_epstein} className="w-full h-full object-cover object-[-320px]" />
           </div>
-
-          {/* Login/Register Form */}
           <div className="flex flex-col p-8">
-            <h1 className="text-center text-3xl font-extrabold">Login</h1>
-            <ModernInput text="Username"/>
-            <ModernInput input="password" text="Password" />
+            <h1 className="text-3xl font-extrabold">Login</h1>
+            <p className="text-black/70 text-sm mt-2">Please enter your login information</p>
+            <div className="flex flex-col gap-6 mt-2">
+              <ModernInput text="Username" />
+              <ModernInput input="password" text="Password" />
+            </div>
             <div className="flex gap-1">
-              <input id="remember" type="checkbox" />
-              <label for="remember" className="text-sm select-none py-2" >Remember me</label>
+              <input id="remember" type="checkbox" className="accent-[#1E1B4B]" />
+              <label for="remember" className="text-sm select-none py-2 text-black/70" >Remember me</label>
             </div>
             <Button text="Log In" />
-            <p className="text-sm mt-4">Don't have an account yet? <a href="/signup" className="text-blue-500">Register here</a></p>
+            <p className="text-sm mt-4 text-black/70">Don't have an account yet? <a href="/signup" className="text-blue-500">Register here</a></p>
             <Divider text="Login via" />
-            <div className="flex justify-center gap-6 mt-6">
-              {logins.map((name) => 
-                  <button className="p-2 rounded-xl shadow-[0px_0px_8px_-4px_#000000]">
-                    <img src={"/logos/" + name + ".png"} className="size-12" />
-                  </button>
-                )}
+            <div className="flex justify-center gap-4 mt-6">
+              {logins.map((name) =>
+                <button className="p-2 rounded-xl border border-gray-300 hover:bg-gray-100 transition-colors px-4">
+                  <img src={"/logos/" + name + ".png"} className="size-12" />
+                </button>
+              )}
             </div>
           </div>
         </div>
