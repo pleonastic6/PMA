@@ -22,20 +22,20 @@ export default function CtaSection() {
                 </p>
                 <form
                     onSubmit={handleSubmit}
-                    className="flex items-center w-full max-w-2xl bg-white rounded-full p-2 shadow-sm"
+                    className="flex items-center w-full max-w-2xl bg-white dark:bg-black/80 dark:border-blue-500 dark:border-2 rounded-full p-2 shadow-sm"
                 >
                     <input
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="enter your username"
-                        className="flex-1 px-8 bg-transparent outline-none text-slate-700 placeholder-slate-300 font-light text-lg min-w-0"
+                        className="flex-1 px-8 bg-transparent outline-none text-slate-700 dark:text-white placeholder-slate-300 font-light text-lg min-w-0"
                     />
                     <button
                         type="submit"
                         disabled={!username.trim()}
                         className={`relative flex h-[50px] w-40 items-center justify-center overflow-hidden rounded-full transition-colors ${!username.trim()
-                                ? "bg-gray-200 text-gray-400 cursor-not-allowed" // Ausgegrauter Zustand
+                                ? "bg-gray-200 text-gray-400 dark:bg-blue-500/10 cursor-not-allowed" // Ausgegrauter Zustand
                                 : "bg-gradient-to-r from-[#917DFF] to-[#5F59FF] text-white before:absolute before:h-0 before:w-0 before:rounded-full before:bg-emerald-300/30 before:transition-all before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56" // Aktiver Zustand
                             }`}
                     >
