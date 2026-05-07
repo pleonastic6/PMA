@@ -34,7 +34,7 @@ export default function Navbar() {
             </ul>
             <div className="pr-4 flex items-center gap-4">
                 <ThemeToggle />
-                <NavLink to="/contact">Login</NavLink>
+                <NavLink to="/login">Login</NavLink>
             </div>
         </nav>
     )
