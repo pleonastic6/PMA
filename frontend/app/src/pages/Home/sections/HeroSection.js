@@ -16,7 +16,7 @@ export default function HeroSection() {
             className="relative flex flex-col items-center justify-center w-full bg-white py-20 px-4 text-center bg-repeat bg-center"
             style={{ backgroundImage: `url(${bg})` }}
         >
-            <h1 className="text-5xl font-extrabold text-slate-800 mb-4">
+            <h1 className="text-5xl font-extrabold  mb-4">
                 Make new contacts <br /> around the world
             </h1>
             <p className="text-gray-500 mb-10 max-w-lg mx-auto">
@@ -29,7 +29,7 @@ export default function HeroSection() {
                     disabled={isButtonDisabled}
                     className={`relative flex h-[50px] w-40 items-center justify-center overflow-hidden rounded-full transition-colors ${isButtonDisabled
                         ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                        : "bg-gradient-to-r from-[#917DFF] to-[#5F59FF] text-white before:absolute before:h-0 before:w-0 before:rounded-full before:bg-emerald-300/30 before:transition-all before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56" // Zustand: Aktiv mit Animation
+                        : "bg-gradient-to-r from-[#917DFF] to-[#5F59FF] text-white before:absolute before:h-0 before:w-0 before:rounded-full before:bg-emerald-300/30 before:transition-all before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56" 
                         }`}
                 >
                     <span className="relative z-10">continue</span>
