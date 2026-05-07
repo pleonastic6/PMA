@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import ThemeToggle from "../buttons/ThemeToggle";
+import brand from "../../assets/images/brand.svg";
 
 export default function Navbar() {
     const navItems = [
@@ -10,16 +11,15 @@ export default function Navbar() {
     ];
 
     const navLinkClasses = ({ isActive }) => {
-        return `relative group pb-1 ${
-            isActive ? "text-indigo-600" : "text-gray-500"
-        }`;
+        return `relative group pb-1 ${isActive ? "text-indigo-600" : "text-gray-500"
+            }`;
     };
     return (
-        <nav className="flex items-center justify-between shadow-xl  font-sans font-normal sticky">
-            <div className="bg-[#DFE1FF] rounded-r-full p-4">
-                <NavLink to="/">
-                    <span>💜</span>
-                    <span>Name</span>
+        <nav className="flex items-center justify-between shadow-xl  font-sans font-normal sticky z-10">
+            <div className="bg-gradient-to-r from-[#7B7DFF] to-[#434FDA] rounded-r-full p-4">
+                <NavLink to="/" className="flex items-center gap-2 text-white font-bold text-lg">
+                    <span>Friends</span>
+                    <img src={brand} alt="Brand Logo" className="h-8 w-auto" />
                 </NavLink>
             </div>
             <ul className="flex space-x-4">
@@ -34,7 +34,12 @@ export default function Navbar() {
             </ul>
             <div className="pr-4 flex items-center gap-4">
                 <ThemeToggle />
-                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 transition-colors">
+                    Login
+                </NavLink>
+                <NavLink to="/signup" className="border bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
+                    Sign up
+                </NavLink>
             </div>
         </nav>
     )

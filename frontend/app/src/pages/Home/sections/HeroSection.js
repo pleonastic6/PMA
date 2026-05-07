@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import heroIllustration from '../../../assets/images/ill_1.svg';
 import { Dropdown } from '../../../components/buttons/Dropdown';
+import bg from "../../../assets/images/bg_1.svg";
+import ico_1 from "../../../assets/images/ico_1.svg";
+import Card_Dropshadow from '../../../components/cards/Card_Dropshadow';
 
 export default function HeroSection() {
     const [gender, setGender] = useState("");
@@ -9,8 +12,10 @@ export default function HeroSection() {
 
     const isButtonDisabled = !gender || !interest;
     return (
-        <section className="flex flex-col items-center justify-center w-full bg-white py-20 px-4 text-center">
-
+        <section
+            className="relative flex flex-col items-center justify-center w-full bg-white py-20 px-4 text-center bg-repeat bg-center"
+            style={{ backgroundImage: `url(${bg})` }}
+        >
             <h1 className="text-5xl font-extrabold text-slate-800 mb-4">
                 Make new contacts <br /> around the world
             </h1>
@@ -30,14 +35,11 @@ export default function HeroSection() {
                     <span className="relative z-10">continue</span>
                 </button>
             </div>
-            <div className="w-full max-w-2xl mt-8">
-                <img
-                    src={heroIllustration}
-                    alt="Illustration von Leuten die chatten"
-                    className="w-full h-auto drop-shadow-xl"
-                />
+            <div className='grid grid-cols-3 gap-8'>
+                <Card_Dropshadow title="Connect with People" description="Meet new friends and expand your social circle." img={ico_1} />
+                <Card_Dropshadow title="Share Interests" description="Find people who share your hobbies and passions." img={ico_1} />
+                <Card_Dropshadow title="Build Relationships" description="Create meaningful connections with like-minded individuals." img={ico_1}   />
             </div>
-
         </section>
     );
 }
