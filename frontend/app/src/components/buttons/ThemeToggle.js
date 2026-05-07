@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
     const [isDarkMode, setIsDarkMode] = useState(true);
+    useEffect(() => {
+        const root = document.documentElement; 
 
+        if (isDarkMode) {
+            root.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            root.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        }
+    }, [isDarkMode]);
     return (
         <button
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className="relative flex items-center justify-between w-[72px] h-10 p-1 bg-[#1A1D24] rounded-full cursor-pointer focus:outline-none"
+            className="relative flex items-center justify-between w-[72px] h-10 p-1 border border-gray-300 dark:border-none bg-white dark:bg-[#1A1D24] rounded-full cursor-pointer focus:outline-none"
             aria-label="Toggle Dark Mode"
         >
             <div

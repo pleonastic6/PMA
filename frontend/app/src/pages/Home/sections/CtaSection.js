@@ -10,7 +10,7 @@ export default function CtaSection() {
     };
 
     return (
-        <section className="relative w-full bg-[#C8D3FE] py-16 px-6 md:px-12 overflow-hidden">
+        <section className="relative w-full dark:bg-[#0C0E28] bg-[#C8D3FE] py-16 px-6 md:px-12 overflow-hidden">
 
             <div className="flex-1 flex flex-col items-center justify-center w-full z-10 md:pr-10">
 

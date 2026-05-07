@@ -23,6 +23,18 @@
 body {
   font-size: larger;
 }
-h1,h2,h3,h4,h5,h6 {
-  color: #333F64
+@layer base {
+  body {
+    /* fontSize: larger entspricht in Tailwind etwa text-lg */
+    @apply text-lg; 
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    /* Standardfarbe für hellen Modus und dark: für dunklen Modus */
+    @apply text-[#333F64] dark:text-[#6980C4]; 
+  }
+    h1, h2, h3, h4, h5, h6 {
+    /* Standardfarbe für hellen Modus und dark: für dunklen Modus */
+    @apply text-black/70 dark:text-white/70; 
+  }
 }

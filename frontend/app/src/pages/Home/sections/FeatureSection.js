@@ -35,7 +35,7 @@ export default function FeatureSection() {
         },
     ]
     return (
-        <section className="py-20 px-4 bg-gray-100">
+        <section className="py-20 px-4 dark:bg-[#000111]">
             <div className="max-w-6xl mx-auto">
                 <h1 className="text-5xl font-bold text-center mb-2">What we offer</h1>
                 <p className="text-xl text-black/70 text-center mb-12">We offer a variety of interesting features that increase your chance of success</p>

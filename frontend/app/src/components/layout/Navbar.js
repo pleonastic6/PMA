@@ -15,7 +15,7 @@ export default function Navbar() {
             }`;
     };
     return (
-        <nav className="flex items-center justify-between shadow-xl  font-sans font-normal sticky z-10">
+        <nav className="bg-white dark:bg-[#101010] dark:text-white flex items-center justify-between shadow-xl font-sans font-normal sticky top-0 z-50">
             <div className="bg-gradient-to-r from-[#7B7DFF] to-[#434FDA] rounded-r-full p-4">
                 <NavLink to="/" className="flex items-center gap-2 text-white font-bold text-lg">
                     <span>Friends</span>
@@ -34,10 +34,10 @@ export default function Navbar() {
             </ul>
             <div className="pr-4 flex items-center gap-4">
                 <ThemeToggle />
-                <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 transition-colors">
+                <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors">
                     Login
                 </NavLink>
-                <NavLink to="/signup" className="border bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
+                <NavLink to="/signup" className="bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
                     Sign up
                 </NavLink>
             </div>
