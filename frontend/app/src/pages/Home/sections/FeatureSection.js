@@ -35,11 +35,11 @@ export default function FeatureSection() {
         },
     ]
     return (
-        <section className="py-20 px-4 dark:bg-[#000111]">
+        <section className="py-20 px-4">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-5xl font-bold text-center mb-2">What we offer</h1>
-                <p className="text-xl text-black/70 text-center mb-12">We offer a variety of interesting features that increase your chance of success</p>
-                <div className="grid grid-cols-3 gap-8">
+                <h1 className="font-bold text-center mb-2">What we offer</h1>
+                <p className="text-center mb-12">We offer a variety of interesting features that increase your chance of success</p>
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
                     {Features.map((feature, index) => (
                         <Card
                             key={index}

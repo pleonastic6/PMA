@@ -25,16 +25,16 @@ body {
 }
 @layer base {
   body {
-    /* fontSize: larger entspricht in Tailwind etwa text-lg */
-    @apply text-lg; 
+    @apply md:text-lg text-sm bg-white dark:bg-[#000111] text-[#333F64] dark:text-[#6980C4]; 
+  }
+  label, p {
+    @apply text-[#333F64] dark:text-[#8f8f8f] md:text-xl text-lg; 
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    /* Standardfarbe für hellen Modus und dark: für dunklen Modus */
-    @apply text-[#333F64] dark:text-[#6980C4]; 
+  h1 {
+   @apply text-black/70 dark:text-[#abb5d2] md:text-5xl text-2xl; 
   }
-    h1, h2, h3, h4, h5, h6 {
-    /* Standardfarbe für hellen Modus und dark: für dunklen Modus */
-    @apply text-black/70 dark:text-white/70; 
+  h2 {
+   @apply text-black/70 dark:text-[#abb5d2] md:text-3xl text-2xl; 
   }
 }

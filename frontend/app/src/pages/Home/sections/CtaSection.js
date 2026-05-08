@@ -14,10 +14,10 @@ export default function CtaSection() {
 
             <div className="flex-1 flex flex-col items-center justify-center w-full z-10 md:pr-10">
 
-                <h2 className="text-5xl md:text-6xl font-extrabold text-[#384063] mb-4 text-center">
+                <h1 className="font-extrabold text-[#384063] mb-4 text-center">
                     What are you waiting for
-                </h2>
-                <p className="text-xl text-[#5F6689] mb-12 text-center max-w-lg">
+                </h1>
+                <p className=" text-[#5F6689] mb-12 text-center max-w-lg">
                     Join our community and find your soulmate today
                 </p>
                 <form
@@ -46,7 +46,7 @@ export default function CtaSection() {
             <img
                 src={woman}
                 alt="Woman"
-                className="absolute right-0 -translate-y-2/3 z-0"
+                className="absolute right-0 -translate-y-2/3 z-0 hidden md:block"
             />
         </section>
     );

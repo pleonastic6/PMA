@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 export function Dropdown({ text, items = [], value, onChange }) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const hasSelection = value && value !== "";
 
     useEffect(() => {
         const handleOutsideClick = (e) => {
@@ -21,14 +22,22 @@ export function Dropdown({ text, items = [], value, onChange }) {
         <div className="relative flex items-center" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 px-4 py-2 text-slate-700 font-medium focus:outline-none group"
+                className={`flex w-full md:w-auto gap-1 md:gap-2 px-4 py-2 font-medium focus:outline-none group transition-all
+                    ${hasSelection
+                        ? "flex-col items-start md:flex-row md:items-center"
+                        : "flex-row items-center"
+                    }`}
             >
-                <span className="text-gray-400 group-hover:text-indigo-400 transition-colors">
+                <span className={` group-hover:text-indigo-400 transition-colors text-xs md:text-base
+                    ${hasSelection ? "leading-tight" : ""}`}>
                     {text}
                 </span>
                 <span className="flex items-center gap-1 font-bold group-hover:text-indigo-600 transition-colors">
                     {value}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} strokeWidth={2} />
+                    <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        strokeWidth={2}
+                    />
                 </span>
             </button>
             {isOpen && (
