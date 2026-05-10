@@ -2,13 +2,14 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "../buttons/ThemeToggle";
 import brand from "../../assets/images/brand.svg";
-import { Home, User, Settings, CheckCircle, BarChart3, Menu, X } from "lucide-react";
+import { Home, User, Settings, CheckCircle, BarChart3, Menu, X, MapPin } from "lucide-react";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navItems = [
         { path: "/", label: "Home", icon: Home },
+        { path: "/map", label: "Map", icon: MapPin },
         { path: "/insights", label: "Insights", icon: BarChart3 },
         { path: "/profile", label: "Profile", icon: User },
         { path: "/settings", label: "Settings", icon: Settings },

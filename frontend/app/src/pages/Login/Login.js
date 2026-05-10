@@ -1,5 +1,5 @@
 import { Button } from "../../components/buttons/Button";
-import { Divider } from "../../components/form_elements/Divider";
+//import { Divider } from "../../components/form_elements/Divider";
 import ModernInput from "../../components/form_elements/ModernInput";
 import { useState } from "react";
 import img_epstein from "../../assets/images/epstein.webp"
@@ -29,7 +29,7 @@ export default function Login() {
             </div>
             <Button text="Log In" />
             <p className="text-sm mt-4 text-black/70">Don't have an account yet? <a href="/signup" className="text-blue-500">Register here</a></p>
-            <Divider text="Login via" />
+            {/* <Divider text="Login via" /> */}
             <div className="flex justify-center gap-4 mt-6">
               {logins.map((name) =>
                 <button className="p-2 rounded-xl border border-gray-300 hover:bg-gray-100 transition-colors px-4">
