@@ -1,67 +1,41 @@
 import { useState } from "react";
 
-export default function ModernInput(probs) {
+export default function ModernInput({className="", text, input="text"}) {
   const [value, setValue] = useState("");
   const [focused, setFocused] = useState(false);
 
   const isActive = focused || value.length > 0;
 
   return (
-    <div style={styles.wrapper}>
+    <div className="relative w-80">
       <label
-        style={{
-          ...styles.label,
-          ...(isActive ? styles.labelActive : {}),
-        }}
+        className={`
+          absolute left-3 bg-white px-1 pointer-events-none
+          transition-transform duration-200 ease-in-out
+          ${
+            isActive
+              ? "top-[-8px] text-xs text-blue-500"
+              : "top-4 text"
+          }
+        `}
       >
-        {probs.text}
+        {text}
       </label>
 
       <input
-        type={probs.input}
+        className={`
+          w-full rounded-lg border border-gray-300
+          px-3 pt-5 pb-2 text-base
+          outline-none transition-colors duration-200
+          focus:border-blue-500
+          ${className}
+        `}
+        type={input}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        style={styles.input}
       />
     </div>
   );
 }
-
-const styles = {
-  wrapper: {
-    position: "relative",
-    width: "320px",
-    fontFamily: "Arial, sans-serif",
-  },
-
-  input: {
-    width: "100%",
-    padding: "20px 12px 8px",
-    fontSize: "16px",
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    outline: "none",
-    transition: "border-color 0.2s",
-  },
-
-  label: {
-    position: "absolute",
-    left: "12px",
-    top: "16px",
-    color: "#777",
-    background: "white",
-    fontSize: "16px",
-    padding: "0 4px",
-    pointerEvents: "none",
-    transition: "all 0.2s ease",
-  },
-
-  labelActive: {
-    top: "-8px",
-    left: "10px",
-    fontSize: "12px",
-    color: "#1a73e8",
-  },
-};
