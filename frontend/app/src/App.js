@@ -5,6 +5,8 @@ import Navbar from "./components/layout/Navbar";
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import MapPage from './pages/MapPage/MapPage';
+import EventsOverview from './pages/Events/EventsOverview';
+import EventCreate from './pages/Events/EventCreate';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/map" element={<MapPage />} />
+        <Route path="/events" element={<EventsOverview />} />
+        <Route path="/events/create" element={<EventCreate />} />
       </Routes>
     </BrowserRouter>
   );
