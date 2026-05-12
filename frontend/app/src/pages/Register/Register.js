@@ -18,7 +18,7 @@ function RadioBtn({id, text, group}) {
     )
 }
 
-export function Register() {
+export default function Register() {
     return (
         <main>
             <div className="flex justify-center">
