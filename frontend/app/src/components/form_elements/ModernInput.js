@@ -10,7 +10,7 @@ export default function ModernInput({className="", text, input="text"}) {
     <div className="relative w-80">
       <label
         className={`
-          absolute left-3 bg-white px-1 pointer-events-none
+          bg absolute left-3 px-1 pointer-events-none
           transition-transform duration-200 ease-in-out
           ${
             isActive
@@ -24,10 +24,9 @@ export default function ModernInput({className="", text, input="text"}) {
 
       <input
         className={`
-          w-full rounded-lg border border-gray-300
-          px-3 pt-5 pb-2 text-base
+          w-full rounded-lg border border-gray-300 dark:border-gray-400
+          px-3 pt-5 pb-2 text-base bg-inherit
           outline-none transition-colors duration-200
-          focus:border-blue-500
           ${className}
         `}
         type={input}

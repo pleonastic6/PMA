@@ -14,7 +14,7 @@ export default function Login() {
       <div className="flex justify-center">
         <div className="flex overflow-hidden rounded-md my-32 shadow-lg">
           <div className="bg-violet-900 w-64 text-stone-100 text-center">
-            <img src={img_epstein} className="w-full h-full object-cover object-[-320px]" />
+            <img src={img_epstein} draggable="false" className="w-full h-full object-cover object-[-320px]" />
           </div>
           <div className="flex flex-col p-8">
             <h1 className="text-3xl font-extrabold">Login</h1>

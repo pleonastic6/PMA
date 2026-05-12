@@ -4,7 +4,7 @@ function DateInput({text}) {
     return (
         <div className="flex">
             <label for="birtday" className="ml-2 text">{text}</label>
-            <input id="birthday" type="date" className="ml-auto text-gray-700" />
+            <input id="birthday" type="date" value="1953-01-20" className="bg ml-auto" />
         </div>
     )
 }
@@ -22,7 +22,7 @@ export default function Register() {
     return (
         <main>
             <div className="flex justify-center">
-                <div className="flex rounded-2xl overflow-hidden shadow-lg p-4 m-16 dark:bg-stone-700">
+                <div className="flex rounded-2xl overflow-hidden shadow-lg p-4 m-16">
                     <div className="flex flex-col gap-6">
                         <div><h1 className="text-3xl font-extrabold">Register</h1><div className="relative w-9 h-1 bg-gradient-to-r from-[#af6aff] to-[#df78ff41] rounded" /></div>
                         <ModernInput text="Username"/>
