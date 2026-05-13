@@ -1,4 +1,7 @@
 import ModernInput from "../../components/form_elements/ModernInput";
+import "../../data/profiles.json"
+import CreatingProfile from "./CreatingProfile";
+import { NavLink } from "react-router-dom";
 
 function DateInput({text}) {
     return (
@@ -18,6 +21,15 @@ function RadioBtn({id, text, group}) {
     )
 }
 
+function ContinueBtn({text=""}){
+    return (
+        <div className = "flex justify-end">
+            <NavLink to="/CreatingProfile">continue</NavLink>
+        </div>
+    )
+}
+
+
 export default function Register() {
     return (
         <main>
@@ -25,10 +37,11 @@ export default function Register() {
                 <div className="flex rounded-2xl overflow-hidden shadow-lg p-4 m-16">
                     <div className="flex flex-col gap-6">
                         <div><h1 className="text-3xl font-extrabold">Register</h1><div className="relative w-9 h-1 bg-gradient-to-r from-[#af6aff] to-[#df78ff41] rounded" /></div>
-                        <ModernInput text="Username"/>
-                        <ModernInput text="Password" input="password" />
-                        <ModernInput text="Repeat Password" input="password" />
-                        <DateInput text="Birthday"/>
+                        <ModernInput text="Username" id="usernameI"/>
+
+                        <ModernInput text="Password" input="password" id="passwordI"/>
+                        <ModernInput text="Repeat Password" input="password" id="passwordRepeat"/>
+                        <DateInput text="Birthday" id="birthdayI"/>
                         <div className="mx-2 text">
                             <p className="mb-1">Gender</p>
                             <div className="flex justify-between">
@@ -38,7 +51,8 @@ export default function Register() {
                             </div>
                         </div>
                         
-                        <ModernInput text="Location"/>
+                        <ModernInput text="Location"/> 
+                        <ContinueBtn text="continue"/>
                     </div>
                 </div>
             </div>
