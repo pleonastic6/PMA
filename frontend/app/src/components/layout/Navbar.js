@@ -1,21 +1,36 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "../buttons/ThemeToggle";
 import brand from "../../assets/images/brand.svg";
-import { Home, User, Settings, CheckCircle, BarChart3, Menu, X, MapPin, Calendar } from "lucide-react";
+import { Home, User, Settings, BarChart3, Menu, X, MapPin, Calendar, Heart, LogOut } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { isLoggedIn, logout } = useAuth();
+    const navigate = useNavigate();
 
-    const navItems = [
+    const guestNavItems = [
         { path: "/", label: "Home", icon: Home },
         { path: "/events", label: "Events", icon: Calendar },
         { path: "/map", label: "Map", icon: MapPin },
-        { path: "/insights", label: "Insights", icon: BarChart3 },
+    ];
+
+    const authNavItems = [
+        { path: "/swipe", label: "Entdecken", icon: Heart },
+        { path: "/events", label: "Events", icon: Calendar },
+        { path: "/map", label: "Map", icon: MapPin },
         { path: "/profile", label: "Profile", icon: User },
         { path: "/settings", label: "Settings", icon: Settings },
-        { path: "/tasks", label: "Tasks", icon: CheckCircle },
+        { path: "/insights", label: "Insights", icon: BarChart3 },
     ];
+
+    const navItems = isLoggedIn ? authNavItems : guestNavItems;
+
+    const handleLogout = () => {
+        logout();
+        navigate("/");
+    };
 
     const navLinkClasses = ({ isActive }) => {
         return `relative group pb-1 ${isActive ? "text-indigo-600" : "text-gray-500"
@@ -43,12 +58,24 @@ export default function Navbar() {
                 </ul>
                 <div className="pr-4 hidden md:flex items-center gap-4">
                     <ThemeToggle />
-                    <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors">
-                        Login
-                    </NavLink>
-                    <NavLink to="/signup" className="bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
-                        Sign up
-                    </NavLink>
+                    {isLoggedIn ? (
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors"
+                        >
+                            <LogOut size={14} />
+                            Logout
+                        </button>
+                    ) : (
+                        <>
+                            <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors">
+                                Login
+                            </NavLink>
+                            <NavLink to="/signup" className="bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
+                                Sign up
+                            </NavLink>
+                        </>
+                    )}
                 </div>
                 <button className="md:hidden visible" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
