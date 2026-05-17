@@ -1,3 +1,66 @@
+const randomItem = (items) => items[Math.floor(Math.random() * items.length)];
+
+const defaultProfiles = [
+  {
+    name: "Nico",
+    age: 24,
+    city: "Berlin Neukölln",
+    bio: "Mag gute Gespräche, baut gern side projects und ist schnell bei Kaffee oder einem spontanen Spaziergang dabei.",
+    tagline: "Neugierig, entspannt, direkt",
+    interests: ["Tech", "Kaffee", "Reisen", "Film"],
+    lookingFor: ["Treffen", "Spaziergänge", "Deep Talks"],
+    availability: "Unter der Woche abends, am Wochenende offen für spontane Pläne",
+    initials: "NI",
+    gradient: "from-indigo-500 to-violet-600",
+    highlights: ["Coffee first", "Spontan", "Deep Talks"],
+  },
+  {
+    name: "Levi",
+    age: 25,
+    city: "Hamburg Altona",
+    bio: "Zwischen Tastatur, Konzerttickets und zu vielen offenen Tabs. Immer offen für Leute mit Humor und eigener Meinung.",
+    tagline: "Locker, aufmerksam, leicht nerdy",
+    interests: ["Musik", "Tech", "Kaffee", "Lesen"],
+    lookingFor: ["Events", "Deep Talks", "Brunch"],
+    availability: "Meistens nach Feierabend und sonntags ziemlich flexibel",
+    initials: "LE",
+    gradient: "from-sky-500 to-cyan-600",
+    highlights: ["Live-Musik", "Nerdy", "Brunch"],
+  },
+  {
+    name: "Milan",
+    age: 23,
+    city: "Köln Ehrenfeld",
+    bio: "Viel zu leicht für neue Ideen zu haben — egal ob Kino, kleine Trips oder einfach ein langes Gespräch mit gutem Essen.",
+    tagline: "Offen, warm, verspielt",
+    interests: ["Film", "Kochen", "Reisen", "Kunst"],
+    lookingFor: ["Treffen", "Events", "Spaziergänge"],
+    availability: "Abends fast immer, samstags am liebsten draußen unterwegs",
+    initials: "MI",
+    gradient: "from-amber-500 to-orange-600",
+    highlights: ["Foodie", "Kino", "City Walks"],
+  },
+];
+
+export const availableProfileHighlights = [
+  "Coffee first",
+  "Deep Talks",
+  "Spontan",
+  "Foodie",
+  "City Walks",
+  "Live-Musik",
+  "Nerdy",
+  "Reiselust",
+  "Frühaufsteher",
+  "Nachteule",
+  "Kreativ",
+  "Sportlich",
+  "Brunch",
+  "Kino",
+];
+
+const baseProfile = randomItem(defaultProfiles);
+
 export const initialProfiles = [
   {
     id: 1,
@@ -145,16 +208,7 @@ export const availableInterests = [
 ];
 
 export const initialUserProfile = {
-  name: "Arturo",
-  age: 24,
-  city: "Berlin Mitte",
-  bio: "Informatikstudent, baut gern Tools und hat Lust auf gute Gespräche, Kaffee und spontane Ideen.",
-  tagline: "Technisch, direkt, neugierig",
-  interests: ["Tech", "Kaffee", "Reisen", "Film"],
-  lookingFor: ["Treffen", "Spaziergänge", "Deep Talks"],
-  availability: "Unter der Woche ab 18 Uhr, am Wochenende flexibel",
-  initials: "AR",
-  gradient: "from-indigo-500 to-violet-600",
+  ...baseProfile,
 };
 
 export const meetingPoints = [

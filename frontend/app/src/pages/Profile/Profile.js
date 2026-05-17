@@ -1,10 +1,9 @@
 import { Compass, Coffee, MapPin, Pencil, Sparkles } from "lucide-react";
 
-import { availableInterests } from "../../data/appData";
 import { useAppState } from "../../context/AppStateContext";
 
 export default function Profile() {
-  const { userProfile, updateUserProfile, toggleUserListField } = useAppState();
+  const { userProfile, updateUserProfile, toggleUserListField, availableInterests, availableProfileHighlights } = useAppState();
 
   return (
     <main className="min-h-[calc(100vh-80px)] bg-gray-50 px-4 py-6 dark:bg-[#0f1115] md:py-8">
@@ -133,7 +132,49 @@ export default function Profile() {
             </div>
 
             <div className="rounded-3xl bg-white p-5 shadow-lg dark:bg-[#181b22] dark:text-white md:p-6">
-              <h2 className="text-xl font-bold">Profil-Highlights</h2>
+              <div className="mb-4 flex items-center gap-3">
+                <div className="rounded-2xl bg-sky-100 p-3 text-sky-600 dark:bg-sky-500/10 dark:text-sky-300">
+                  <Coffee size={18} />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold">Profil-Highlights</h2>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Wähl 2–4 Dinge, die sofort hängenbleiben.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {availableProfileHighlights.map((highlight) => {
+                  const active = userProfile.highlights?.includes(highlight);
+                  return (
+                    <button
+                      key={highlight}
+                      type="button"
+                      onClick={() => toggleUserListField("highlights", highlight)}
+                      className={`rounded-full px-3 py-2 text-xs font-semibold transition ${active ? "bg-sky-500 text-white" : "bg-gray-100 text-gray-700 dark:bg-white/5 dark:text-white"}`}
+                    >
+                      {highlight}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="mt-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-700 p-4 text-white">
+                <p className="text-sm font-semibold">So wirkt dein Profil gerade</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {(userProfile.highlights ?? []).map((highlight) => (
+                    <span key={highlight} className="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white/90">
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+                <p className="mt-3 text-sm text-white/80">
+                  Direkt, interessiert und offen für gute Gespräche — genau die Art Profil, bei der man gern nach rechts swiped.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl bg-white p-5 shadow-lg dark:bg-[#181b22] dark:text-white md:p-6">
+              <h2 className="text-xl font-bold">Profil-Preview</h2>
               <div className="mt-4 space-y-3 text-sm text-gray-600 dark:text-gray-300">
                 <div className="flex items-center gap-3 rounded-2xl bg-gray-50 p-4 dark:bg-white/5">
                   <MapPin size={16} className="text-violet-500" />
@@ -141,13 +182,7 @@ export default function Profile() {
                 </div>
                 <div className="flex items-center gap-3 rounded-2xl bg-gray-50 p-4 dark:bg-white/5">
                   <Coffee size={16} className="text-violet-500" />
-                  <span>{userProfile.interests.slice(0, 3).join(' · ')}</span>
-                </div>
-                <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-700 p-4 text-white">
-                  <p className="text-sm font-semibold">So wirkt dein Profil gerade</p>
-                  <p className="mt-2 text-sm text-white/80">
-                    Direkt, interessiert und offen für gute Gespräche — genau die Art Profil, bei der man gern nach rechts swiped.
-                  </p>
+                  <span>{userProfile.interests.slice(0, 3).join(" · ")}</span>
                 </div>
               </div>
             </div>

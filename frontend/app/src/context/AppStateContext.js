@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 
 import {
   availableInterests,
+  availableProfileHighlights,
   initialChatMessages,
   initialMatches,
   initialPreferences,
@@ -13,6 +14,34 @@ import {
 
 const AppStateContext = createContext(null);
 const STORAGE_KEY = "pma_app_state_v1";
+
+const isLegacyArturoProfile = (profile) => profile
+  && profile.name === "Arturo"
+  && profile.initials === "AR"
+  && profile.city === "Berlin Mitte";
+
+const normalizeUserProfile = (profile) => {
+  if (!profile) return initialUserProfile;
+  if (isLegacyArturoProfile(profile)) return initialUserProfile;
+  return {
+    ...initialUserProfile,
+    ...profile,
+    highlights: profile.highlights?.length ? profile.highlights : initialUserProfile.highlights,
+  };
+};
+
+const normalizeOnboarding = (onboarding) => {
+  if (!onboarding) return null;
+  return {
+    ...onboarding,
+    firstName: onboarding.firstName === "Arturo" ? initialUserProfile.name : onboarding.firstName,
+    location: onboarding.location === "Berlin Mitte" ? initialUserProfile.city : onboarding.location,
+    biography: onboarding.biography === "Informatikstudent, baut gern Tools und hat Lust auf gute Gespräche, Kaffee und spontane Ideen."
+      ? initialUserProfile.bio
+      : onboarding.biography,
+    interestsText: onboarding.interestsText || initialUserProfile.interests.join(", "),
+  };
+};
 
 const nowTime = () => new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
 const nowActive = () => "gerade eben";
@@ -43,7 +72,13 @@ const loadStoredState = () => {
   if (typeof window === "undefined") return null;
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return {
+      ...parsed,
+      userProfile: normalizeUserProfile(parsed.userProfile),
+      onboarding: normalizeOnboarding(parsed.onboarding) ?? undefined,
+    };
   } catch {
     return null;
   }
@@ -245,6 +280,7 @@ export function AppStateProvider({ children }) {
       bio: onboarding.biography || prev.bio,
       interests: derivedInterests.length > 0 ? derivedInterests : prev.interests,
       initials: `${(firstName[0] || prev.initials[0] || "U")}${(lastName[0] || prev.initials[1] || "S")}`.toUpperCase(),
+      highlights: prev.highlights?.length ? prev.highlights : initialUserProfile.highlights,
     }));
   }, [onboarding, userProfile]);
 
@@ -262,6 +298,7 @@ export function AppStateProvider({ children }) {
     userProfile,
     onboarding,
     availableInterests,
+    availableProfileHighlights,
     filteredMeetingPoints,
     nearbyUsers,
     typingMatchIds,

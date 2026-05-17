@@ -8,7 +8,6 @@ export default function SwipePage() {
   const navigate = useNavigate();
   const {
     availableProfiles,
-    preferences,
     resetDiscovery,
     swipeProfile,
   } = useAppState();
@@ -71,7 +70,7 @@ export default function SwipePage() {
   const getTopCardTransform = () => {
     if (flyDirection === 'right') return 'translateX(110vw) rotate(30deg)';
     if (flyDirection === 'left') return 'translateX(-110vw) rotate(-30deg)';
-    return `translateX(${offset}px) rotate(${offset * 0.07}deg)`;
+    return `translateX(${offset}px) rotate(${offset * 0.05}deg)`;
   };
 
   const likeOpacity = Math.min(1, offset > 0 ? offset / 100 : 0);
@@ -79,7 +78,7 @@ export default function SwipePage() {
 
   if (profiles.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[80vh] gap-4 px-4 text-center">
+      <div className="flex min-h-[80vh] flex-col items-center justify-center gap-4 px-4 text-center">
         <div className="text-6xl">✨</div>
         <h2 className="text-2xl font-bold">Gerade nichts Neues mehr</h2>
         <p className="max-w-md text-gray-500">
@@ -104,7 +103,6 @@ export default function SwipePage() {
   }
 
   const visibleCards = profiles.slice(0, 3).reverse();
-  const currentProfile = profiles[0];
 
   return (
     <div className="min-h-[calc(100vh-80px)] px-4 py-6 md:py-8">
@@ -141,38 +139,28 @@ export default function SwipePage() {
         </div>
       )}
 
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-5">
-        <div className="flex w-full max-w-sm items-center justify-between rounded-full bg-white/80 px-4 py-3 shadow-lg backdrop-blur dark:bg-[#181b22]/90 dark:text-white">
-          <div className="min-w-0 pr-3 text-xs text-gray-500 dark:text-gray-400">
-            <span className="block truncate font-semibold text-gray-700 dark:text-white">
-              {currentProfile.name}, {currentProfile.age} · {currentProfile.city}
-            </span>
-            <span className="truncate">
-              {preferences.ageRange[0]}–{preferences.ageRange[1]} · {preferences.radiusKm} km · {preferences.interestFilters.length > 0 ? preferences.interestFilters.join(', ') : 'alle Interessen'}
-            </span>
-          </div>
+      <div className="mx-auto flex max-w-6xl justify-center">
+        <div className="relative flex w-full max-w-2xl flex-col items-center justify-center select-none">
           <button
             onClick={() => navigate('/settings')}
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:bg-gray-50 dark:border-white/10 dark:text-white dark:hover:bg-white/5"
+            className="absolute right-0 top-0 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white/90 text-gray-700 shadow-lg backdrop-blur transition hover:bg-gray-50 dark:border-white/10 dark:bg-[#181b22]/90 dark:text-white dark:hover:bg-white/5"
             aria-label="Filter öffnen"
             title="Filter öffnen"
           >
-            <SlidersHorizontal size={16} />
+            <SlidersHorizontal size={17} />
           </button>
-        </div>
 
-        <div className="flex w-full flex-col items-center justify-center select-none">
-          <div className="relative w-full max-w-sm" style={{ height: '520px' }}>
+          <div className="relative mt-8 w-full max-w-xl" style={{ height: '680px' }}>
             {visibleCards.map((profile, i) => {
               const isTop = i === visibleCards.length - 1;
               const stackIndex = visibleCards.length - 1 - i;
-              const scale = 1 - stackIndex * 0.04;
-              const translateY = stackIndex * 12;
+              const scale = 1 - stackIndex * 0.035;
+              const translateY = stackIndex * 16;
 
               return (
                 <div
                   key={profile.id}
-                  className="absolute inset-0 overflow-hidden rounded-3xl shadow-2xl"
+                  className="absolute inset-0 overflow-hidden rounded-[2rem] shadow-2xl"
                   style={{
                     zIndex: i + 1,
                     transform: isTop ? getTopCardTransform() : `translateY(${translateY}px) scale(${scale})`,
@@ -188,40 +176,40 @@ export default function SwipePage() {
                   onTouchEnd={isTop && !showMatch ? onPointerUp : undefined}
                 >
                   <div className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${profile.gradient}`}>
-                    <span className="select-none text-white/20 font-black" style={{ fontSize: '140px', lineHeight: 1 }}>
+                    <span className="select-none font-black text-white/20" style={{ fontSize: '220px', lineHeight: 1 }}>
                       {profile.initials}
                     </span>
                   </div>
 
                   {isTop && (
-                    <div className="absolute left-8 top-8 rounded-xl border-4 border-emerald-400 px-4 py-2" style={{ opacity: likeOpacity, transform: 'rotate(-20deg)' }}>
+                    <div className="absolute left-8 top-8 rounded-xl border-4 border-emerald-400 px-4 py-2" style={{ opacity: likeOpacity, transform: 'rotate(-18deg)' }}>
                       <span className="text-2xl font-extrabold tracking-widest text-emerald-400">TREFFEN</span>
                     </div>
                   )}
 
                   {isTop && (
-                    <div className="absolute right-8 top-8 rounded-xl border-4 border-rose-400 px-4 py-2" style={{ opacity: nopeOpacity, transform: 'rotate(20deg)' }}>
+                    <div className="absolute right-8 top-8 rounded-xl border-4 border-rose-400 px-4 py-2" style={{ opacity: nopeOpacity, transform: 'rotate(18deg)' }}>
                       <span className="text-2xl font-extrabold tracking-widest text-rose-400">NOPE</span>
                     </div>
                   )}
 
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-7 text-white md:p-8">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <h2 className="text-2xl font-bold">{profile.name}, {profile.age}</h2>
-                        <div className="mt-1 flex items-center gap-1 text-sm text-white/70">
-                          <MapPin size={13} />
+                        <h2 className="text-3xl font-bold md:text-4xl">{profile.name}, {profile.age}</h2>
+                        <div className="mt-2 flex items-center gap-1 text-sm text-white/75 md:text-base">
+                          <MapPin size={15} />
                           <span>{profile.city} · {profile.distanceKm} km</span>
                         </div>
                       </div>
-                      <div className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur-sm">
+                      <div className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur-sm md:text-sm">
                         {profile.compatibility}% Fit
                       </div>
                     </div>
-                    <p className="mt-2 text-sm leading-relaxed text-white/90">{profile.bio}</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
+                    <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/90 md:text-base">{profile.bio}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {profile.interests.map((interest) => (
-                        <span key={interest} className="rounded-full bg-white/20 px-3 py-1 text-xs backdrop-blur-sm">
+                        <span key={interest} className="rounded-full bg-white/20 px-3 py-1 text-xs backdrop-blur-sm md:text-sm">
                           {interest}
                         </span>
                       ))}
@@ -249,11 +237,10 @@ export default function SwipePage() {
             </button>
           </div>
 
+          <p className="mt-4 text-center text-xs text-gray-400 dark:text-gray-600">
+            Karte ziehen oder Buttons nutzen · {profiles.length} Profile im Stack
+          </p>
         </div>
-
-        <p className="text-center text-xs text-gray-400 dark:text-gray-600">
-          Karte ziehen oder Buttons nutzen · {profiles.length} Profile im Stack
-        </p>
       </div>
     </div>
   );
