@@ -1,6 +1,6 @@
 import { Button } from "../../components/buttons/Button";
 import ModernInput from "../../components/form_elements/ModernInput";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import img_epstein from "../../assets/images/epstein.webp"
 
@@ -36,11 +36,11 @@ export default function Login() {
               <Button text="Log In" />
             </form>
             <p className="text-sm mt-4 text-black/70">
-              Don't have an account yet? <a href="/signup" className="text-blue-500">Register here</a>
+              Don't have an account yet? <Link to="/signup" className="text-blue-500">Register here</Link>
             </p>
             <div className="flex justify-center gap-4 mt-6">
               {logins.map((name) =>
-                <button key={name} onClick={handleLogin} className="p-2 rounded-xl border border-gray-300 hover:bg-gray-100 transition-colors px-4">
+                <button type="button" key={name} onClick={handleLogin} className="p-2 rounded-xl border border-gray-300 hover:bg-gray-100 transition-colors px-4" aria-label={`Login with ${name}`}>
                   <img src={"/logos/" + name + ".png"} className="size-12" />
                 </button>
               )}

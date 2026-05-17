@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "../buttons/ThemeToggle";
 import brand from "../../assets/images/brand.svg";
-import { Home, User, Settings, BarChart3, Menu, X, MapPin, Calendar, Heart, LogOut } from "lucide-react";
+import { Home, User, Settings, BarChart3, Menu, X, MapPin, Calendar, Heart, LogOut, MessageCircle } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
@@ -18,6 +18,7 @@ export default function Navbar() {
 
     const authNavItems = [
         { path: "/swipe", label: "Entdecken", icon: Heart },
+        { path: "/matches", label: "Matches", icon: MessageCircle },
         { path: "/events", label: "Events", icon: Calendar },
         { path: "/map", label: "Map", icon: MapPin },
         { path: "/profile", label: "Profile", icon: User },
@@ -82,7 +83,7 @@ export default function Navbar() {
                 </button>
             </nav>
             <div className={`
-                fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 
+                fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50
                 transition-all duration-300 ease-in-out
                 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"}
             `}>
@@ -99,6 +100,18 @@ export default function Navbar() {
                     ))}
                     <hr className="border-l border-gray-500 h-6" />
                     <ThemeToggle />
+                    {isLoggedIn && (
+                        <button
+                            onClick={() => {
+                                handleLogout();
+                                setIsMenuOpen(false);
+                            }}
+                            className="text-gray-400 transition-transform active:scale-90"
+                            aria-label="Logout"
+                        >
+                            <LogOut size={20} strokeWidth={2.5} />
+                        </button>
+                    )}
                     <button
                         onClick={() => setIsMenuOpen(false)}
                         className="ml-2 dark:bg-white/20 bg-black/30 p-1 rounded-md"
