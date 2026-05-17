@@ -1,4 +1,4 @@
-export const mockProfiles = [
+export const initialProfiles = [
   {
     id: 1,
     name: "Sophie M.",
@@ -9,6 +9,7 @@ export const mockProfiles = [
     gradient: "from-violet-400 to-purple-600",
     initials: "SM",
     compatibility: 94,
+    distanceKm: 3,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const mockProfiles = [
     gradient: "from-blue-400 to-cyan-600",
     initials: "MK",
     compatibility: 89,
+    distanceKm: 8,
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const mockProfiles = [
     gradient: "from-rose-400 to-pink-600",
     initials: "LW",
     compatibility: 91,
+    distanceKm: 6,
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const mockProfiles = [
     gradient: "from-emerald-400 to-teal-600",
     initials: "JB",
     compatibility: 86,
+    distanceKm: 15,
   },
   {
     id: 5,
@@ -53,10 +57,11 @@ export const mockProfiles = [
     gradient: "from-amber-400 to-orange-600",
     initials: "MS",
     compatibility: 88,
+    distanceKm: 12,
   },
 ];
 
-export const mockMatches = [
+export const initialMatches = [
   {
     id: 101,
     profileId: 1,
@@ -92,7 +97,7 @@ export const mockMatches = [
   },
 ];
 
-export const mockChatMessages = {
+export const initialChatMessages = {
   101: [
     { id: 1, author: "them", text: "Hey, dein Profil wirkt sympathisch 👋", time: "12:04" },
     { id: 2, author: "me", text: "Danke 😄 Kaffee oder Spaziergang als erstes Date?", time: "12:06" },
@@ -109,3 +114,93 @@ export const mockChatMessages = {
     { id: 3, author: "them", text: "Lust auf ein spontanes Kino-Date?", time: "20:05" },
   ],
 };
+
+export const initialPreferences = {
+  radiusKm: 25,
+  ageRange: [21, 29],
+  interestFilters: ["Tech", "Kaffee", "Draußen"],
+  notifications: {
+    matches: true,
+    events: true,
+  },
+  privacy: {
+    showDistance: true,
+    showActive: false,
+  },
+};
+
+export const availableInterests = [
+  "Tech",
+  "Kaffee",
+  "Draußen",
+  "Kochen",
+  "Reisen",
+  "Musik",
+  "Film",
+  "Kunst",
+  "Sport",
+  "Yoga",
+  "Lesen",
+  "Tanzen",
+];
+
+export const initialUserProfile = {
+  name: "Arturo",
+  age: 24,
+  city: "Berlin Mitte",
+  bio: "Informatikstudent, baut gern Tools und hat Lust auf gute Gespräche, Kaffee und spontane Ideen.",
+  tagline: "Technisch, direkt, neugierig",
+  interests: ["Tech", "Kaffee", "Reisen", "Film"],
+  lookingFor: ["Treffen", "Spaziergänge", "Deep Talks"],
+  availability: "Unter der Woche ab 18 Uhr, am Wochenende flexibel",
+  initials: "AR",
+  gradient: "from-indigo-500 to-violet-600",
+};
+
+export const meetingPoints = [
+  {
+    id: "cafe-marina",
+    position: [18.301, -64.826],
+    name: "Café de la Marina",
+    description: "Gemütliches Café mit Meerblick und ruhiger Atmosphäre.",
+    category: "Kaffee",
+  },
+  {
+    id: "stadtpark",
+    position: [18.298, -64.824],
+    name: "Stadtpark Treffpunkt",
+    description: "Perfekt für ein lockeres Picknick oder einen Spaziergang.",
+    category: "Draußen",
+  },
+  {
+    id: "bibliothek",
+    position: [18.302, -64.822],
+    name: "Zentralbibliothek",
+    description: "Ruhiger Ort zum Lernen, Lesen und Kennenlernen.",
+    category: "Kultur",
+  },
+];
+
+export const nearbyUsers = [
+  {
+    id: "nearby-1",
+    center: [18.303, -64.828],
+    radius: 300,
+    name: "Tech & Coffee Spot",
+    color: "#FF5733",
+  },
+  {
+    id: "nearby-2",
+    center: [18.296, -64.827],
+    radius: 400,
+    name: "After-Work Circle",
+    color: "#33FF57",
+  },
+  {
+    id: "nearby-3",
+    center: [18.299, -64.821],
+    radius: 250,
+    name: "Kultur & Gespräche",
+    color: "#3357FF",
+  },
+];

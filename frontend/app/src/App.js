@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { AppStateProvider } from './context/AppStateContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from "./components/layout/Navbar";
 import Home from './pages/Home/Home';
@@ -41,27 +42,29 @@ function PublicOnlyRoute({ children }) {
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/swipe" element={<ProtectedRoute><SwipePage /></ProtectedRoute>} />
-          <Route path="/matches" element={<ProtectedRoute><MatchesPage /></ProtectedRoute>} />
-          <Route path="/login" element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
-          <Route path="/Login" element={<Navigate to="/login" replace />} />
-          <Route path="/signup" element={<PublicOnlyRoute><Register /></PublicOnlyRoute>} />
-          <Route path="/Signup" element={<Navigate to="/signup" replace />} />
-          <Route path='/CreatingProfile' element={<CreatingProfile />} />
-          <Route path='/SelectingPictures' element={<SelectingPictures />} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-          <Route path="/insights" element={<ProtectedRoute><Insights /></ProtectedRoute>} />
-          <Route path="/map" element={<MapPage />} />
-          <Route path="/events" element={<EventsOverview />} />
-          <Route path="/events/create" element={<EventCreate />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <AppStateProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/swipe" element={<ProtectedRoute><SwipePage /></ProtectedRoute>} />
+            <Route path="/matches" element={<ProtectedRoute><MatchesPage /></ProtectedRoute>} />
+            <Route path="/login" element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
+            <Route path="/Login" element={<Navigate to="/login" replace />} />
+            <Route path="/signup" element={<PublicOnlyRoute><Register /></PublicOnlyRoute>} />
+            <Route path="/Signup" element={<Navigate to="/signup" replace />} />
+            <Route path='/CreatingProfile' element={<CreatingProfile />} />
+            <Route path='/SelectingPictures' element={<SelectingPictures />} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+            <Route path="/insights" element={<ProtectedRoute><Insights /></ProtectedRoute>} />
+            <Route path="/map" element={<ProtectedRoute><MapPage /></ProtectedRoute>} />
+            <Route path="/events" element={<EventsOverview />} />
+            <Route path="/events/create" element={<EventCreate />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </AppStateProvider>
     </AuthProvider>
   );
 }

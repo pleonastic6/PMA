@@ -39,9 +39,9 @@ export default function Navbar() {
     };
     return (
         <>
-            <nav className="bg-white top dark:bg-[#101010] dark:text-white flex items-center justify-between shadow-xl font-sans font-normal sticky top-0 z-50">
-                <div className="bg-gradient-to-r from-[#7B7DFF] to-[#434FDA] rounded-r-full p-4">
-                    <NavLink to="/" className="flex items-center gap-2 text-white font-bold text-lg">
+            <nav className="sticky top-0 z-50 flex items-center justify-between bg-white shadow-xl dark:bg-[#101010] dark:text-white">
+                <div className="rounded-r-full bg-gradient-to-r from-[#7B7DFF] to-[#434FDA] px-4 py-3 md:p-4">
+                    <NavLink to="/" className="flex items-center gap-2 text-lg font-bold text-white">
                         <span>Friends</span>
                         <img src={brand} alt="Brand Logo" className="h-8 w-auto" />
                     </NavLink>
@@ -78,16 +78,16 @@ export default function Navbar() {
                         </>
                     )}
                 </div>
-                <button className="md:hidden visible" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button className="px-4 md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Menü öffnen">
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </nav>
             <div className={`
-                fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50
+                fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-md -translate-x-1/2 transform
                 transition-all duration-300 ease-in-out
                 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"}
             `}>
-                <div className="dark:bg-[#1A1C1E] bg-white dark:shadow-none dark:text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 border border-white/10">
+                <div className="flex items-center gap-2 overflow-x-auto rounded-2xl border border-white/10 bg-white px-4 py-3 shadow-2xl dark:bg-[#1A1C1E] dark:text-white dark:shadow-none">
                     {navItems.map((item) => (
                         <NavLink
                             key={item.path}

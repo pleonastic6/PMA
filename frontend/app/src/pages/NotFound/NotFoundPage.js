@@ -11,7 +11,7 @@ export default function NotFoundPage() {
         <p className="text-sm font-medium text-violet-500">404</p>
         <h1 className="mt-2 text-4xl font-extrabold">Hier ist gerade nix.</h1>
         <p className="mt-4 max-w-xl text-sm text-gray-500 dark:text-gray-400">
-          Die Route existiert im Frontend-Prototyp noch nicht oder du bist falsch abgebogen. Ist nicht dramatisch — wir schicken dich zurück auf sinnvolle Pfade.
+          Die Route existiert gerade nicht oder du bist falsch abgebogen. Ist nicht dramatisch — wir schicken dich zurück auf sinnvolle Pfade.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link to="/" className="inline-flex items-center gap-2 rounded-2xl bg-violet-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-violet-600">
