@@ -107,7 +107,7 @@ export default function SwipePage() {
   const currentProfile = profiles[0];
 
   return (
-    <div className="min-h-[calc(100vh-80px)] px-4 py-8">
+    <div className="min-h-[calc(100vh-80px)] px-4 py-6 md:py-8">
       {showMatch && matchedProfile && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-gradient-to-r from-violet-500 to-purple-600 px-8 py-8 text-center text-white shadow-2xl">
@@ -141,42 +141,27 @@ export default function SwipePage() {
         </div>
       )}
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-        <section className="rounded-3xl bg-white p-6 shadow-xl dark:bg-[#181b22] dark:text-white lg:w-[360px]">
-          <p className="text-sm font-medium text-violet-500">Discover</p>
-          <h1 className="mt-1 text-3xl font-extrabold">Neue Leute für dich</h1>
-          <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
-            Fokus: {preferences.ageRange[0]}–{preferences.ageRange[1]} Jahre · {preferences.radiusKm} km · {(preferences.interestFilters.length > 0 ? preferences.interestFilters.join(', ') : 'alle Interessen')}
-          </p>
-
-          <div className="mt-6 space-y-3 rounded-2xl bg-gray-50 p-4 dark:bg-white/5">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500 dark:text-gray-400">Gerade oben im Stack</span>
-              <span className="font-semibold">{profiles.length} sichtbar</span>
-            </div>
-            <div>
-              <p className="font-semibold">{currentProfile.name}, {currentProfile.age}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{currentProfile.city} · {currentProfile.distanceKm} km entfernt</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {currentProfile.interests.map((interest) => (
-                <span key={interest} className="rounded-full bg-white px-3 py-1 text-xs font-medium text-gray-700 dark:bg-white/10 dark:text-white">
-                  {interest}
-                </span>
-              ))}
-            </div>
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-5">
+        <div className="flex w-full max-w-sm items-center justify-between rounded-full bg-white/80 px-4 py-3 shadow-lg backdrop-blur dark:bg-[#181b22]/90 dark:text-white">
+          <div className="min-w-0 pr-3 text-xs text-gray-500 dark:text-gray-400">
+            <span className="block truncate font-semibold text-gray-700 dark:text-white">
+              {currentProfile.name}, {currentProfile.age} · {currentProfile.city}
+            </span>
+            <span className="truncate">
+              {preferences.ageRange[0]}–{preferences.ageRange[1]} · {preferences.radiusKm} km · {preferences.interestFilters.length > 0 ? preferences.interestFilters.join(', ') : 'alle Interessen'}
+            </span>
           </div>
-
           <button
             onClick={() => navigate('/settings')}
-            className="mt-4 inline-flex items-center gap-2 rounded-2xl border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-white/10 dark:text-white dark:hover:bg-white/5"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:bg-gray-50 dark:border-white/10 dark:text-white dark:hover:bg-white/5"
+            aria-label="Filter öffnen"
+            title="Filter öffnen"
           >
             <SlidersHorizontal size={16} />
-            Filter verfeinern
           </button>
-        </section>
+        </div>
 
-        <div className="flex flex-1 flex-col items-center justify-center select-none">
+        <div className="flex w-full flex-col items-center justify-center select-none">
           <div className="relative w-full max-w-sm" style={{ height: '520px' }}>
             {visibleCards.map((profile, i) => {
               const isTop = i === visibleCards.length - 1;
@@ -264,8 +249,11 @@ export default function SwipePage() {
             </button>
           </div>
 
-          <p className="mt-4 text-xs text-gray-400 dark:text-gray-600">Karte ziehen oder Buttons nutzen</p>
         </div>
+
+        <p className="text-center text-xs text-gray-400 dark:text-gray-600">
+          Karte ziehen oder Buttons nutzen · {profiles.length} Profile im Stack
+        </p>
       </div>
     </div>
   );
