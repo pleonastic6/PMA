@@ -22,5 +22,53 @@
     "category": "Party",
     "creator": "MarkusRühl",
     "createdAt": "2026-05-10T20:20:00.000Z"
+  },
+  {
+    "id": "3",
+    "title": "Public Viewing Finale",
+    "description": "Gemeinsames Public Viewing auf der großen Leinwand. Grillzeug und Getränke bitte selbst mitbringen. Wir haben eine kleine Zapfanlage vor Ort!",
+    "date": "2026-06-21",
+    "time": "18:00",
+    "locationName": "Stadtpark Wiese",
+    "position": [49.445, 11.855],
+    "category": "Sport",
+    "creator": "FussballFan99",
+    "createdAt": "2026-05-10T20:22:00.000Z"
+  },
+  {
+    "id": "4",
+    "title": "Retro Spieleabend",
+    "description": "Nintendo64, SNES und Brettspiele! Wir veranstalten einen entspannten Spieleabend im Jugendzentrum. Pizza wird bestellt.",
+    "date": "2026-05-22",
+    "time": "19:30",
+    "locationName": "Jugendzentrum",
+    "position": [49.441, 11.842],
+    "category": "Treffen",
+    "creator": "NerdBoi",
+    "createdAt": "2026-05-10T20:25:00.000Z"
+  },
+  {
+    "id": "5",
+    "title": "Open Air Kino am Fluss",
+    "description": "Gezeigt wird ein Überraschungs-Klassiker. Bringt euch Decken und Kissen mit, es könnte abends frisch werden.",
+    "date": "2026-05-28",
+    "time": "21:30",
+    "locationName": "Vils Ufer",
+    "position": [49.442, 11.846],
+    "category": "Kultur",
+    "creator": "Kulturverein Amberg",
+    "createdAt": "2026-05-10T20:30:00.000Z"
+  },
+  {
+    "id": "6",
+    "title": "Lauftreff am Sonntagmorgen",
+    "description": "Gemütlicher 5km Lauf durch den Wald. Anfänger sind herzlich willkommen! Wir laufen ein entspanntes Tempo.",
+    "date": "2026-05-24",
+    "time": "09:00",
+    "locationName": "Trimm-Dich-Pfad",
+    "position": [49.450, 11.830],
+    "category": "Sport",
+    "creator": "Sarah123",
+    "createdAt": "2026-05-10T20:35:00.000Z"
   }
 ]

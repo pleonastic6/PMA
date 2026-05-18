@@ -9,6 +9,7 @@ import Profile from "./pages/Profile/Profile";
 import MapPage from './pages/MapPage/MapPage';
 import EventsOverview from './pages/Events/EventsOverview';
 import EventCreate from './pages/Events/EventCreate';
+import EventDetail from './pages/Events/EventDetail';
 import CreatingProfile from './pages/Register/CreatingProfile';
 import SelectingPictures from './pages/Register/SelectingPictures';
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/map" element={<MapPage />} />
         <Route path="/events" element={<EventsOverview />} />
         <Route path="/events/create" element={<EventCreate />} />
+        <Route path="/events/:id" element={<EventDetail />} />
       </Routes>
     </BrowserRouter>
   );

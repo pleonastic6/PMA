@@ -1,6 +1,6 @@
 import INITIAL_EVENTS from '../data/events.json';
 
-const STORAGE_KEY = 'app_events_v4';
+const STORAGE_KEY = 'app_events_v5';
 
 export const eventService = {
   getEvents: () => {
