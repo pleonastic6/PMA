@@ -12,6 +12,11 @@ export class PlatformController {
     return ok('platform', this.platformService.getHealth());
   }
 
+  @Get('ready')
+  async getReadiness() {
+    return ok('platform', await this.platformService.getReadiness());
+  }
+
   @Get('modules')
   getModules() {
     return ok('platform', this.platformService.getModules());

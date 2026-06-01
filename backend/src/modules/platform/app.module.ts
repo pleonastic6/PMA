@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
 
+import { validateEnvironment } from '../../common/config/app-config';
 import { PrismaModule } from '../../common/prisma/prisma.module';
+import { RolesGuard } from '../../common/auth/roles.guard';
 import { AuthModule } from '../auth/auth.module';
 import { ChatModule } from '../chat/chat.module';
 import { DiscoveryModule } from '../discovery/discovery.module';
@@ -20,6 +23,7 @@ import { PlatformModule } from './platform.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      validate: validateEnvironment,
     }),
     JwtModule.register({
       global: true,
@@ -37,6 +41,12 @@ import { PlatformModule } from './platform.module';
     VerificationModerationModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AppModule {}

@@ -51,6 +51,12 @@ Das startet:
 - `Redis` auf `localhost:6379`
 - Backend auf `localhost:3001`
 
+Zusaetzlich gibt es jetzt:
+
+- `GET /api/platform/health` fuer simplen Liveness-Check
+- `GET /api/platform/ready` fuer DB-Readiness
+- `POST /api/auth/logout` zum Invalidieren von Refresh-Tokens
+
 Wenn Docker fehlt, kannst du trotzdem mit einer bestehenden lokalen Postgres-Instanz arbeiten und danach `npm run prisma:migrate:deploy` ausfuehren.
 
 ## Nächste sinnvolle Schritte

@@ -4,13 +4,15 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { UserRole } from '@prisma/client';
 import { Request } from 'express';
 
 export type AuthenticatedUser = {
   sub: string;
   email: string;
-  role: string;
+  role: UserRole;
 };
 
 type RequestWithUser = Request & {
@@ -19,7 +21,10 @@ type RequestWithUser = Request & {
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly configService: ConfigService,
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<RequestWithUser>();
@@ -30,8 +35,9 @@ export class JwtAuthGuard implements CanActivate {
     }
 
     try {
+      const secret = this.configService.getOrThrow<string>('JWT_ACCESS_SECRET');
       const payload = await this.jwtService.verifyAsync<AuthenticatedUser>(token, {
-        secret: process.env.JWT_ACCESS_SECRET,
+        secret,
       });
 
       request.user = payload;

@@ -3,6 +3,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { UserRole } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
@@ -24,6 +25,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
+    private readonly configService: ConfigService,
   ) {}
 
   async register(payload: RegisterDto) {
@@ -121,8 +123,11 @@ export class AuthService {
     let payload: TokenPayload;
 
     try {
+      const refreshSecret = this.configService.getOrThrow<string>(
+        'JWT_REFRESH_SECRET',
+      );
       payload = await this.jwtService.verifyAsync<TokenPayload>(refreshToken, {
-        secret: process.env.JWT_REFRESH_SECRET,
+        secret: refreshSecret,
       });
     } catch {
       throw new UnauthorizedException('Invalid refresh token');
@@ -161,22 +166,31 @@ export class AuthService {
     };
   }
 
-  private async issueTokens(payload: TokenPayload) {
-    const accessSecret = process.env.JWT_ACCESS_SECRET;
-    const refreshSecret = process.env.JWT_REFRESH_SECRET;
+  async logout(userId: string) {
+    await this.prisma.authIdentity.update({
+      where: { userId },
+      data: {
+        refreshTokenHash: null,
+      },
+    });
 
-    if (!accessSecret || !refreshSecret) {
-      throw new UnauthorizedException('JWT secrets are not configured');
-    }
+    return {
+      message: 'Logged out successfully',
+    };
+  }
+
+  private async issueTokens(payload: TokenPayload) {
+    const accessSecret = this.configService.getOrThrow<string>('JWT_ACCESS_SECRET');
+    const refreshSecret = this.configService.getOrThrow<string>('JWT_REFRESH_SECRET');
 
     const accessToken = await this.jwtService.signAsync(payload, {
       secret: accessSecret,
-      expiresIn: process.env.ACCESS_TOKEN_TTL ?? '15m',
+      expiresIn: this.configService.get<string>('ACCESS_TOKEN_TTL') ?? '15m',
     });
 
     const refreshToken = await this.jwtService.signAsync(payload, {
       secret: refreshSecret,
-      expiresIn: process.env.REFRESH_TOKEN_TTL ?? '7d',
+      expiresIn: this.configService.get<string>('REFRESH_TOKEN_TTL') ?? '7d',
     });
 
     return {
