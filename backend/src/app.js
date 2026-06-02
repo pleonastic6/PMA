@@ -1,0 +1,19 @@
+const express = require('express');
+const cors = require('cors');
+const apiRoutes = require('./routes/api.routes');
+
+const app = express();
+
+// Standard-Middlewares
+app.use(cors()); 
+app.use(express.json()); // Wichtig für req.body bei POST-Requests
+
+// Der Master-Router wird unter einem Prefix eingehängt (z.B. /api/v1)
+app.use('/api/v1', apiRoutes);
+
+// Fallback für Routen, die es nicht gibt
+app.use((req, res, next) => {
+    res.status(404).json({ success: false, message: 'Route nicht gefunden' });
+});
+
+module.exports = app;
