@@ -1,0 +1,22 @@
+[
+  {
+    "username": "der Erste",
+    "email": "",
+    "password": "",
+    "firstName": "",
+    "lastName": "",
+    "birthday": "",
+    "gender": "",
+    "location": ""
+  },
+  {
+    "username": "der Zweite",
+    "email": "",
+    "password": "",
+    "firstName":"",
+    "lastName":"",
+    "birthday": "",
+    "gender": "",
+    "location": ""
+  }
+]
