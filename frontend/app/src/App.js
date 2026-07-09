@@ -1,7 +1,8 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from "./components/layout/Navbar";
+import { useAuth } from "./context/AuthContext";
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from "./pages/Register/Register";
@@ -11,6 +12,29 @@ import EventsOverview from './pages/Events/EventsOverview';
 import EventCreate from './pages/Events/EventCreate';
 import CreatingProfile from './pages/Register/CreatingProfile';
 import SelectingPictures from './pages/Register/SelectingPictures';
+import SwipePage from './pages/Swipe/SwipePage';
+import MatchesPage from './pages/Matches/MatchesPage';
+import ChatPage from './pages/Chat/ChatPage';
+
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return <main className="min-h-screen flex items-center justify-center">Lädt...</main>;
+  }
+
+  return isAuthenticated ? children : <Login />;
+}
+
+function PublicOnlyRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return <main className="min-h-screen flex items-center justify-center">Lädt...</main>;
+  }
+
+  return isAuthenticated ? <Profile /> : children;
+}
 
 function App() {
   return (
@@ -21,14 +45,17 @@ function App() {
       {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Register />}/>
-        <Route path='/CreatingProfile' element={<CreatingProfile />}/>
-        <Route path='/SelectingPictures' element={<SelectingPictures />}/>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/events" element={<EventsOverview />} />
-        <Route path="/events/create" element={<EventCreate />} />
+        <Route path="/Login" element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
+        <Route path="/Signup" element={<PublicOnlyRoute><Register /></PublicOnlyRoute>}/>
+        <Route path='/CreatingProfile' element={<PublicOnlyRoute><CreatingProfile /></PublicOnlyRoute>}/>
+        <Route path='/SelectingPictures' element={<PublicOnlyRoute><SelectingPictures /></PublicOnlyRoute>}/>
+        <Route path="/swipe" element={<ProtectedRoute><SwipePage /></ProtectedRoute>} />
+        <Route path="/matches" element={<ProtectedRoute><MatchesPage /></ProtectedRoute>} />
+        <Route path="/chat" element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/map" element={<ProtectedRoute><MapPage /></ProtectedRoute>} />
+        <Route path="/events" element={<ProtectedRoute><EventsOverview /></ProtectedRoute>} />
+        <Route path="/events/create" element={<ProtectedRoute><EventCreate /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

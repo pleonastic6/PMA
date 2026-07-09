@@ -1,26 +1,26 @@
 [
   {
     "id": "1",
-    "title": "Kneipenquiz \"Blaues Haus\"",
-    "description": "Das große wöchentliche Kneipenquiz. Bringt euer Team mit und gewinnt tolle Preise!",
+    "title": "Kneipenquiz im Blauen Haus",
+    "description": "Ein entspannter Quizabend in der Altstadt. Teams können spontan gebildet werden.",
     "date": "2026-05-14",
     "time": "20:00",
     "locationName": "Blaues Haus",
     "position": [49.444, 11.848],
     "category": "Quiz",
-    "creator": "Anton",
+    "creator": "PMA Team",
     "createdAt": "2026-05-10T20:20:00.000Z"
   },
   {
     "id": "2",
-    "title": "WG-Party bei Rühl",
-    "description": "Pro Person 1x Thunfisch Shake gratis.",
+    "title": "After-Work Treffen am Marktplatz",
+    "description": "Locker zusammensitzen, neue Leute kennenlernen und danach spontan weiterziehen.",
     "date": "2026-05-16",
-    "time": "23:30",
-    "locationName": "Rühls WG",
+    "time": "19:00",
+    "locationName": "Marktplatz Amberg",
     "position": [49.448, 11.852],
-    "category": "Party",
-    "creator": "MarkusRühl",
+    "category": "Treffen",
+    "creator": "PMA Team",
     "createdAt": "2026-05-10T20:20:00.000Z"
   }
 ]

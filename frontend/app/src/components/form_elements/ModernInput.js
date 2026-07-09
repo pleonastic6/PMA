@@ -1,14 +1,34 @@
 import { useState } from "react";
 
-export default function ModernInput({className="", text, input="text"}) {
-  const [value, setValue] = useState("");
+export default function ModernInput({
+  className = "",
+  text,
+  input = "text",
+  value,
+  onChange,
+  placeholder = "",
+  id,
+  name,
+}) {
+  const [internalValue, setInternalValue] = useState("");
   const [focused, setFocused] = useState(false);
+  const resolvedValue = value ?? internalValue;
 
-  const isActive = focused || value.length > 0;
+  const isActive = focused || String(resolvedValue).length > 0;
+
+  function handleChange(event) {
+    if (onChange) {
+      onChange(event);
+      return;
+    }
+
+    setInternalValue(event.target.value);
+  }
 
   return (
     <div className="relative w-80">
       <label
+        htmlFor={id}
         className={`
           bg absolute left-3 px-1 pointer-events-none
           transition-transform duration-200 ease-in-out
@@ -23,6 +43,8 @@ export default function ModernInput({className="", text, input="text"}) {
       </label>
 
       <input
+        id={id}
+        name={name}
         className={`
           w-full rounded-lg border border-gray-300 dark:border-gray-400
           px-3 pt-5 pb-2 text-base bg-inherit
@@ -30,8 +52,9 @@ export default function ModernInput({className="", text, input="text"}) {
           ${className}
         `}
         type={input}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={resolvedValue}
+        placeholder={placeholder}
+        onChange={handleChange}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       />

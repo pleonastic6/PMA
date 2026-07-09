@@ -1,41 +1,130 @@
 # PMA
-Projektmanagement 
 
+PMA ist ein kleines Social-Matching-MVP mit Registrierung, Profilen, Swipes, Matches, Chat, Events und Kartenansicht.
 
-Backlog
+## Stack
+- Frontend: React + React Router + Tailwind + React Leaflet
+- Backend: Node.js + Express + MongoDB + Mongoose
+- Tests: `node --test` mit `mongodb-memory-server`
 
-Registrierung:
-Profil erstellen
-Angabe von:
--Hobbys
--Alter
--Siehe Tinder etc.
+## MVP-Features
+- Registrierung und Login mit Session-Token
+- Profilpflege mit Bio, Interessen, Sprachen und Eisbrecher
+- Discovery-Feed mit Like/Pass
+- Gegenseitige Likes erzeugen Matches
+- Chat nur zwischen Matches
+- Events erstellen und anzeigen
+- Karte mit Event-Markern und anonymisierten Nutzerzonen
 
-vorgefertigte Auswahl um Matchen einfacher zu machen (abgesehen von bio, die ist individuell)
-Verification
+## Projektstruktur
+- `frontend/app` React-Frontend
+- `backend` Express-API
+- `docs/scrum` simulierte Scrum-Artefakte fuer Abgabe/Doku
 
+## Quick Start
 
-Hauptseite:
-NavBar:
-Matches
-Geolocation/Karten
-Profil bearbeiten
-Swipe
-Explore/Events (vllt auch was anderes)
+### 1. MongoDB starten
+Beispiel lokal:
 
-Suchefuntkionen:
--angabe von gesuchten Eigenschaften, identisch wie Profil Erstellung
+```bash
+mongod --dbpath /tmp/pma-mongo
+```
 
-Treffen-Verification:
-per NFC, Passwort, QR-Code oder ähnliche
+Oder eine bestehende MongoDB-Instanz verwenden.
 
-Treffen Vereinbarung:
-durch Matchen und Terminanfrage
-Radar für Spontanmodus
+### 2. Backend konfigurieren
 
-Events:
-User können Event planen
+```bash
+cd backend
+cp .env.example .env
+npm install
+```
 
-React
-node.js
+Wichtige Variable in `.env`:
 
+```env
+MONGODB_URI=mongodb://127.0.0.1:27017/pma
+```
+
+### 3. Demo-Daten laden
+
+```bash
+npm run seed:demo
+```
+
+Das Script leert die relevanten Collections und legt Demo-User, Matches, Chats und Events neu an.
+
+### 4. Backend starten
+
+```bash
+npm run dev
+```
+
+Das Backend laeuft dann standardmaessig auf `http://localhost:5000`.
+
+### 5. Frontend starten
+
+```bash
+cd ../frontend/app
+npm install
+npm start
+```
+
+Das Frontend laeuft standardmaessig auf `http://localhost:3000`.
+
+## Demo-Accounts
+- `neo / demo12345`
+- `trinity / demo12345`
+- `morpheus / demo12345`
+- `switch / demo12345`
+
+## Empfohlener Demo-Ablauf
+1. Mit `neo` einloggen.
+2. Profil kurz zeigen.
+3. `Matches` oeffnen und vorhandene Matches erklaeren.
+4. In `Chat` die Demo-Unterhaltung mit `trinity` zeigen.
+5. In `Events` die vorhandenen Events zeigen.
+6. In `Map` die Event-Marker und Nutzerzonen zeigen.
+7. Optional neues Event anlegen und direkt wieder in Uebersicht/Karte auftauchen lassen.
+
+## Nützliche Commands
+
+### Backend
+
+```bash
+npm run dev
+npm test
+npm run seed:demo
+```
+
+### Frontend
+
+```bash
+npm start
+npm run build
+```
+
+## Verifikation
+- Backend-Tests:
+
+```bash
+cd backend
+npm test
+```
+
+- Frontend-Produktionsbuild:
+
+```bash
+cd frontend/app
+npm run build
+```
+
+## Bekannte MVP-Grenzen
+- Profilbilder sind aktuell nur Platzhalter-/Dateinamen-Logik, kein echter Upload.
+- Chat ist Request-basiert, nicht in Echtzeit per WebSocket.
+- Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert fuer die Demo.
+
+## Scrum-Dokumente
+- [Sprint Planning](./docs/scrum/sprint-03-planning.md)
+- [Sprint Review](./docs/scrum/sprint-03-review.md)
+- [Sprint Retro](./docs/scrum/sprint-03-retro.md)

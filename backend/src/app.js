@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const apiRoutes = require('./routes/api.routes');
+const { notFoundHandler, errorHandler } = require('./middleware/error.middleware');
 
 const app = express();
 
@@ -12,8 +13,7 @@ app.use(express.json()); // Wichtig für req.body bei POST-Requests
 app.use('/api/v1', apiRoutes);
 
 // Fallback für Routen, die es nicht gibt
-app.use((req, res, next) => {
-    res.status(404).json({ success: false, message: 'Route nicht gefunden' });
-});
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 module.exports = app;

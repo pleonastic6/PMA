@@ -1,0 +1,34 @@
+# Sprint 4 Planning
+
+## Status
+- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+
+## Sprint Goal
+- Das horizontal gedachte PMA-MVP soll technisch geschlossen, demo-faehig und fuer die Abgabe sauber dokumentiert werden.
+
+## Geplante Inhalte
+- Events ueber echtes Backend persistieren
+- Kartenansicht auf API-Daten umstellen
+- Frontend-Stabilisierung und Request-Flows bereinigen
+- Tests und Build absichern
+- Demo-Seeding und Projektdokumentation vorbereiten
+
+## Sprint Backlog
+| ID | Story | Akzeptanzkriterium | Aufwand |
+| --- | --- | --- | --- |
+| PMA-41 | Als Nutzer will ich Events persistent speichern | Events bleiben nach Reload erhalten | 5 SP |
+| PMA-42 | Als Nutzer will ich Karte mit echten Daten sehen | Map laedt Events und Nutzerzonen ueber API | 5 SP |
+| PMA-43 | Als Team wollen wir stabile Frontend-Flows | Keine offensichtlichen Lade-/Routing-Brueche | 3 SP |
+| PMA-44 | Als Team wollen wir Demo-Daten auf Knopfdruck | Seed-Script erzeugt reproduzierbare Demo-Welt | 3 SP |
+| PMA-45 | Als Team wollen wir eine saubere Abgabe | README, Demo-Guide und Scrum-Artefakte sind vorhanden | 3 SP |
+| PMA-46 | Als Team wollen wir technische Verifikation | Backend-Tests und Frontend-Build laufen erfolgreich | 3 SP |
+
+## Risiken
+- Letzte Integrationsfehler zwischen Frontend und Backend
+- Dokumentation wird oft am Ende unterschätzt und kostet mehr Zeit als gedacht
+
+## Definition of Done
+- Events und Map laufen ueber Backend
+- Seed-Script ist nutzbar
+- README und Demo-Doku sind aktuell
+- Tests/Build laufen grün

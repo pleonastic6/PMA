@@ -1,23 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { eventService } from '../../services/eventService';
 import MapWidget from '../../components/Map/MapWidget';
 import { Calendar, MapPin, Clock, Plus, List, Map as MapIcon, User } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 export default function EventsOverview() {
+  const { isAuthenticated, getEvents } = useAuth();
   const [events, setEvents] = useState([]);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loadedEvents = eventService.getEvents();
-    setEvents(loadedEvents);
-  }, []);
+    let active = true;
+
+    getEvents()
+      .then((loadedEvents) => {
+        if (active) {
+          setEvents(loadedEvents);
+        }
+      })
+      .catch((loadError) => {
+        if (active) {
+          setError(loadError.message);
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [isAuthenticated, getEvents]);
 
   const mapLocations = events.map(event => ({
     position: event.position || [49.444, 11.848],
     name: event.title,
-    description: event.description
+    description: `${event.category || 'Event'} · ${event.locationName}`
   }));
 
   return (
@@ -55,7 +78,11 @@ export default function EventsOverview() {
         </div>
       </div>
 
-      {viewMode === 'list' ? (
+      {error ? <p className="mb-6 text-sm text-red-600">{error}</p> : null}
+      {loading ? (
+        <div className="py-16 text-center text-gray-500 dark:text-gray-400">Events werden geladen...</div>
+      ) : viewMode === 'list' ? (
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.length === 0 ? (
             <div className="col-span-full text-center py-12 text-gray-500">

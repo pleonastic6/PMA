@@ -5,7 +5,7 @@ import LocationMarker from './LocationMarker';
 import UserZone from './UserZone';
 
 export default function MapWidget({
-  center = [18.3, -64.825],
+  center = [49.444, 11.848],
   zoom = 16,
   locations = [],
   users = []

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { eventService } from '../../services/eventService';
 import { Calendar, Clock, MapPin, AlignLeft, Type, Tag, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 export default function EventCreate() {
   const navigate = useNavigate();
+  const { createEvent } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
   
   const [formData, setFormData] = useState({
     title: '',
@@ -22,31 +24,23 @@ export default function EventCreate() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate network delay for better UX feeling
-    setTimeout(() => {
-      // In a real app we might geocode the locationName. For now, random offset from base position.
-      const lat = 49.444 + (Math.random() * 0.05 - 0.025);
-      const lng = 11.848 + (Math.random() * 0.05 - 0.025);
-      
-      const newEvent = {
-        ...formData,
-        position: [lat, lng],
-        creator: 'Current User' // Dummy logged in user
-      };
-      
-      eventService.createEvent(newEvent);
-      
+    setError('');
+
+    try {
+      await createEvent(formData);
       setIsSubmitting(false);
       setIsSuccess(true);
-      
+
       setTimeout(() => {
         navigate('/events');
       }, 2000);
-    }, 800);
+    } catch (submitError) {
+      setError(submitError.message);
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -90,6 +84,7 @@ export default function EventCreate() {
         </div>
 
         <form onSubmit={handleSubmit} className="p-8 space-y-6">
+          {error ? <p className="text-sm text-red-600">{error}</p> : null}
           <div className="space-y-2">
             <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
               <Type size={16} className="text-indigo-500" />

@@ -1,10 +1,9 @@
 
 import { useState } from 'react';
-import heroIllustration from '../../../assets/images/ill_1.svg';
 import { Dropdown } from '../../../components/buttons/Dropdown';
 import bg from "../../../assets/images/bg_1.svg";
 import ico_1 from "../../../assets/images/ico_1.svg";
-import Card_Dropshadow from '../../../components/cards/Card_Dropshadow';
+import CardDropshadow from '../../../components/cards/Card_Dropshadow';
 
 export default function HeroSection() {
     const [gender, setGender] = useState("");
@@ -40,9 +39,9 @@ export default function HeroSection() {
                     </button>
                 </div>
                 <div className='grid md:grid-cols-3 grid-cols-1 gap-8'>
-                    <Card_Dropshadow title="Connect with People" description="Meet new friends and expand your social circle." img={ico_1} />
-                    <Card_Dropshadow title="Share Interests" description="Find people who share your hobbies and passions." img={ico_1} />
-                    <Card_Dropshadow title="Build Relationships" description="Create meaningful connections with like-minded individuals." img={ico_1} />
+                    <CardDropshadow title="Connect with People" description="Meet new friends and expand your social circle." img={ico_1} />
+                    <CardDropshadow title="Share Interests" description="Find people who share your hobbies and passions." img={ico_1} />
+                    <CardDropshadow title="Build Relationships" description="Create meaningful connections with like-minded individuals." img={ico_1} />
                 </div>
             </div>
         </section>

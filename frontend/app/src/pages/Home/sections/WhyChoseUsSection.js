@@ -1,4 +1,3 @@
-import transition from '../../../assets/images/transition.svg';
 import surfer_waves from '../../../assets/images/surfer_waves.svg';
 
 export default function WhyChoseUsSection() {

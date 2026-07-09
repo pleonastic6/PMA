@@ -1,64 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MapWidget from '../../components/Map/MapWidget';
 import { Filter } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 export default function MapPage() {
-  // Initial coordinates from requirements
-  const initialCenter = [18.3, -64.825];
+  const { isAuthenticated, getMapOverview } = useAuth();
+  const [mapData, setMapData] = useState({
+    center: [49.444, 11.848],
+    events: [],
+    users: [],
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  // Mock Data: Meeting Points (Exact locations)
-  const mockLocations = [
-    {
-      position: [18.301, -64.826],
-      name: "Café de la Marina",
-      description: "Gemütliches Café mit Meerblick."
-    },
-    {
-      position: [18.298, -64.824],
-      name: "Stadtpark Treffpunkt",
-      description: "Perfekt für ein Picknick."
-    },
-    {
-      position: [18.302, -64.822],
-      name: "Zentralbibliothek",
-      description: "Ruhiger Ort zum Lernen und Treffen."
-    }
-  ];
+  useEffect(() => {
+    let active = true;
 
-  // Mock Data: User Zones (Approximate locations for privacy)
-  const mockUsers = [
-    {
-      center: [18.303, -64.828],
-      radius: 300, // in meters
-      name: "Nutzer in der Nähe",
-      color: "#FF5733"
-    },
-    {
-      center: [18.296, -64.827],
-      radius: 400,
-      name: "Anonymer Freund",
-      color: "#33FF57"
-    },
-    {
-      center: [18.299, -64.821],
-      radius: 250,
-      name: "Jemand sucht nach Treffen",
-      color: "#3357FF"
-    }
-  ];
+    getMapOverview()
+      .then((data) => {
+        if (active) {
+          setMapData(data);
+        }
+      })
+      .catch((loadError) => {
+        if (active) {
+          setError(loadError.message);
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [isAuthenticated, getMapOverview]);
 
   return (
     <div className="relative w-full" style={{ height: 'calc(100vh - 64px)' }}>
-      {/*
-        The map takes up all available height.
-        We subtract the approximate navbar height (64px).
-      */}
-      <MapWidget
-        center={initialCenter}
-        zoom={16}
-        locations={mockLocations}
-        users={mockUsers}
-      />
+      {loading ? (
+        <div className="h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+          Karte wird geladen...
+        </div>
+      ) : (
+        <MapWidget
+          center={mapData.center}
+          zoom={14}
+          locations={mapData.events}
+          users={mapData.users}
+        />
+      )}
 
       {/* Floating UI Elements (e.g., Filter Button) */}
       <div className="absolute top-4 right-4 z-[400]">
@@ -66,6 +59,11 @@ export default function MapPage() {
           <Filter size={20} />
         </button>
       </div>
+      {error ? (
+        <div className="absolute left-4 bottom-4 z-[400] rounded-xl bg-white/95 px-4 py-3 text-sm text-red-600 shadow-lg dark:bg-[#101010]/95">
+          {error}
+        </div>
+      ) : null}
     </div>
   );
 }

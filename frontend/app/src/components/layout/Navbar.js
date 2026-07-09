@@ -2,19 +2,25 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import ThemeToggle from "../buttons/ThemeToggle";
 import brand from "../../assets/images/brand.svg";
-import { Home, User, Settings, CheckCircle, BarChart3, Menu, X, MapPin, Calendar } from "lucide-react";
+import { Home, User, Menu, X, MapPin, Calendar, Heart, Sparkles, MessageCircle, LogOut } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { isAuthenticated, logout } = useAuth();
 
     const navItems = [
         { path: "/", label: "Home", icon: Home },
-        { path: "/events", label: "Events", icon: Calendar },
-        { path: "/map", label: "Map", icon: MapPin },
-        { path: "/insights", label: "Insights", icon: BarChart3 },
-        { path: "/profile", label: "Profile", icon: User },
-        { path: "/settings", label: "Settings", icon: Settings },
-        { path: "/tasks", label: "Tasks", icon: CheckCircle },
+        ...(isAuthenticated
+            ? [
+                { path: "/swipe", label: "Swipe", icon: Sparkles },
+                { path: "/matches", label: "Matches", icon: Heart },
+                { path: "/chat", label: "Chat", icon: MessageCircle },
+                { path: "/events", label: "Events", icon: Calendar },
+                { path: "/map", label: "Map", icon: MapPin },
+                { path: "/profile", label: "Profile", icon: User },
+            ]
+            : []),
     ];
 
     const navLinkClasses = ({ isActive }) => {
@@ -43,12 +49,25 @@ export default function Navbar() {
                 </ul>
                 <div className="pr-4 hidden md:flex items-center gap-4">
                     <ThemeToggle />
-                    <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors">
-                        Login
-                    </NavLink>
-                    <NavLink to="/signup" className="bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
-                        Sign up
-                    </NavLink>
+                    {isAuthenticated ? (
+                        <button
+                            type="button"
+                            onClick={logout}
+                            className="inline-flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors"
+                        >
+                            <LogOut size={16} />
+                            Logout
+                        </button>
+                    ) : (
+                        <>
+                            <NavLink to="/login" className="border border-gray-300 rounded-md px-4 py-2 text-sm dark:text-white text-gray-600 dark:hover:bg-white/10 hover:bg-gray-100 transition-colors">
+                                Login
+                            </NavLink>
+                            <NavLink to="/signup" className="bg-[#574EFF] rounded-md px-4 py-2 text-sm text-white hover:bg-[#4940F4] transition-colors">
+                                Sign up
+                            </NavLink>
+                        </>
+                    )}
                 </div>
                 <button className="md:hidden visible" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -72,17 +91,30 @@ export default function Navbar() {
                     ))}
                     <hr className="border-l border-gray-500 h-6" />
                     <ThemeToggle />
-                    <button
-                        onClick={() => setIsMenuOpen(false)}
-                        className="ml-2 dark:bg-white/20 bg-black/30 p-1 rounded-md"
-                    >
-                        <X
-                            size={24}
-                            strokeWidth={3}
-                            className={`text-white transition-all duration-1000 ${isMenuOpen ? "rotate-180" : "rotate-0"
-                                }`}
-                        />
-                    </button>
+                    {isAuthenticated ? (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                logout();
+                                setIsMenuOpen(false);
+                            }}
+                            className="ml-2 dark:bg-white/20 bg-black/30 p-1 rounded-md text-white"
+                        >
+                            <LogOut size={20} strokeWidth={2.5} />
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => setIsMenuOpen(false)}
+                            className="ml-2 dark:bg-white/20 bg-black/30 p-1 rounded-md"
+                        >
+                            <X
+                                size={24}
+                                strokeWidth={3}
+                                className={`text-white transition-all duration-1000 ${isMenuOpen ? "rotate-180" : "rotate-0"
+                                    }`}
+                            />
+                        </button>
+                    )}
                 </div>
             </div>
         </>

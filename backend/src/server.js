@@ -1,13 +1,16 @@
 const app = require('./app');
 const config = require('./config/env.config');
-const connectDB = require('./config/db.config');
+const { connectDatabase } = require('./db/mongoose');
 
+async function startServer() {
+    await connectDatabase();
 
-const startServer = async () => {
-    await connectDB(config.mongoUri);
     app.listen(config.port, () => {
         console.log(`Backend läuft im ${config.environment}-Modus auf Port ${config.port}`);
     });
-};
+}
 
-startServer();
+startServer().catch((error) => {
+    console.error('Fehler beim Starten des Backends:', error);
+    process.exit(1);
+});
