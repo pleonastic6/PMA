@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
+const GENDER_FILTERS = [
+  { value: "", label: "Alle" },
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "neutral", label: "Neutral" },
+];
+
 function AuthHint() {
   return <main className="min-h-screen flex items-center justify-center">Bitte erst einloggen, um zu swipen.</main>;
 }
@@ -109,18 +116,58 @@ function matchesPreferredGender(candidate, preferredGender) {
     return true;
   }
 
-  return String(candidate.gender || "").toLowerCase() === preferredGender;
+  const normalizedGender = String(candidate.gender || "").toLowerCase();
+
+  if (preferredGender === "neutral") {
+    return normalizedGender === "other" || normalizedGender === "diverse" || normalizedGender === "prefer_not_to_say";
+  }
+
+  return normalizedGender === preferredGender;
+}
+
+function matchesLookingFor(candidate, lookingForFilter) {
+  if (!lookingForFilter) {
+    return true;
+  }
+
+  return String(candidate.lookingFor || "").toLowerCase().includes(String(lookingForFilter).trim().toLowerCase());
 }
 
 export default function SwipePage() {
   const navigate = useNavigate();
   const { isAuthenticated, user, getDiscovery, swipe } = useAuth();
   const [candidates, setCandidates] = useState([]);
+  const [allCandidates, setAllCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
   const [matchNotice, setMatchNotice] = useState("");
   const [activeSlide, setActiveSlide] = useState(0);
+  const [filters, setFilters] = useState(() => {
+    const storedPreferences = JSON.parse(sessionStorage.getItem("pma_match_preferences") || "null");
+
+    return {
+      gender: storedPreferences?.interest || "",
+      lookingFor: "",
+    };
+  });
   const activeCandidateId = candidates[0]?.id;
+
+  useEffect(() => {
+    const filteredCandidates = allCandidates.filter(
+      (candidate) =>
+        matchesPreferredGender(candidate, filters.gender) &&
+        matchesLookingFor(candidate, filters.lookingFor),
+    );
+
+    setCandidates(filteredCandidates);
+    if (filters.gender && filteredCandidates.length === 0) {
+      setStatus("Aktuell keine passenden Profile fuer den Filter verfuegbar.");
+    } else if (!filteredCandidates.length && allCandidates.length > 0) {
+      setStatus("Keine weiteren Kandidaten. Seed ggf. neue Demo-Profile oder lockere den Filter.");
+    } else {
+      setStatus("");
+    }
+  }, [allCandidates, filters.gender, filters.lookingFor]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -133,14 +180,7 @@ export default function SwipePage() {
     getDiscovery()
       .then((data) => {
         if (active) {
-          const storedPreferences = JSON.parse(sessionStorage.getItem("pma_match_preferences") || "null");
-          const preferredGender = storedPreferences?.interest || "";
-          const filteredCandidates = data.filter((candidate) => matchesPreferredGender(candidate, preferredGender));
-
-          setCandidates(filteredCandidates);
-          if (preferredGender && filteredCandidates.length === 0) {
-            setStatus(`Aktuell keine ${preferredGender}-Profile verfuegbar.`);
-          }
+          setAllCandidates(data);
         }
       })
       .catch((error) => {
@@ -173,6 +213,7 @@ export default function SwipePage() {
       });
 
       setCandidates((current) => current.slice(1));
+      setAllCandidates((current) => current.filter((entry) => entry.id !== candidate.id));
       setActiveSlide(0);
       setStatus(direction === "like" ? `${candidate.username} geliked.` : `${candidate.username} übersprungen.`);
       setMatchNotice(result.isMatch ? `It's a match mit ${candidate.username}.` : "");
@@ -225,6 +266,32 @@ export default function SwipePage() {
       <div className="w-full max-w-xl bg-white dark:bg-[#1c1917] rounded-[2rem] shadow-xl border border-stone-200 dark:border-stone-800 p-8">
         <h1 className="text-3xl font-extrabold">Swipe</h1>
         <div className="w-16 h-1.5 bg-[#af6aff] rounded-full mt-3 mb-8" />
+
+        <div className="mb-6 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-3">
+          <label className="flex flex-col gap-2">
+            <span className="text-sm font-bold text-black/70 dark:text-white/70">Gewuenschtes Gender</span>
+            <select
+              value={filters.gender}
+              onChange={(event) => setFilters((current) => ({ ...current, gender: event.target.value }))}
+              className="rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#221f1d] px-4 py-3 outline-none focus:ring-2 focus:ring-[#af6aff] transition"
+            >
+              {GENDER_FILTERS.map((option) => (
+                <option key={option.value || "all"} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-2">
+            <span className="text-sm font-bold text-black/70 dark:text-white/70">Ich suche</span>
+            <input
+              value={filters.lookingFor}
+              onChange={(event) => setFilters((current) => ({ ...current, lookingFor: event.target.value }))}
+              placeholder="z. B. Dates, Leute, Quiz, Events..."
+              className="rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#221f1d] px-4 py-3 outline-none focus:ring-2 focus:ring-[#af6aff] transition"
+            />
+          </label>
+        </div>
 
         {candidate ? (
           <div className="space-y-6">

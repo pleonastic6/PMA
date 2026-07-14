@@ -33,7 +33,8 @@ async function listConversations(currentUserId) {
         }
     }
 
-    return matches.map((match) => {
+    return matches
+        .map((match) => {
         const conversationKey = buildConversationKey(currentUserId, match.id);
         const latestMessage = latestByConversation.get(conversationKey) || null;
 
@@ -50,7 +51,13 @@ async function listConversations(currentUserId) {
                   }
                 : null,
         };
-    });
+    })
+        .sort((left, right) => {
+            const leftTimestamp = left.latestMessage?.createdAt ? new Date(left.latestMessage.createdAt).getTime() : 0;
+            const rightTimestamp = right.latestMessage?.createdAt ? new Date(right.latestMessage.createdAt).getTime() : 0;
+
+            return rightTimestamp - leftTimestamp;
+        });
 }
 
 async function listMessages(currentUserId, otherUserId) {
@@ -106,8 +113,16 @@ async function sendMessage(currentUserId, otherUserId, text) {
     };
 }
 
+async function deleteConversation(currentUserId, otherUserId) {
+    await requireMatch(currentUserId, otherUserId);
+
+    const conversationKey = buildConversationKey(currentUserId, otherUserId);
+    await Message.deleteMany({ conversationKey });
+}
+
 module.exports = {
     listConversations,
     listMessages,
     sendMessage,
+    deleteConversation,
 };

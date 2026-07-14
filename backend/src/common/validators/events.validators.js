@@ -61,6 +61,11 @@ function validateCreateEventBody(body) {
     };
 }
 
+function validateUpdateEventBody(body) {
+    return validateCreateEventBody(body);
+}
+
 module.exports = {
     validateCreateEventBody,
+    validateUpdateEventBody,
 };

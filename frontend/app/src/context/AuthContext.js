@@ -113,6 +113,21 @@ export function AuthProvider({ children }) {
     return response.data;
   }, [token]);
 
+  const getEvent = useCallback(async (eventId) => {
+    const response = await api.getEvent(token, eventId);
+    return response.data;
+  }, [token]);
+
+  const updateEvent = useCallback(async (eventId, payload) => {
+    const response = await api.updateEvent(token, eventId, payload);
+    return response.data;
+  }, [token]);
+
+  const deleteEvent = useCallback(async (eventId) => {
+    const response = await api.deleteEvent(token, eventId);
+    return response.data;
+  }, [token]);
+
   const searchPlaces = useCallback(async (query) => {
     const response = await api.searchPlaces(token, query);
     return response.data;
@@ -138,6 +153,11 @@ export function AuthProvider({ children }) {
     return response.data;
   }, [token]);
 
+  const deleteConversation = useCallback(async (userId) => {
+    const response = await api.deleteConversation(token, userId);
+    return response.data;
+  }, [token]);
+
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_STORAGE_KEY);
     setToken("");
@@ -159,12 +179,16 @@ export function AuthProvider({ children }) {
     getMatches,
     getConversations,
     getEvents,
+    getEvent,
     createEvent,
+    updateEvent,
+    deleteEvent,
     searchPlaces,
     searchCities,
     getMapOverview,
     getMessages,
     sendMessage,
+    deleteConversation,
     logout,
   }), [
     token,
@@ -180,12 +204,16 @@ export function AuthProvider({ children }) {
     getMatches,
     getConversations,
     getEvents,
+    getEvent,
     createEvent,
+    updateEvent,
+    deleteEvent,
     searchPlaces,
     searchCities,
     getMapOverview,
     getMessages,
     sendMessage,
+    deleteConversation,
     logout,
   ]);
 

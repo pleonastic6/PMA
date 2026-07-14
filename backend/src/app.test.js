@@ -287,6 +287,43 @@ test('discovery lists other users and like-like creates a match', async () => {
     }
 });
 
+test('liking a demo profile creates an instant match', async () => {
+    const server = app.listen(0);
+
+    try {
+        const neoRegister = await request(server, '/api/v1/auth/register', 'POST', {
+            username: 'neo',
+            password: 'supersecret123',
+            firstName: 'Neo',
+        });
+        const demoRegister = await request(server, '/api/v1/auth/register', 'POST', {
+            username: 'pixel',
+            email: 'pixel@pma.local',
+            password: 'supersecret123',
+            firstName: 'Pixel',
+        });
+
+        const neoToken = neoRegister.body.data.token;
+        const demoId = demoRegister.body.data.user.id;
+
+        const swipeResponse = await request(server, '/api/v1/matches/swipe', 'POST', {
+            targetUserId: demoId,
+            direction: 'like',
+        }, neoToken);
+        assert.equal(swipeResponse.statusCode, 200);
+        assert.equal(swipeResponse.body.data.isMatch, true);
+
+        const neoMatchesResponse = await request(server, '/api/v1/matches', 'GET', null, neoToken);
+        assert.equal(neoMatchesResponse.statusCode, 200);
+        assert.equal(neoMatchesResponse.body.data.length, 1);
+        assert.equal(neoMatchesResponse.body.data[0].username, 'pixel');
+    } finally {
+        await new Promise((resolve, reject) => {
+            server.close((err) => (err ? reject(err) : resolve()));
+        });
+    }
+});
+
 test('matched users can exchange chat messages', async () => {
     const server = app.listen(0);
 
@@ -379,8 +416,7 @@ test('authenticated users can create and list events and map overview includes d
         assert.equal(mapOverviewResponse.statusCode, 200);
         assert.equal(Array.isArray(mapOverviewResponse.body.data.center), true);
         assert.equal(mapOverviewResponse.body.data.events.length, 1);
-        assert.equal(mapOverviewResponse.body.data.users.length, 1);
-        assert.equal(mapOverviewResponse.body.data.users[0].name, 'Trinity');
+        assert.equal(mapOverviewResponse.body.data.users.length, 0);
     } finally {
         await new Promise((resolve, reject) => {
             server.close((err) => (err ? reject(err) : resolve()));

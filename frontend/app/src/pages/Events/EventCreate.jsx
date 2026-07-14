@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Calendar, Clock, MapPin, AlignLeft, Type, Tag, ArrowLeft, CheckCircle2, Search, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -13,19 +13,22 @@ function getCurrentTime() {
 }
 
 export default function EventCreate() {
+  const { eventId } = useParams();
+  const isEditMode = Boolean(eventId);
   const navigate = useNavigate();
-  const { createEvent, searchPlaces } = useAuth();
+  const { createEvent, getEvent, searchPlaces, updateEvent } = useAuth();
   const locationBoxRef = useRef(null);
+  const [initialLoading, setInitialLoading] = useState(isEditMode);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
   const [locationResults, setLocationResults] = useState([]);
-  const [locationSearch, setLocationSearch] = useState("");
+  const [locationSearch, setLocationSearch] = useState('');
   const [locationSearching, setLocationSearching] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [showLocationResults, setShowLocationResults] = useState(false);
   const todayDate = getTodayDate();
-  
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -36,10 +39,61 @@ export default function EventCreate() {
     position: null,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  useEffect(() => {
+    if (!isEditMode) {
+      setInitialLoading(false);
+      return;
+    }
 
-    if (name === "locationName") {
+    let active = true;
+
+    getEvent(eventId)
+      .then((event) => {
+        if (!active) {
+          return;
+        }
+
+        setFormData({
+          title: event.title || '',
+          description: event.description || '',
+          date: event.date || '',
+          time: event.time || '',
+          locationName: event.locationName || '',
+          category: event.category || 'Sonstiges',
+          position: event.position || null,
+        });
+        setLocationSearch(event.locationName || '');
+        setSelectedPlace(
+          event.locationName
+            ? {
+                id: event.id,
+                name: event.locationName,
+                label: event.locationName,
+                position: event.position || null,
+              }
+            : null,
+        );
+      })
+      .catch((loadError) => {
+        if (active) {
+          setError(loadError.message);
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setInitialLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [eventId, getEvent, isEditMode]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === 'locationName') {
       setLocationSearch(value);
       setSelectedPlace(null);
       setShowLocationResults(true);
@@ -47,7 +101,7 @@ export default function EventCreate() {
       return;
     }
 
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
@@ -95,8 +149,8 @@ export default function EventCreate() {
       setShowLocationResults(false);
     }
 
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
   }, []);
 
   const selectPlace = (place) => {
@@ -113,18 +167,18 @@ export default function EventCreate() {
 
   const clearSelectedPlace = () => {
     setSelectedPlace(null);
-    setLocationSearch("");
+    setLocationSearch('');
     setLocationResults([]);
     setShowLocationResults(false);
     setFormData((prev) => ({
       ...prev,
-      locationName: "",
+      locationName: '',
       position: null,
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setError('');
 
@@ -141,10 +195,17 @@ export default function EventCreate() {
         return;
       }
 
-      await createEvent({
+      const payload = {
         ...formData,
         position: selectedPlace?.position || formData.position || undefined,
-      });
+      };
+
+      if (isEditMode) {
+        await updateEvent(eventId, payload);
+      } else {
+        await createEvent(payload);
+      }
+
       setIsSubmitting(false);
       setIsSuccess(true);
 
@@ -164,10 +225,12 @@ export default function EventCreate() {
           <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-500 mb-6">
             <CheckCircle2 size={40} />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Event erstellt!</h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8">Dein Event wurde erfolgreich gespeichert und ist nun für andere sichtbar.</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{isEditMode ? 'Event aktualisiert!' : 'Event erstellt!'}</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-8">
+            {isEditMode ? 'Deine Aenderungen wurden gespeichert.' : 'Dein Event wurde erfolgreich gespeichert und ist nun fuer andere sichtbar.'}
+          </p>
           <div className="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-green-500 h-full animate-[progress_2s_ease-in-out]" style={{animationDuration: '2s', animationName: 'progress'}}></div>
+            <div className="bg-green-500 h-full animate-[progress_2s_ease-in-out]" style={{ animationDuration: '2s', animationName: 'progress' }} />
           </div>
           <style>{`
             @keyframes progress {
@@ -180,37 +243,48 @@ export default function EventCreate() {
     );
   }
 
+  if (initialLoading) {
+    return (
+      <div className="container mx-auto px-4 py-20 text-center text-gray-500 dark:text-gray-400">
+        Event wird geladen...
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <button 
+      <button
         onClick={() => navigate('/events')}
         className="flex items-center gap-2 text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 mb-6 transition-colors"
       >
         <ArrowLeft size={20} />
-        <span>Zurück zur Übersicht</span>
+        <span>Zurueck zur Uebersicht</span>
       </button>
 
       <div className="bg-white dark:bg-[#1A1C1E] rounded-3xl shadow-xl border border-gray-100 dark:border-white/10 overflow-hidden">
         <div className="bg-gradient-to-r from-[#574EFF] to-[#7B7DFF] p-8 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-          <h1 className="text-3xl font-bold relative z-10">Neues Event erstellen</h1>
-          <p className="mt-2 text-indigo-100 relative z-10">Teile dein Vorhaben mit der Community</p>
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+          <h1 className="text-3xl font-bold relative z-10">{isEditMode ? 'Event bearbeiten' : 'Neues Event erstellen'}</h1>
+          <p className="mt-2 text-indigo-100 relative z-10">
+            {isEditMode ? 'Passe dein Event an.' : 'Teile dein Vorhaben mit der Community'}
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-8 space-y-6">
           {error ? <p className="text-sm text-red-600">{error}</p> : null}
+
           <div className="space-y-2">
             <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
               <Type size={16} className="text-indigo-500" />
               Titel des Events
             </label>
-            <input 
+            <input
               required
-              type="text" 
+              type="text"
               name="title"
               value={formData.title}
               onChange={handleChange}
-              placeholder="z.B. Kneipenquiz, WG-Party..." 
+              placeholder="z.B. Kneipenquiz, WG-Party..."
               className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
             />
           </div>
@@ -221,9 +295,9 @@ export default function EventCreate() {
                 <Calendar size={16} className="text-blue-500" />
                 Datum
               </label>
-              <input 
+              <input
                 required
-                type="date" 
+                type="date"
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
@@ -231,15 +305,15 @@ export default function EventCreate() {
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
               />
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                 <Clock size={16} className="text-purple-500" />
                 Uhrzeit
               </label>
-              <input 
+              <input
                 required
-                type="time" 
+                type="time"
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
@@ -257,9 +331,9 @@ export default function EventCreate() {
               </label>
               <div ref={locationBoxRef} className="relative">
                 <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-green-500" />
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   name="locationName"
                   value={formData.locationName}
                   onChange={handleChange}
@@ -268,7 +342,7 @@ export default function EventCreate() {
                       setShowLocationResults(true);
                     }
                   }}
-                  placeholder="Bar, Cafe, Adresse..." 
+                  placeholder="Bar, Cafe, Adresse..."
                   className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
                 />
                 {selectedPlace ? (
@@ -304,7 +378,7 @@ export default function EventCreate() {
                     ? 'Suche nach Orten...'
                     : 'Ab 3 Zeichen kommen Ort-Vorschlaege von OpenStreetMap.'}
               </p>
-              {selectedPlace ? (
+              {selectedPlace?.position ? (
                 <div className="rounded-2xl border border-green-100 dark:border-green-900/30 bg-green-50/70 dark:bg-green-900/10 p-4 space-y-3">
                   <div>
                     <p className="text-sm font-semibold text-gray-900 dark:text-white">{selectedPlace.name}</p>
@@ -327,7 +401,7 @@ export default function EventCreate() {
                 <Tag size={16} className="text-orange-500" />
                 Kategorie
               </label>
-              <select 
+              <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
@@ -348,24 +422,24 @@ export default function EventCreate() {
               <AlignLeft size={16} className="text-pink-500" />
               Beschreibung
             </label>
-            <textarea 
+            <textarea
               required
               rows="4"
               name="description"
               value={formData.description}
               onChange={handleChange}
-              placeholder="Worum geht es? Was sollte man mitbringen?" 
+              placeholder="Worum geht es? Was sollte man mitbringen?"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition-all resize-none"
-            ></textarea>
+            />
           </div>
 
           <div className="pt-6">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isSubmitting}
               className={`w-full py-4 rounded-xl text-white font-bold text-lg shadow-lg transition-all ${isSubmitting ? 'bg-indigo-400 cursor-not-allowed' : 'bg-[#574EFF] hover:bg-[#4940F4] hover:shadow-indigo-500/30'}`}
             >
-              {isSubmitting ? 'Event wird erstellt...' : 'Event erstellen'}
+              {isSubmitting ? (isEditMode ? 'Event wird gespeichert...' : 'Event wird erstellt...') : (isEditMode ? 'Event speichern' : 'Event erstellen')}
             </button>
           </div>
         </form>

@@ -39,8 +39,23 @@ const sendMessage = asyncHandler(async (req, res) => {
     });
 });
 
+const deleteConversation = asyncHandler(async (req, res) => {
+    const otherUserId = req.params.userId;
+
+    if (!otherUserId) {
+        throw new AppError(400, 'userId ist erforderlich');
+    }
+
+    await chatService.deleteConversation(req.auth.user._id, otherUserId);
+    res.status(200).json({
+        success: true,
+        data: { userId: otherUserId },
+    });
+});
+
 module.exports = {
     listConversations,
     listMessages,
     sendMessage,
+    deleteConversation,
 };

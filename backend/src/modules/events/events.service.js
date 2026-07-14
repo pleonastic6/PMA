@@ -1,7 +1,7 @@
 const { Event } = require('./event.model');
 const { User } = require('../users/user.model');
-const { publicUser } = require('../auth/auth.service');
 const { seededPosition } = require('../../common/utils/demo-geo');
+const { AppError } = require('../../common/errors/app-error');
 
 function toEventDto(event, creator) {
     return {
@@ -42,6 +42,17 @@ async function listEvents() {
     });
 }
 
+async function getEventById(eventId) {
+    const event = await Event.findById(eventId).lean();
+
+    if (!event) {
+        throw new AppError(404, 'Event nicht gefunden');
+    }
+
+    const creator = await User.findById(event.creatorUserId).lean();
+    return toEventDto(event, creator);
+}
+
 async function createEvent(currentUser, payload) {
     const seeded = seededPosition(
         `${payload.locationName}:${payload.title}:${currentUser._id}`,
@@ -56,7 +67,54 @@ async function createEvent(currentUser, payload) {
     return toEventDto(event, currentUser);
 }
 
+async function updateEvent(currentUser, eventId, payload) {
+    const existingEvent = await Event.findById(eventId);
+
+    if (!existingEvent) {
+        throw new AppError(404, 'Event nicht gefunden');
+    }
+
+    if (String(existingEvent.creatorUserId) !== String(currentUser._id)) {
+        throw new AppError(403, 'Du kannst nur deine eigenen Events bearbeiten');
+    }
+
+    const nextPosition =
+        payload.position ||
+        (Array.isArray(existingEvent.position) && existingEvent.position.length === 2
+            ? existingEvent.position
+            : seededPosition(`${payload.locationName}:${payload.title}:${currentUser._id}`));
+
+    existingEvent.title = payload.title;
+    existingEvent.description = payload.description;
+    existingEvent.date = payload.date;
+    existingEvent.time = payload.time;
+    existingEvent.locationName = payload.locationName;
+    existingEvent.category = payload.category;
+    existingEvent.position = nextPosition;
+
+    await existingEvent.save();
+
+    return toEventDto(existingEvent.toObject(), currentUser);
+}
+
+async function deleteEvent(currentUser, eventId) {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+        throw new AppError(404, 'Event nicht gefunden');
+    }
+
+    if (String(event.creatorUserId) !== String(currentUser._id)) {
+        throw new AppError(403, 'Du kannst nur deine eigenen Events loeschen');
+    }
+
+    await event.deleteOne();
+}
+
 module.exports = {
     listEvents,
+    getEventById,
     createEvent,
+    updateEvent,
+    deleteEvent,
 };

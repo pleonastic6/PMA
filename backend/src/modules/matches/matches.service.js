@@ -31,6 +31,24 @@ async function createSwipe(currentUserId, payload) {
     let isMatch = false;
 
     if (payload.direction === 'like') {
+        const targetIsDemo = String(targetUser.email || '').toLowerCase().endsWith('@pma.local');
+
+        if (targetIsDemo) {
+            await Swipe.findOneAndUpdate(
+                { swiperUserId: payload.targetUserId, targetUserId: currentUserId },
+                {
+                    swiperUserId: payload.targetUserId,
+                    targetUserId: currentUserId,
+                    direction: 'like',
+                },
+                {
+                    upsert: true,
+                    returnDocument: 'after',
+                    runValidators: true,
+                },
+            );
+        }
+
         const reciprocalSwipe = await Swipe.findOne({
             swiperUserId: payload.targetUserId,
             targetUserId: currentUserId,

@@ -54,6 +54,7 @@ function App() {
         <Route path="/map" element={<ProtectedRoute><MapPage /></ProtectedRoute>} />
         <Route path="/events" element={<ProtectedRoute><EventsOverview /></ProtectedRoute>} />
         <Route path="/events/create" element={<ProtectedRoute><EventCreate /></ProtectedRoute>} />
+        <Route path="/events/:eventId/edit" element={<ProtectedRoute><EventCreate /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

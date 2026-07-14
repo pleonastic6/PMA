@@ -5,10 +5,13 @@ const { User } = require('../users/user.model');
 const { Session } = require('./session.model');
 
 function publicUser(user) {
+    const email = String(user.email || '').toLowerCase();
+
     return {
         id: String(user._id),
         username: user.username,
         email: user.email,
+        isDemo: email.endsWith('@pma.local'),
         firstName: user.firstName,
         lastName: user.lastName,
         displayName: user.displayName,

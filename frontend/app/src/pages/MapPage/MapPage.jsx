@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import MapWidget from '../../components/Map/MapWidget';
-import { Filter } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 export default function MapPage() {
@@ -49,16 +48,8 @@ export default function MapPage() {
           center={mapData.center}
           zoom={14}
           locations={mapData.events}
-          users={mapData.users}
         />
       )}
-
-      {/* Floating UI Elements (e.g., Filter Button) */}
-      <div className="absolute top-4 right-4 z-[400]">
-        <button className="bg-white dark:bg-[#101010] dark:text-white p-3 rounded-full shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-          <Filter size={20} />
-        </button>
-      </div>
       {error ? (
         <div className="absolute left-4 bottom-4 z-[400] rounded-xl bg-white/95 px-4 py-3 text-sm text-red-600 shadow-lg dark:bg-[#101010]/95">
           {error}

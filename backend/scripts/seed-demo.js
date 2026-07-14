@@ -12,15 +12,8 @@ function conversationKey(userAId, userBId) {
     return [String(userAId), String(userBId)].sort().join(':');
 }
 
-function avatarDataUrl(label, startColor, endColor) {
-    const initials = String(label || '?')
-        .split(/\s+/)
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((part) => part[0].toUpperCase())
-        .join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${startColor}"/><stop offset="1" stop-color="${endColor}"/></linearGradient></defs><rect width="640" height="640" rx="64" fill="url(#g)"/><circle cx="320" cy="240" r="110" fill="rgba(255,255,255,0.22)"/><path d="M160 520c28-86 92-130 160-130s132 44 160 130" fill="rgba(255,255,255,0.22)"/><text x="320" y="590" font-size="88" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="700">${initials}</text></svg>`;
-    return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
+function remotePictures(...paths) {
+    return paths.map((path) => `https://randomuser.me/api/portraits/${path}`);
 }
 
 async function createUser(data) {
@@ -98,7 +91,7 @@ async function main() {
             idealSunday: 'Flohmarkt, Spaziergang, abends irgendwas basteln',
             greenFlags: 'Humor, Direktheit, kein Stress wegen Kleinigkeiten',
             funFact: 'Ich mache aus fast allem irgendwann ein kleines Tool.',
-            pictures: [avatarDataUrl('Neo', '#6D5BFF', '#00C2FF')],
+            pictures: remotePictures('men/32.jpg', 'men/45.jpg'),
         },
         {
             username: 'trinity',
@@ -124,7 +117,7 @@ async function main() {
             idealSunday: 'Spaetes Fruehstueck und dann irgendwo hin, wo es schoen ist',
             greenFlags: 'Kann Geschichten erzaehlen und gute Fragen stellen',
             funFact: 'Ich sortiere Playlists uebertrieben ernst.',
-            pictures: [avatarDataUrl('Trinity', '#FF7A7A', '#FFB36B')],
+            pictures: remotePictures('women/44.jpg', 'women/68.jpg'),
         },
         {
             username: 'morpheus',
@@ -150,7 +143,7 @@ async function main() {
             idealSunday: 'Basketball, Food und spaeter Konzert',
             greenFlags: 'Laesst andere ausreden und hat eigene Meinung',
             funFact: 'Ich merke mir unnuetze Musik-Fakten viel zu gut.',
-            pictures: [avatarDataUrl('Morpheus', '#1F9D8B', '#7ED957')],
+            pictures: remotePictures('men/75.jpg', 'men/81.jpg'),
         },
         {
             username: 'switch',
@@ -176,7 +169,7 @@ async function main() {
             idealSunday: 'Spontaner Ausflug ohne Plan',
             greenFlags: 'Locker, ehrlich, nicht uebertrieben cool',
             funFact: 'Ich gewinne Mario Kart nur aus purem Trotz.',
-            pictures: [avatarDataUrl('Switch', '#F97316', '#FACC15')],
+            pictures: remotePictures('lego/2.jpg', 'lego/4.jpg'),
         },
         {
             username: 'pixel',
@@ -202,7 +195,7 @@ async function main() {
             idealSunday: 'Secondhand, Matcha, Abendsonne',
             greenFlags: 'Nett zu Service-Leuten und kreativ im Kopf',
             funFact: 'Ich mache Screenshots von schoener Typografie.',
-            pictures: [avatarDataUrl('Pixel', '#EC4899', '#8B5CF6')],
+            pictures: remotePictures('women/26.jpg', 'women/33.jpg'),
         },
         {
             username: 'atlas',
@@ -228,7 +221,7 @@ async function main() {
             idealSunday: 'Frueh losfahren, spaet heimkommen',
             greenFlags: 'Zieht Sachen durch und ist trotzdem entspannt',
             funFact: 'Ich habe immer irgendwo eine Playlist fuer die Fahrt.',
-            pictures: [avatarDataUrl('Atlas', '#0EA5E9', '#14B8A6')],
+            pictures: remotePictures('men/54.jpg', 'men/58.jpg'),
         },
         {
             username: 'mika',
@@ -254,7 +247,7 @@ async function main() {
             idealSunday: 'Film, Essen bestellen, random Karaoke',
             greenFlags: 'Nicht peinlich beruehrt bei Albernheit',
             funFact: 'Ich kenne zu viele schlechte 2000er-Komödien.',
-            pictures: [avatarDataUrl('Mika', '#A855F7', '#3B82F6')],
+            pictures: remotePictures('lego/6.jpg', 'lego/8.jpg'),
         },
         {
             username: 'sora',
@@ -280,7 +273,7 @@ async function main() {
             idealSunday: 'Brunch, Podcast, bisschen draussen sein',
             greenFlags: 'Verbindlich, warm, kein peinliches Alpha-Getue',
             funFact: 'Ich bewerte Orte insgeheim nach ihrem Chai.',
-            pictures: [avatarDataUrl('Sora', '#F43F5E', '#FB7185')],
+            pictures: remotePictures('women/63.jpg', 'women/71.jpg'),
         },
         {
             username: 'byte',
@@ -306,7 +299,7 @@ async function main() {
             idealSunday: 'Bisschen bauen, bisschen raus, bisschen Quatsch',
             greenFlags: 'Neugierig und nicht ueberheblich',
             funFact: 'Ich habe mal ein Tool fuer zu viele Tabs gebaut.',
-            pictures: [avatarDataUrl('Byte', '#22C55E', '#06B6D4')],
+            pictures: remotePictures('men/22.jpg', 'men/29.jpg'),
         },
     ];
 

@@ -72,11 +72,26 @@ export const api = {
     request("/events", {
       token,
     }),
+  getEvent: (token, eventId) =>
+    request(`/events/${eventId}`, {
+      token,
+    }),
   createEvent: (token, body) =>
     request("/events", {
       method: "POST",
       token,
       body: JSON.stringify(body),
+    }),
+  updateEvent: (token, eventId, body) =>
+    request(`/events/${eventId}`, {
+      method: "PATCH",
+      token,
+      body: JSON.stringify(body),
+    }),
+  deleteEvent: (token, eventId) =>
+    request(`/events/${eventId}`, {
+      method: "DELETE",
+      token,
     }),
   searchPlaces: (token, query) =>
     request(`/places/search?q=${encodeURIComponent(query)}`, {
@@ -99,5 +114,10 @@ export const api = {
       method: "POST",
       token,
       body: JSON.stringify(body),
+    }),
+  deleteConversation: (token, userId) =>
+    request(`/chat/${userId}/messages`, {
+      method: "DELETE",
+      token,
     }),
 };
