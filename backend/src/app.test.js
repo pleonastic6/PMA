@@ -4,6 +4,7 @@ const http = require('node:http');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
 const app = require('./app');
+const placesService = require('./modules/places/places.service');
 const { connectDatabase, disconnectDatabase, mongoose } = require('./db/mongoose');
 const { User } = require('./modules/users/user.model');
 const { Session } = require('./modules/auth/session.model');
@@ -417,4 +418,27 @@ test('events in the past are rejected', async () => {
             server.close((err) => (err ? reject(err) : resolve()));
         });
     }
+});
+
+test('place search maps nominatim results', async () => {
+    const mockFetch = async () => ({
+        ok: true,
+        async json() {
+            return [
+                {
+                    place_id: 123,
+                    name: 'Murphy\'s Law',
+                    display_name: 'Murphy\'s Law, Amberg, Bayern, Deutschland',
+                    lat: '49.4447',
+                    lon: '11.8512',
+                },
+            ];
+        },
+    });
+
+    const results = await placesService.searchPlaces('Murphy', mockFetch);
+    assert.equal(results.length, 1);
+    assert.equal(results[0].name, 'Murphy\'s Law');
+    assert.equal(results[0].label, 'Murphy\'s Law, Amberg, Bayern, Deutschland');
+    assert.deepEqual(results[0].position, [49.4447, 11.8512]);
 });

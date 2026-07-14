@@ -74,6 +74,10 @@ export const api = {
       token,
       body: JSON.stringify(body),
     }),
+  searchPlaces: (token, query) =>
+    request(`/places/search?q=${encodeURIComponent(query)}`, {
+      token,
+    }),
   getMapOverview: (token) =>
     request("/map/overview", {
       token,

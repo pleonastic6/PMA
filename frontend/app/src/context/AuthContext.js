@@ -108,6 +108,11 @@ export function AuthProvider({ children }) {
     return response.data;
   }, [token]);
 
+  const searchPlaces = useCallback(async (query) => {
+    const response = await api.searchPlaces(token, query);
+    return response.data;
+  }, [token]);
+
   const getMapOverview = useCallback(async () => {
     const response = await api.getMapOverview(token);
     return response.data;
@@ -144,6 +149,7 @@ export function AuthProvider({ children }) {
     getConversations,
     getEvents,
     createEvent,
+    searchPlaces,
     getMapOverview,
     getMessages,
     sendMessage,
@@ -162,6 +168,7 @@ export function AuthProvider({ children }) {
     getConversations,
     getEvents,
     createEvent,
+    searchPlaces,
     getMapOverview,
     getMessages,
     sendMessage,

@@ -10,6 +10,7 @@ const matchesRoutes = require('../modules/matches/matches.routes');
 const chatRoutes = require('../modules/chat/chat.routes');
 const eventsRoutes = require('../modules/events/events.routes');
 const mapRoutes = require('../modules/map/map.routes');
+const placesRoutes = require('../modules/places/places.routes');
 // const userRotes = require('./users.routes');
 // const productRoutes = require('./products.routes');
 
@@ -21,6 +22,7 @@ router.use('/matches', matchesRoutes);
 router.use('/chat', chatRoutes);
 router.use('/events', eventsRoutes);
 router.use('/map', mapRoutes);
+router.use('/places', placesRoutes);
 router.use('/examples', exampleRoutes);
 // router.use('/users', userRotes);
 // router.use('/products', productRoutes);

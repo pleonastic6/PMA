@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, Clock, MapPin, AlignLeft, Type, Tag, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, MapPin, AlignLeft, Type, Tag, ArrowLeft, CheckCircle2, Search, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 function getTodayDate() {
@@ -14,10 +14,16 @@ function getCurrentTime() {
 
 export default function EventCreate() {
   const navigate = useNavigate();
-  const { createEvent } = useAuth();
+  const { createEvent, searchPlaces } = useAuth();
+  const locationBoxRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [locationResults, setLocationResults] = useState([]);
+  const [locationSearch, setLocationSearch] = useState("");
+  const [locationSearching, setLocationSearching] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [showLocationResults, setShowLocationResults] = useState(false);
   const todayDate = getTodayDate();
   
   const [formData, setFormData] = useState({
@@ -26,12 +32,95 @@ export default function EventCreate() {
     date: '',
     time: '',
     locationName: '',
-    category: 'Party'
+    category: 'Party',
+    position: null,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "locationName") {
+      setLocationSearch(value);
+      setSelectedPlace(null);
+      setShowLocationResults(true);
+      setFormData((prev) => ({ ...prev, locationName: value, position: null }));
+      return;
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  useEffect(() => {
+    if (!locationSearch || locationSearch.trim().length < 3) {
+      setLocationResults([]);
+      setLocationSearching(false);
+      return;
+    }
+
+    let active = true;
+    setLocationSearching(true);
+
+    const timeoutId = window.setTimeout(() => {
+      searchPlaces(locationSearch)
+        .then((results) => {
+          if (active) {
+            setLocationResults(results);
+            setShowLocationResults(true);
+          }
+        })
+        .catch(() => {
+          if (active) {
+            setLocationResults([]);
+          }
+        })
+        .finally(() => {
+          if (active) {
+            setLocationSearching(false);
+          }
+        });
+    }, 350);
+
+    return () => {
+      active = false;
+      window.clearTimeout(timeoutId);
+    };
+  }, [locationSearch, searchPlaces]);
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (locationBoxRef.current?.contains(event.target)) {
+        return;
+      }
+
+      setShowLocationResults(false);
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  const selectPlace = (place) => {
+    setSelectedPlace(place);
+    setLocationSearch(place.label);
+    setLocationResults([]);
+    setShowLocationResults(false);
+    setFormData((prev) => ({
+      ...prev,
+      locationName: place.label,
+      position: place.position,
+    }));
+  };
+
+  const clearSelectedPlace = () => {
+    setSelectedPlace(null);
+    setLocationSearch("");
+    setLocationResults([]);
+    setShowLocationResults(false);
+    setFormData((prev) => ({
+      ...prev,
+      locationName: "",
+      position: null,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -52,7 +141,10 @@ export default function EventCreate() {
         return;
       }
 
-      await createEvent(formData);
+      await createEvent({
+        ...formData,
+        position: selectedPlace?.position || formData.position || undefined,
+      });
       setIsSubmitting(false);
       setIsSuccess(true);
 
@@ -163,15 +255,71 @@ export default function EventCreate() {
                 <MapPin size={16} className="text-green-500" />
                 Ort / Location
               </label>
-              <input 
-                required
-                type="text" 
-                name="locationName"
-                value={formData.locationName}
-                onChange={handleChange}
-                placeholder="Name der Bar, Adresse etc." 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
-              />
+              <div ref={locationBoxRef} className="relative">
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-green-500" />
+                <input 
+                  required
+                  type="text" 
+                  name="locationName"
+                  value={formData.locationName}
+                  onChange={handleChange}
+                  onFocus={() => {
+                    if (locationResults.length > 0) {
+                      setShowLocationResults(true);
+                    }
+                  }}
+                  placeholder="Bar, Cafe, Adresse..." 
+                  className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all"
+                />
+                {selectedPlace ? (
+                  <button
+                    type="button"
+                    onClick={clearSelectedPlace}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-700 dark:hover:bg-white/10 dark:hover:text-white transition"
+                    aria-label="Auswahl entfernen"
+                  >
+                    <X size={16} />
+                  </button>
+                ) : null}
+                {showLocationResults && locationResults.length > 0 ? (
+                  <div className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#1A1C1E] shadow-xl">
+                    {locationResults.map((place) => (
+                      <button
+                        key={place.id}
+                        type="button"
+                        onClick={() => selectPlace(place)}
+                        className="w-full px-4 py-3 text-left hover:bg-green-50 dark:hover:bg-white/5 transition border-b last:border-b-0 border-gray-100 dark:border-white/5"
+                      >
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white">{place.name}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{place.label}</p>
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {selectedPlace
+                  ? `Ausgewaehlt: ${selectedPlace.label}`
+                  : locationSearching
+                    ? 'Suche nach Orten...'
+                    : 'Ab 3 Zeichen kommen Ort-Vorschlaege von OpenStreetMap.'}
+              </p>
+              {selectedPlace ? (
+                <div className="rounded-2xl border border-green-100 dark:border-green-900/30 bg-green-50/70 dark:bg-green-900/10 p-4 space-y-3">
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{selectedPlace.name}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{selectedPlace.label}</p>
+                  </div>
+                  <div className="overflow-hidden rounded-xl border border-green-200/70 dark:border-green-900/40">
+                    <iframe
+                      title="Ort Vorschau"
+                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${selectedPlace.position[1] - 0.01}%2C${selectedPlace.position[0] - 0.01}%2C${selectedPlace.position[1] + 0.01}%2C${selectedPlace.position[0] + 0.01}&layer=mapnik&marker=${selectedPlace.position[0]}%2C${selectedPlace.position[1]}`}
+                      className="w-full h-44 border-0"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             <div className="space-y-2">
