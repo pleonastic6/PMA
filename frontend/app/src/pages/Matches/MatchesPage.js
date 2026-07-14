@@ -84,6 +84,13 @@ export default function MatchesPage() {
                 </div>
                 <button
                   type="button"
+                  onClick={() => navigate(`/people/${match.id}`, { state: { profile: match } })}
+                  className="mt-6 mr-3 rounded-2xl border border-stone-300 dark:border-stone-700 font-bold px-4 py-3 transition hover:bg-stone-100 dark:hover:bg-stone-800"
+                >
+                  Profil ansehen
+                </button>
+                <button
+                  type="button"
                   onClick={() => navigate(`/chat?user=${match.id}`)}
                   className="mt-6 rounded-2xl bg-[#af6aff] hover:bg-[#9e59eb] text-white font-bold px-4 py-3 transition"
                 >

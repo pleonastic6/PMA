@@ -37,7 +37,7 @@ export default function Navbar() {
                     </NavLink>
                 </div>
 
-                <ul className="hidden md:flex space-x-4">
+                <ul className={`hidden md:flex space-x-4 ${isAuthenticated ? "" : "absolute left-1/2 -translate-x-1/2"}`}>
                     {navItems.map((item) => (
                         <li key={item.path}>
                             <NavLink to={item.path} className={navLinkClasses}>

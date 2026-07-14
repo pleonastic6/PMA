@@ -12,6 +12,15 @@ const me = asyncHandler(async (req, res) => {
     });
 });
 
+const getUserProfile = asyncHandler(async (req, res) => {
+    const user = await usersService.getPublicUserById(req.params.userId);
+
+    res.status(200).json({
+        success: true,
+        data: user,
+    });
+});
+
 const updateMe = asyncHandler(async (req, res) => {
     const payload = validateProfileUpdateBody(req.body);
     const user = await usersService.updateCurrentUser(req.auth.user._id, payload);
@@ -34,6 +43,7 @@ const updatePreferences = asyncHandler(async (req, res) => {
 
 module.exports = {
     me,
+    getUserProfile,
     updateMe,
     updatePreferences,
 };

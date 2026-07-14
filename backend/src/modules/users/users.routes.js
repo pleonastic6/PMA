@@ -7,6 +7,7 @@ const router = express.Router();
 router.use(requireAuth);
 
 router.get('/me', usersController.me);
+router.get('/:userId', usersController.getUserProfile);
 router.patch('/me', usersController.updateMe);
 router.patch('/me/preferences', usersController.updatePreferences);
 

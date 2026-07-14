@@ -6,6 +6,16 @@ function getCurrentUser(user) {
     return publicUser(user);
 }
 
+async function getPublicUserById(userId) {
+    const user = await User.findById(userId);
+
+    if (!user) {
+        throw new AppError(404, 'Benutzer nicht gefunden');
+    }
+
+    return publicUser(user);
+}
+
 async function updateCurrentUser(userId, partialUpdate) {
     const updatedUser = await User.findByIdAndUpdate(userId, partialUpdate, {
         returnDocument: 'after',
@@ -37,6 +47,7 @@ async function updateCurrentUserPreferences(userId, partialPreferences) {
 
 module.exports = {
     getCurrentUser,
+    getPublicUserById,
     updateCurrentUser,
     updateCurrentUserPreferences,
 };

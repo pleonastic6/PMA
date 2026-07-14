@@ -34,6 +34,10 @@ export const api = {
     request("/users/me", {
       token,
     }),
+  getUserProfile: (token, userId) =>
+    request(`/users/${userId}`, {
+      token,
+    }),
   updateMe: (token, body) =>
     request("/users/me", {
       method: "PATCH",

@@ -72,6 +72,11 @@ export function AuthProvider({ children }) {
     return response.data;
   }, [token]);
 
+  const getUserProfile = useCallback(async (userId) => {
+    const response = await api.getUserProfile(token, userId);
+    return response.data;
+  }, [token]);
+
   const updateProfile = useCallback(async (profileUpdate) => {
     const response = await api.updateMe(token, profileUpdate);
     setUser(response.data);
@@ -147,6 +152,7 @@ export function AuthProvider({ children }) {
     login,
     completeRegistration,
     refreshProfile,
+    getUserProfile,
     updateProfile,
     getDiscovery,
     swipe,
@@ -167,6 +173,7 @@ export function AuthProvider({ children }) {
     login,
     completeRegistration,
     refreshProfile,
+    getUserProfile,
     updateProfile,
     getDiscovery,
     swipe,

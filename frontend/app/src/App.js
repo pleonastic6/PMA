@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
+import UserProfilePage from "./pages/Profile/UserProfilePage";
 import MapPage from './pages/MapPage/MapPage';
 import EventsOverview from './pages/Events/EventsOverview';
 import EventCreate from './pages/Events/EventCreate';
@@ -49,6 +50,7 @@ function App() {
         <Route path="/matches" element={<ProtectedRoute><MatchesPage /></ProtectedRoute>} />
         <Route path="/chat" element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/people/:userId" element={<ProtectedRoute><UserProfilePage /></ProtectedRoute>} />
         <Route path="/map" element={<ProtectedRoute><MapPage /></ProtectedRoute>} />
         <Route path="/events" element={<ProtectedRoute><EventsOverview /></ProtectedRoute>} />
         <Route path="/events/create" element={<ProtectedRoute><EventCreate /></ProtectedRoute>} />

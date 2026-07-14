@@ -92,7 +92,7 @@ export default function Register() {
       <form className="w-full max-w-xl rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1A1C1E]" onSubmit={handleContinue}>
         <div className="bg-gradient-to-r from-[#574EFF] to-[#7B7DFF] p-8 text-white">
           <h1 className="text-3xl font-bold">Account erstellen</h1>
-          <p className="mt-2 text-indigo-100">Kurz registrieren, Profil danach in Ruhe ausbauen.</p>
+          <p className="mt-2 text-white/90">Kurz registrieren, Profil danach in Ruhe ausbauen.</p>
         </div>
 
         <div className="p-8 space-y-6">
@@ -135,9 +135,6 @@ export default function Register() {
             onChange={(event) => updateField("birthDate", event.target.value)}
             icon={<CalendarDays size={16} />}
           />
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            Wohnort, Geschlecht, Sprachen und Interessen stellst du direkt im Profil ein.
-          </p>
           {error ? <p className="text-sm text-red-600">{error}</p> : null}
           <button
             type="submit"

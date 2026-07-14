@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 function AuthHint() {
@@ -112,6 +113,7 @@ function matchesPreferredGender(candidate, preferredGender) {
 }
 
 export default function SwipePage() {
+  const navigate = useNavigate();
   const { isAuthenticated, user, getDiscovery, swipe } = useAuth();
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -308,6 +310,13 @@ export default function SwipePage() {
             </div>
 
             <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={() => navigate(`/people/${candidate.id}`, { state: { profile: candidate } })}
+                className="rounded-2xl border border-stone-300 dark:border-stone-700 font-bold px-4 py-4 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
+              >
+                Profil
+              </button>
               <button
                 type="button"
                 onClick={() => handleSwipe("pass")}
