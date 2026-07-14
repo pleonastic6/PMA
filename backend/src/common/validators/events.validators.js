@@ -1,6 +1,16 @@
 const { AppError } = require('../errors/app-error');
 const { normalizePosition } = require('../utils/demo-geo');
 
+function isPastEvent(date, time) {
+    const eventTimestamp = new Date(`${date}T${time}:00`);
+
+    if (Number.isNaN(eventTimestamp.getTime())) {
+        throw new AppError(400, 'Event-Datum oder Uhrzeit ist ungueltig');
+    }
+
+    return eventTimestamp.getTime() < Date.now();
+}
+
 function validateCreateEventBody(body) {
     const title = String(body.title || '').trim();
     const description = String(body.description || '').trim();
@@ -30,6 +40,10 @@ function validateCreateEventBody(body) {
 
     if (!locationName) {
         throw new AppError(400, 'Event-Ort ist erforderlich');
+    }
+
+    if (isPastEvent(date, time)) {
+        throw new AppError(400, 'Events duerfen nicht in der Vergangenheit liegen');
     }
 
     if (Object.prototype.hasOwnProperty.call(body, 'position') && !position) {

@@ -179,11 +179,11 @@ export default function ChatPage() {
                         <div
                           className={`max-w-[75%] rounded-2xl px-4 py-3 ${
                             ownMessage
-                              ? "bg-[#af6aff] text-white"
+                              ? "bg-[#6c3ef0] text-white shadow-[0_8px_24px_rgba(108,62,240,0.28)]"
                               : "bg-stone-100 dark:bg-stone-800 text-black dark:text-white"
                           }`}
                         >
-                          <p>{message.text}</p>
+                          <p className={ownMessage ? "text-white" : "text-black dark:text-white"}>{message.text}</p>
                         </div>
                       </div>
                     );

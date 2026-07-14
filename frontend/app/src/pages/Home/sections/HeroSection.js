@@ -1,15 +1,36 @@
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Dropdown } from '../../../components/buttons/Dropdown';
 import bg from "../../../assets/images/bg_1.svg";
 import ico_1 from "../../../assets/images/ico_1.svg";
 import CardDropshadow from '../../../components/cards/Card_Dropshadow';
+import { useAuth } from '../../../context/AuthContext';
 
 export default function HeroSection() {
+    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
     const [gender, setGender] = useState("");
     const [interest, setInterests] = useState("");
 
     const isButtonDisabled = !gender || !interest;
+
+    function handleContinue() {
+        if (isButtonDisabled) {
+            return;
+        }
+
+        sessionStorage.setItem(
+            "pma_match_preferences",
+            JSON.stringify({
+                gender: gender.toLowerCase(),
+                interest: interest.toLowerCase(),
+            }),
+        );
+
+        navigate(isAuthenticated ? "/swipe" : "/signup");
+    }
+
     return (
         <section
             className="relative flex flex-col items-center justify-center w-full py-20 px-4 text-center bg-repeat bg-center"
@@ -30,6 +51,8 @@ export default function HeroSection() {
                     <Dropdown text={"looking for"} items={["Male", "Female", "Neutral"]} value={interest} onChange={setInterests} />
                     <button
                         disabled={isButtonDisabled}
+                        type="button"
+                        onClick={handleContinue}
                         className={`relative flex h-[50px] md:w-40 w-20 items-center justify-center overflow-hidden rounded-full transition-colors ${isButtonDisabled
                             ? "bg-gray-200 dark:bg-blue-500/10 text-gray-400 cursor-not-allowed"
                             : "bg-gradient-to-r from-[#917DFF] to-[#5F59FF] text-white before:absolute before:h-0 before:w-0 before:rounded-full before:bg-emerald-300/30 before:transition-all before:duration-500 before:ease-out hover:before:h-56 hover:before:w-56"

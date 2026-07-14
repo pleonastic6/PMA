@@ -3,12 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import { Calendar, Clock, MapPin, AlignLeft, Type, Tag, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
+function getTodayDate() {
+  const today = new Date();
+  return today.toISOString().split('T')[0];
+}
+
+function getCurrentTime() {
+  return new Date().toTimeString().slice(0, 5);
+}
+
 export default function EventCreate() {
   const navigate = useNavigate();
   const { createEvent } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
+  const todayDate = getTodayDate();
   
   const [formData, setFormData] = useState({
     title: '',
@@ -30,6 +40,18 @@ export default function EventCreate() {
     setError('');
 
     try {
+      if (formData.date < todayDate) {
+        setError('Vergangene Daten sind fuer Events nicht erlaubt.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (formData.date === todayDate && formData.time < getCurrentTime()) {
+        setError('Die Uhrzeit muss in der Zukunft liegen.');
+        setIsSubmitting(false);
+        return;
+      }
+
       await createEvent(formData);
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -113,6 +135,7 @@ export default function EventCreate() {
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
+                min={todayDate}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
               />
             </div>
@@ -128,6 +151,7 @@ export default function EventCreate() {
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
+                min={formData.date === todayDate ? getCurrentTime() : undefined}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all"
               />
             </div>

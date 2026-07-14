@@ -370,3 +370,35 @@ test('authenticated users can create and list events and map overview includes d
         });
     }
 });
+
+test('events in the past are rejected', async () => {
+    const server = app.listen(0);
+
+    try {
+        const registerResponse = await request(server, '/api/v1/auth/register', 'POST', {
+            username: 'neo',
+            password: 'supersecret123',
+            firstName: 'Neo',
+            birthDate: '1998-05-10',
+        });
+
+        const token = registerResponse.body.data.token;
+        const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+        const createEventResponse = await request(server, '/api/v1/events', 'POST', {
+            title: 'Zu spaet',
+            description: 'Dieser Termin liegt in der Vergangenheit.',
+            date: yesterday,
+            time: '19:30',
+            locationName: 'Murphy\'s Law',
+            category: 'Quiz',
+        }, token);
+
+        assert.equal(createEventResponse.statusCode, 400);
+        assert.equal(createEventResponse.body.message, 'Events duerfen nicht in der Vergangenheit liegen');
+    } finally {
+        await new Promise((resolve, reject) => {
+            server.close((err) => (err ? reject(err) : resolve()));
+        });
+    }
+});

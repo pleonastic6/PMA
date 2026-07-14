@@ -33,7 +33,14 @@ function RadioBtn({ id, text, group, checked, onChange }) {
 
 export default function Register() {
   const navigate = useNavigate();
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(() => {
+    const storedPreferences = JSON.parse(sessionStorage.getItem("pma_match_preferences") || "null");
+
+    return {
+      ...initialForm,
+      gender: storedPreferences?.gender || initialForm.gender,
+    };
+  });
   const [error, setError] = useState("");
 
   function updateField(field, value) {

@@ -5,6 +5,35 @@ function AuthHint() {
   return <main className="min-h-screen flex items-center justify-center">Bitte erst einloggen, um zu swipen.</main>;
 }
 
+function calculateAge(birthDate) {
+  if (!birthDate) {
+    return null;
+  }
+
+  const birth = new Date(birthDate);
+  if (Number.isNaN(birth.getTime())) {
+    return null;
+  }
+
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age -= 1;
+  }
+
+  return age;
+}
+
+function matchesPreferredGender(candidate, preferredGender) {
+  if (!preferredGender) {
+    return true;
+  }
+
+  return String(candidate.gender || "").toLowerCase() === preferredGender;
+}
+
 export default function SwipePage() {
   const { isAuthenticated, getDiscovery, swipe } = useAuth();
   const [candidates, setCandidates] = useState([]);
@@ -23,7 +52,14 @@ export default function SwipePage() {
     getDiscovery()
       .then((data) => {
         if (active) {
-          setCandidates(data);
+          const storedPreferences = JSON.parse(sessionStorage.getItem("pma_match_preferences") || "null");
+          const preferredGender = storedPreferences?.interest || "";
+          const filteredCandidates = data.filter((candidate) => matchesPreferredGender(candidate, preferredGender));
+
+          setCandidates(filteredCandidates);
+          if (preferredGender && filteredCandidates.length === 0) {
+            setStatus(`Aktuell keine ${preferredGender}-Profile verfuegbar.`);
+          }
         }
       })
       .catch((error) => {
@@ -73,6 +109,7 @@ export default function SwipePage() {
   }
 
   const candidate = candidates[0];
+  const candidateAge = calculateAge(candidate?.birthDate);
 
   return (
     <main className="min-h-screen flex items-center justify-center p-6">
@@ -92,7 +129,25 @@ export default function SwipePage() {
                   {candidate.location || "Unbekannt"}
                 </span>
               </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {candidateAge ? (
+                  <span className="px-3 py-1 rounded-full bg-stone-200 dark:bg-stone-700 text-sm">
+                    {candidateAge} Jahre
+                  </span>
+                ) : null}
+                {candidate.languages?.map((language) => (
+                  <span key={language} className="px-3 py-1 rounded-full bg-stone-200 dark:bg-stone-700 text-sm">
+                    {language}
+                  </span>
+                ))}
+              </div>
               <p className="mt-4 text-sm leading-6">{candidate.bio || "Noch keine Bio."}</p>
+              {candidate.icebreaker ? (
+                <div className="mt-4 rounded-2xl bg-white dark:bg-[#1f1b18] border border-stone-200 dark:border-stone-700 p-4">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#af6aff]">Eisbrecher</p>
+                  <p className="mt-2 text-sm text-black/80 dark:text-white/80">{candidate.icebreaker}</p>
+                </div>
+              ) : null}
               <div className="mt-4 flex flex-wrap gap-2">
                 {(candidate.interests || []).length > 0 ? (
                   candidate.interests.map((interest) => (
@@ -124,7 +179,7 @@ export default function SwipePage() {
             </div>
           </div>
         ) : (
-          <p className="text-black/70 dark:text-white/70">Keine weiteren Kandidaten. Leg dir noch ein paar Testuser an 🙂</p>
+          <p className="text-black/70 dark:text-white/70">Keine weiteren Kandidaten. Seed ggf. neue Demo-Profile oder lockere den Filter.</p>
         )}
 
         {status ? <p className="mt-6 text-sm text-black/70 dark:text-white/70">{status}</p> : null}
