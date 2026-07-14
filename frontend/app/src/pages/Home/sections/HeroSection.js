@@ -20,14 +20,6 @@ export default function HeroSection() {
             return;
         }
 
-        sessionStorage.setItem(
-            "pma_match_preferences",
-            JSON.stringify({
-                gender: gender.toLowerCase(),
-                interest: interest.toLowerCase(),
-            }),
-        );
-
         navigate(isAuthenticated ? "/swipe" : "/signup");
     }
 

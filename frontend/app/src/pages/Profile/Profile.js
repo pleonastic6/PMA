@@ -30,6 +30,13 @@ function mapUserToForm(user) {
   };
 }
 
+function mapUserToSwipePreferences(user) {
+  return {
+    preferredGender: user.preferences?.preferredGender || "",
+    lookingForTerm: user.preferences?.lookingForTerm || "",
+  };
+}
+
 function readFileAsDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -271,10 +278,11 @@ function GalleryCard({ picture, isCover, onSetCover, onRemove }) {
 }
 
 export default function EditProfile() {
-  const { user, loading, refreshProfile, updateProfile, searchCities } = useAuth();
+  const { user, loading, refreshProfile, updatePreferences, updateProfile, searchCities } = useAuth();
   const locationBoxRef = useRef(null);
   const hometownBoxRef = useRef(null);
   const [form, setForm] = useState(() => mapUserToForm({ firstName: "", lastName: "", pictures: [] }));
+  const [swipePreferences, setSwipePreferences] = useState(() => mapUserToSwipePreferences({ preferences: {} }));
   const [status, setStatus] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -292,6 +300,7 @@ export default function EditProfile() {
   useEffect(() => {
     if (user) {
       setForm(mapUserToForm(user));
+      setSwipePreferences(mapUserToSwipePreferences(user));
     }
   }, [user]);
 
@@ -491,6 +500,10 @@ export default function EditProfile() {
         vibeTags: form.vibeTags,
         pictures: form.pictures,
       });
+      await updatePreferences({
+        preferredGender: swipePreferences.preferredGender,
+        lookingForTerm: swipePreferences.lookingForTerm,
+      });
       setStatus("Profil gespeichert.");
     } catch (error) {
       setStatus(error.message);
@@ -631,6 +644,39 @@ export default function EditProfile() {
             <PoolSelector label="Interessen" values={form.interests} pool={INTEREST_POOL} onToggle={(value) => togglePoolTag("interests", value)} />
           </div>
 
+          <div className="rounded-[1.75rem] border border-stone-200 dark:border-stone-700 p-5 bg-stone-50 dark:bg-[#24201d] space-y-4">
+            <div>
+              <h3 className="text-xl font-black">Swipe-Einstellungen</h3>
+              <p className="mt-1 text-sm text-black/60 dark:text-white/60">
+                Hier hin mit Filtern. Im Swipe selbst soll spaeter nur noch like, pass und mehr Infos leben.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <SelectField
+                label="Gewuenschtes Gender"
+                value={swipePreferences.preferredGender}
+                onChange={(event) =>
+                  setSwipePreferences((current) => ({ ...current, preferredGender: event.target.value }))
+                }
+                options={[
+                  { value: "", label: "Alle" },
+                  { value: "male", label: "Male" },
+                  { value: "female", label: "Female" },
+                  { value: "neutral", label: "Neutral" },
+                ]}
+              />
+              <TextField
+                label="Wonach filtern?"
+                value={swipePreferences.lookingForTerm}
+                onChange={(event) =>
+                  setSwipePreferences((current) => ({ ...current, lookingForTerm: event.target.value }))
+                }
+                placeholder="z. B. Dating, Freundschaften, Events..."
+              />
+            </div>
+          </div>
+
           <TagEditor label="Vibe-Tags" values={form.vibeTags} onAdd={(value) => addTag("vibeTags", value)} onRemove={(value) => removeTag("vibeTags", value)} placeholder="Dry Humor, Night Owl, Chaotic Good" />
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -662,7 +708,13 @@ export default function EditProfile() {
             </button>
             <button
               type="button"
-              onClick={() => user && setForm(mapUserToForm(user))}
+              onClick={() => {
+                if (!user) {
+                  return;
+                }
+                setForm(mapUserToForm(user));
+                setSwipePreferences(mapUserToSwipePreferences(user));
+              }}
               className="rounded-2xl border border-stone-200 dark:border-stone-700 px-6 py-4 font-bold hover:bg-stone-50 dark:hover:bg-white/5 transition"
             >
               Zuruecksetzen

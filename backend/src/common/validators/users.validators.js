@@ -164,6 +164,18 @@ function validatePreferencesUpdateBody(body) {
         update.maxAge = maxAge;
     }
 
+    if (Object.prototype.hasOwnProperty.call(body, 'preferredGender')) {
+        const preferredGender = String(body.preferredGender || '').trim().toLowerCase();
+        if (!['', 'male', 'female', 'neutral'].includes(preferredGender)) {
+            throw new AppError(400, 'preferredGender ist ungueltig');
+        }
+        update.preferredGender = preferredGender;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(body, 'lookingForTerm')) {
+        update.lookingForTerm = String(body.lookingForTerm || '').trim();
+    }
+
     if (
         Object.prototype.hasOwnProperty.call(update, 'minAge') &&
         Object.prototype.hasOwnProperty.call(update, 'maxAge') &&

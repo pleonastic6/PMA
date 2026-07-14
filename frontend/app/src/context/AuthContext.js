@@ -83,6 +83,12 @@ export function AuthProvider({ children }) {
     return response.data;
   }, [token]);
 
+  const updatePreferences = useCallback(async (preferencesUpdate) => {
+    const response = await api.updatePreferences(token, preferencesUpdate);
+    setUser(response.data);
+    return response.data;
+  }, [token]);
+
   const getDiscovery = useCallback(async () => {
     const response = await api.getDiscovery(token);
     return response.data;
@@ -174,6 +180,7 @@ export function AuthProvider({ children }) {
     refreshProfile,
     getUserProfile,
     updateProfile,
+    updatePreferences,
     getDiscovery,
     swipe,
     getMatches,
@@ -199,6 +206,7 @@ export function AuthProvider({ children }) {
     refreshProfile,
     getUserProfile,
     updateProfile,
+    updatePreferences,
     getDiscovery,
     swipe,
     getMatches,

@@ -134,6 +134,16 @@ const userSchema = new mongoose.Schema(
                 type: Number,
                 default: 99,
             },
+            preferredGender: {
+                type: String,
+                enum: ['', 'male', 'female', 'neutral'],
+                default: '',
+            },
+            lookingForTerm: {
+                type: String,
+                default: '',
+                trim: true,
+            },
         },
     },
     {
