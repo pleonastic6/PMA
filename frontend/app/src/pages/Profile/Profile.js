@@ -3,6 +3,8 @@ import { Camera, ImagePlus, MapPin, Sparkles, Trash2, Search, X } from "lucide-r
 import { useAuth } from "../../context/AuthContext";
 
 const MAX_PICTURES = 6;
+const LANGUAGE_POOL = ["Deutsch", "Englisch", "Spanisch", "Franzoesisch", "Italienisch", "Arabisch", "Tuerkisch", "Russisch", "Polnisch", "Portugiesisch", "Niederlaendisch", "Ukrainisch"];
+const INTEREST_POOL = ["Kaffee", "Kochen", "Bars", "Clubs", "Techno", "Konzerte", "Festivals", "Gaming", "Filme", "Serien", "Fitness", "Gym", "Laufen", "Bouldern", "Wandern", "Reisen", "Roadtrips", "Fotografie", "Kunst", "Design", "Podcasts", "Lesen", "Meme", "Brettspiele", "Karaoke", "Spaziergaenge", "Brunch", "Startups", "Coding", "Kneipenquiz"];
 
 function mapUserToForm(user) {
   return {
@@ -152,6 +154,37 @@ function TagEditor({ label, values, onAdd, onRemove, placeholder }) {
             placeholder={placeholder}
             className="min-w-[10rem] flex-1 bg-transparent outline-none text-sm py-1"
           />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PoolSelector({ label, values, pool, onToggle, required = false }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="text-sm font-bold text-black/70 dark:text-white/70">
+        {label} {required ? <span className="text-red-500">*</span> : null}
+      </span>
+      <div className="rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#221f1d] px-4 py-4">
+        <div className="flex flex-wrap gap-2">
+          {pool.map((entry) => {
+            const active = values.includes(entry);
+            return (
+              <button
+                key={entry}
+                type="button"
+                onClick={() => onToggle(entry)}
+                className={`rounded-full px-3 py-1.5 text-sm font-semibold transition ${
+                  active
+                    ? "bg-[#6c3ef0] text-white shadow-md"
+                    : "bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200 hover:bg-stone-200 dark:hover:bg-stone-700"
+                }`}
+              >
+                {entry}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -353,6 +386,16 @@ export default function EditProfile() {
     }));
   }
 
+  function togglePoolTag(field, value) {
+    setForm((current) => {
+      const hasValue = current[field].includes(value);
+      return {
+        ...current,
+        [field]: hasValue ? current[field].filter((entry) => entry !== value) : [...current[field], value],
+      };
+    });
+  }
+
   async function handlePictureUpload(event) {
     const files = Array.from(event.target.files || []);
     if (files.length === 0) {
@@ -401,6 +444,31 @@ export default function EditProfile() {
     event.preventDefault();
     setSubmitting(true);
     setStatus("");
+
+    if (!form.displayName.trim()) {
+      setStatus("Anzeigename ist erforderlich.");
+      setSubmitting(false);
+      return;
+    }
+
+    if (!form.firstName.trim()) {
+      setStatus("Vorname ist erforderlich.");
+      setSubmitting(false);
+      return;
+    }
+
+    if (!form.location.trim()) {
+      setStatus("Wohnort ist erforderlich.");
+      setSubmitting(false);
+      return;
+    }
+
+    if (form.languages.length === 0) {
+      setStatus("Waehle mindestens eine Sprache aus.");
+      setSubmitting(false);
+      return;
+    }
+
     try {
       await updateProfile({
         firstName: form.firstName,
@@ -498,11 +566,11 @@ export default function EditProfile() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
-            <TextField label="Anzeigename" value={form.displayName} onChange={(event) => updateField("displayName", event.target.value)} placeholder="Wie sollen dich andere nennen?" />
-            <TextField label="Vorname" value={form.firstName} onChange={(event) => updateField("firstName", event.target.value)} placeholder="Vorname" />
+            <TextField label="Anzeigename *" value={form.displayName} onChange={(event) => updateField("displayName", event.target.value)} placeholder="Wie sollen dich andere nennen?" />
+            <TextField label="Vorname *" value={form.firstName} onChange={(event) => updateField("firstName", event.target.value)} placeholder="Vorname" />
             <TextField label="Nachname" value={form.lastName} onChange={(event) => updateField("lastName", event.target.value)} placeholder="Nachname" />
             <CityField
-              label="Wohnort"
+              label="Wohnort *"
               value={form.location}
               placeholder="Stadt waehlen"
               onChange={(event) => {
@@ -559,8 +627,8 @@ export default function EditProfile() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
-            <TagEditor label="Sprachen" values={form.languages} onAdd={(value) => addTag("languages", value)} onRemove={(value) => removeTag("languages", value)} placeholder="Deutsch, Englisch" />
-            <TagEditor label="Interessen" values={form.interests} onAdd={(value) => addTag("interests", value)} onRemove={(value) => removeTag("interests", value)} placeholder="Kaffee, Konzerte, Sport" />
+            <PoolSelector label="Sprachen" values={form.languages} pool={LANGUAGE_POOL} onToggle={(value) => togglePoolTag("languages", value)} required />
+            <PoolSelector label="Interessen" values={form.interests} pool={INTEREST_POOL} onToggle={(value) => togglePoolTag("interests", value)} />
           </div>
 
           <TagEditor label="Vibe-Tags" values={form.vibeTags} onAdd={(value) => addTag("vibeTags", value)} onRemove={(value) => removeTag("vibeTags", value)} placeholder="Dry Humor, Night Owl, Chaotic Good" />

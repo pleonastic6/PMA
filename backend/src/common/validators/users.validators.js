@@ -1,5 +1,64 @@
 const { AppError } = require('../errors/app-error');
 
+const FIXED_LANGUAGE_POOL = new Set([
+    'Deutsch',
+    'Englisch',
+    'Spanisch',
+    'Franzoesisch',
+    'Italienisch',
+    'Arabisch',
+    'Tuerkisch',
+    'Russisch',
+    'Polnisch',
+    'Portugiesisch',
+    'Niederlaendisch',
+    'Ukrainisch',
+]);
+
+const FIXED_INTEREST_POOL = new Set([
+    'Kaffee',
+    'Kochen',
+    'Bars',
+    'Clubs',
+    'Techno',
+    'Konzerte',
+    'Festivals',
+    'Gaming',
+    'Filme',
+    'Serien',
+    'Fitness',
+    'Gym',
+    'Laufen',
+    'Bouldern',
+    'Wandern',
+    'Reisen',
+    'Roadtrips',
+    'Fotografie',
+    'Kunst',
+    'Design',
+    'Podcasts',
+    'Lesen',
+    'Meme',
+    'Brettspiele',
+    'Karaoke',
+    'Spaziergaenge',
+    'Brunch',
+    'Startups',
+    'Coding',
+    'Kneipenquiz',
+]);
+
+function normalizeTagArray(values) {
+    return values.map((value) => String(value).trim()).filter(Boolean);
+}
+
+function validateAllowedPool(values, pool, fieldName) {
+    const invalid = values.find((value) => !pool.has(value));
+    if (invalid) {
+        throw new AppError(400, `${fieldName} enthaelt ungueltigen Wert: ${invalid}`);
+    }
+}
+
 function sanitizeString(value) {
     return typeof value === 'string' ? value.trim() : value;
 }
@@ -37,14 +96,16 @@ function validateProfileUpdateBody(body) {
         if (!Array.isArray(body.interests)) {
             throw new AppError(400, 'interests muss ein Array sein');
         }
-        update.interests = body.interests.map((value) => String(value).trim()).filter(Boolean);
+        update.interests = normalizeTagArray(body.interests);
+        validateAllowedPool(update.interests, FIXED_INTEREST_POOL, 'interests');
     }
 
     if (Object.prototype.hasOwnProperty.call(body, 'languages')) {
         if (!Array.isArray(body.languages)) {
             throw new AppError(400, 'languages muss ein Array sein');
         }
-        update.languages = body.languages.map((value) => String(value).trim()).filter(Boolean);
+        update.languages = normalizeTagArray(body.languages);
+        validateAllowedPool(update.languages, FIXED_LANGUAGE_POOL, 'languages');
     }
 
     if (Object.prototype.hasOwnProperty.call(body, 'vibeTags')) {
@@ -63,6 +124,22 @@ function validateProfileUpdateBody(body) {
 
     if (Object.keys(update).length === 0) {
         throw new AppError(400, 'Keine gueltigen Profilfelder uebergeben');
+    }
+
+    if (Object.prototype.hasOwnProperty.call(update, 'displayName') && !update.displayName) {
+        throw new AppError(400, 'Anzeigename ist erforderlich');
+    }
+
+    if (Object.prototype.hasOwnProperty.call(update, 'firstName') && !update.firstName) {
+        throw new AppError(400, 'Vorname ist erforderlich');
+    }
+
+    if (Object.prototype.hasOwnProperty.call(update, 'location') && !update.location) {
+        throw new AppError(400, 'Wohnort ist erforderlich');
+    }
+
+    if (Object.prototype.hasOwnProperty.call(update, 'languages') && update.languages.length === 0) {
+        throw new AppError(400, 'Mindestens eine Sprache ist erforderlich');
     }
 
     return update;

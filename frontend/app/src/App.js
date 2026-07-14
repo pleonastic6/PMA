@@ -10,8 +10,6 @@ import Profile from "./pages/Profile/Profile";
 import MapPage from './pages/MapPage/MapPage';
 import EventsOverview from './pages/Events/EventsOverview';
 import EventCreate from './pages/Events/EventCreate';
-import CreatingProfile from './pages/Register/CreatingProfile';
-import SelectingPictures from './pages/Register/SelectingPictures';
 import SwipePage from './pages/Swipe/SwipePage';
 import MatchesPage from './pages/Matches/MatchesPage';
 import ChatPage from './pages/Chat/ChatPage';
@@ -47,8 +45,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
         <Route path="/Signup" element={<PublicOnlyRoute><Register /></PublicOnlyRoute>}/>
-        <Route path='/CreatingProfile' element={<PublicOnlyRoute><CreatingProfile /></PublicOnlyRoute>}/>
-        <Route path='/SelectingPictures' element={<PublicOnlyRoute><SelectingPictures /></PublicOnlyRoute>}/>
         <Route path="/swipe" element={<ProtectedRoute><SwipePage /></ProtectedRoute>} />
         <Route path="/matches" element={<ProtectedRoute><MatchesPage /></ProtectedRoute>} />
         <Route path="/chat" element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />

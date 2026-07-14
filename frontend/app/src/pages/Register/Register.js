@@ -1,54 +1,58 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ModernInput from "../../components/form_elements/ModernInput";
+import { CalendarDays, Lock, User2 } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
 
 const initialForm = {
   username: "",
+  firstName: "",
   password: "",
   repeatPassword: "",
   birthDate: "",
-  gender: "male",
-  location: "",
 };
 
-function DateInput({ text, value, onChange, id }) {
+function Field({ label, value, onChange, placeholder, type = "text", icon = null, inputMode }) {
   return (
-    <div className="flex">
-      <label htmlFor={id} className="ml-2 text">
-        {text}
-      </label>
-      <input id={id} type="date" value={value} onChange={onChange} className="bg ml-auto" />
-    </div>
-  );
-}
-
-function RadioBtn({ id, text, group, checked, onChange }) {
-  return (
-    <div>
-      <input id={id} type="radio" name={group} value={id} className="radio" checked={checked} onChange={onChange} />
-      <label htmlFor={id}>{text}</label>
-    </div>
+    <label className="flex flex-col gap-2">
+      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{label}</span>
+      <div className="relative">
+        {icon ? <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">{icon}</span> : null}
+        <input
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          inputMode={inputMode}
+          className={`w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 py-3 outline-none focus:ring-2 focus:ring-[#6c3ef0] transition ${icon ? "pl-11 pr-4" : "px-4"}`}
+        />
+      </div>
+    </label>
   );
 }
 
 export default function Register() {
   const navigate = useNavigate();
-  const [form, setForm] = useState(() => {
-    const storedPreferences = JSON.parse(sessionStorage.getItem("pma_match_preferences") || "null");
-
-    return {
-      ...initialForm,
-      gender: storedPreferences?.gender || initialForm.gender,
-    };
-  });
+  const { completeRegistration } = useAuth();
+  const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   function updateField(field, value) {
     setForm((current) => ({ ...current, [field]: value }));
   }
 
-  function handleContinue(event) {
+  async function handleContinue(event) {
     event.preventDefault();
+
+    if (form.username.trim().length < 3) {
+      setError("Username muss mindestens 3 Zeichen lang sein.");
+      return;
+    }
+
+    if (!form.firstName.trim()) {
+      setError("Vorname fehlt.");
+      return;
+    }
 
     if (form.password.length < 8) {
       setError("Passwort muss mindestens 8 Zeichen lang sein.");
@@ -60,40 +64,90 @@ export default function Register() {
       return;
     }
 
+    if (!form.birthDate) {
+      setError("Geburtsdatum fehlt.");
+      return;
+    }
+
     setError("");
-    sessionStorage.setItem("pma_registration_step1", JSON.stringify(form));
-    navigate("/CreatingProfile");
+    setSubmitting(true);
+
+    try {
+      await completeRegistration({
+        username: form.username,
+        firstName: form.firstName,
+        password: form.password,
+        birthDate: form.birthDate,
+      });
+      navigate("/profile");
+    } catch (submitError) {
+      setError(submitError.message);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
-    <main>
-      <div className="flex justify-center">
-        <form className="flex rounded-2xl overflow-hidden shadow-lg p-4 m-16" onSubmit={handleContinue}>
-          <div className="flex flex-col gap-6">
-            <div>
-              <h1 className="text-3xl font-extrabold">Register</h1>
-              <div className="relative w-9 h-1 bg-gradient-to-r from-[#af6aff] to-[#df78ff41] rounded" />
-            </div>
-            <ModernInput text="Username" id="usernameI" value={form.username} onChange={(e) => updateField("username", e.target.value)} />
-            <ModernInput text="Password" input="password" id="passwordI" value={form.password} onChange={(e) => updateField("password", e.target.value)} />
-            <ModernInput text="Repeat Password" input="password" id="passwordRepeat" value={form.repeatPassword} onChange={(e) => updateField("repeatPassword", e.target.value)} />
-            <DateInput text="Birthday" id="birthdayI" value={form.birthDate} onChange={(e) => updateField("birthDate", e.target.value)} />
-            <div className="mx-2 text">
-              <p className="mb-1">Gender</p>
-              <div className="flex justify-between gap-4">
-                <RadioBtn id="male" text="Male" group="gender" checked={form.gender === "male"} onChange={(e) => updateField("gender", e.target.value)} />
-                <RadioBtn id="female" text="Female" group="gender" checked={form.gender === "female"} onChange={(e) => updateField("gender", e.target.value)} />
-                <RadioBtn id="other" text="Other" group="gender" checked={form.gender === "other"} onChange={(e) => updateField("gender", e.target.value)} />
-              </div>
-            </div>
-            <ModernInput text="Location" value={form.location} onChange={(e) => updateField("location", e.target.value)} />
-            {error ? <p className="text-sm text-red-600">{error}</p> : null}
-            <div className="flex justify-end">
-              <button type="submit">continue</button>
-            </div>
+    <main className="min-h-screen p-4 md:p-8 flex items-center justify-center">
+      <form className="w-full max-w-xl rounded-[2rem] overflow-hidden shadow-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#1A1C1E]" onSubmit={handleContinue}>
+        <div className="bg-gradient-to-r from-[#574EFF] to-[#7B7DFF] p-8 text-white">
+          <h1 className="text-3xl font-bold">Account erstellen</h1>
+          <p className="mt-2 text-indigo-100">Kurz registrieren, Profil danach in Ruhe ausbauen.</p>
+        </div>
+
+        <div className="p-8 space-y-6">
+          <Field
+            label="Username"
+            value={form.username}
+            onChange={(event) => updateField("username", event.target.value)}
+            placeholder="deinname"
+            icon={<User2 size={16} />}
+          />
+          <Field
+            label="Vorname"
+            value={form.firstName}
+            onChange={(event) => updateField("firstName", event.target.value)}
+            placeholder="Wie sollen wir dich ansprechen?"
+            icon={<User2 size={16} />}
+          />
+          <div className="grid md:grid-cols-2 gap-4">
+            <Field
+              label="Passwort"
+              type="password"
+              value={form.password}
+              onChange={(event) => updateField("password", event.target.value)}
+              placeholder="Mindestens 8 Zeichen"
+              icon={<Lock size={16} />}
+            />
+            <Field
+              label="Passwort wiederholen"
+              type="password"
+              value={form.repeatPassword}
+              onChange={(event) => updateField("repeatPassword", event.target.value)}
+              placeholder="Nochmal eingeben"
+              icon={<Lock size={16} />}
+            />
           </div>
-        </form>
-      </div>
+          <Field
+            label="Geburtsdatum"
+            type="date"
+            value={form.birthDate}
+            onChange={(event) => updateField("birthDate", event.target.value)}
+            icon={<CalendarDays size={16} />}
+          />
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            Wohnort, Geschlecht, Sprachen und Interessen stellst du direkt im Profil ein.
+          </p>
+          {error ? <p className="text-sm text-red-600">{error}</p> : null}
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full rounded-2xl bg-[#6c3ef0] hover:bg-[#5d33d2] text-white font-black px-6 py-4 transition disabled:opacity-60"
+          >
+            {submitting ? "Erstellt..." : "Account erstellen"}
+          </button>
+        </div>
+      </form>
     </main>
   );
 }
