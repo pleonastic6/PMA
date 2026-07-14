@@ -436,9 +436,25 @@ test('place search maps nominatim results', async () => {
         },
     });
 
-    const results = await placesService.searchPlaces('Murphy', mockFetch);
+    const results = await placesService.searchPlaces('Murphy', {}, mockFetch);
     assert.equal(results.length, 1);
     assert.equal(results[0].name, 'Murphy\'s Law');
     assert.equal(results[0].label, 'Murphy\'s Law, Amberg, Bayern, Deutschland');
     assert.deepEqual(results[0].position, [49.4447, 11.8512]);
+});
+
+test('city place search forwards city mode to nominatim', async () => {
+    let capturedUrl = null;
+    const mockFetch = async (url) => {
+        capturedUrl = String(url);
+        return {
+            ok: true,
+            async json() {
+                return [];
+            },
+        };
+    };
+
+    await placesService.searchPlaces('Amberg', { mode: 'city' }, mockFetch);
+    assert.equal(capturedUrl.includes('featuretype=city'), true);
 });

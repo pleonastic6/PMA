@@ -63,6 +63,25 @@ function buildCandidateSlides(candidate, candidateAge) {
   return slides;
 }
 
+function getCommonTags(currentUser, candidate) {
+  const currentTags = new Set(
+    [
+      ...(currentUser?.interests || []),
+      ...(currentUser?.vibeTags || []),
+      ...(currentUser?.languages || []),
+    ].map((entry) => String(entry).trim().toLowerCase()),
+  );
+
+  return [
+    ...(candidate?.interests || []),
+    ...(candidate?.vibeTags || []),
+    ...(candidate?.languages || []),
+  ].filter((entry, index, values) => {
+    const normalized = String(entry).trim().toLowerCase();
+    return currentTags.has(normalized) && values.findIndex((value) => String(value).trim().toLowerCase() === normalized) === index;
+  });
+}
+
 function calculateAge(birthDate) {
   if (!birthDate) {
     return null;
@@ -93,7 +112,7 @@ function matchesPreferredGender(candidate, preferredGender) {
 }
 
 export default function SwipePage() {
-  const { isAuthenticated, getDiscovery, swipe } = useAuth();
+  const { isAuthenticated, user, getDiscovery, swipe } = useAuth();
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
@@ -177,6 +196,7 @@ export default function SwipePage() {
   const candidateAge = calculateAge(candidate?.birthDate);
   const slides = candidate ? buildCandidateSlides(candidate, candidateAge) : [];
   const currentSlide = slides[activeSlide];
+  const commonTags = candidate ? getCommonTags(user, candidate) : [];
 
   function goToPreviousSlide() {
     setActiveSlide((current) => (current > 0 ? current - 1 : current));
@@ -263,6 +283,23 @@ export default function SwipePage() {
                       </span>
                     ))}
                   </div>
+                  {commonTags.length > 0 ? (
+                    <div className="mt-4">
+                      <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#f6df71]">
+                        Gemeinsame Tags
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {commonTags.map((tag) => (
+                          <span
+                            key={`common-${tag}`}
+                            className="rounded-full border border-[#f6df71]/30 bg-[#f6df71]/20 px-3 py-1 text-xs font-bold text-[#fff1a6]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                   <p className="mt-5 text-xs font-medium text-white/65">
                     Links klicken = zurueck, rechts klicken = weiter
                   </p>

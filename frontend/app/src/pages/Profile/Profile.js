@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
-import { Camera, ImagePlus, MapPin, Sparkles, Trash2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Camera, ImagePlus, MapPin, Sparkles, Trash2, Search, X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 const MAX_PICTURES = 6;
-
-function toCsv(values) {
-  return Array.isArray(values) ? values.join(", ") : "";
-}
 
 function mapUserToForm(user) {
   return {
@@ -25,18 +21,11 @@ function mapUserToForm(user) {
     idealSunday: user.idealSunday || "",
     greenFlags: user.greenFlags || "",
     funFact: user.funFact || "",
-    languages: toCsv(user.languages),
-    interests: toCsv(user.interests),
-    vibeTags: toCsv(user.vibeTags),
+    languages: Array.isArray(user.languages) ? user.languages : [],
+    interests: Array.isArray(user.interests) ? user.interests : [],
+    vibeTags: Array.isArray(user.vibeTags) ? user.vibeTags : [],
     pictures: Array.isArray(user.pictures) ? user.pictures : [],
   };
-}
-
-function parseCsv(value) {
-  return String(value || "")
-    .split(",")
-    .map((entry) => entry.trim())
-    .filter(Boolean);
 }
 
 function readFileAsDataUrl(file) {
@@ -64,12 +53,11 @@ async function optimizeImage(file) {
   const scale = Math.min(1, maxDimension / Math.max(image.width, image.height));
   const width = Math.max(1, Math.round(image.width * scale));
   const height = Math.max(1, Math.round(image.height * scale));
-
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
-
   const context = canvas.getContext("2d");
+
   if (!context) {
     return sourceDataUrl;
   }
@@ -126,6 +114,97 @@ function SelectField({ label, value, onChange, options }) {
   );
 }
 
+function TagEditor({ label, values, onAdd, onRemove, placeholder }) {
+  const [draft, setDraft] = useState("");
+
+  function submitDraft() {
+    const value = draft.trim();
+    if (!value) {
+      return;
+    }
+    onAdd(value);
+    setDraft("");
+  }
+
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="text-sm font-bold text-black/70 dark:text-white/70">{label}</span>
+      <div className="rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#221f1d] px-4 py-3">
+        <div className="flex flex-wrap gap-2">
+          {values.map((value) => (
+            <span key={value} className="inline-flex items-center gap-2 rounded-full bg-[#af6aff]/12 px-3 py-1 text-sm font-semibold text-[#7b4bf3] dark:text-[#d4c6ff]">
+              {value}
+              <button type="button" onClick={() => onRemove(value)} className="text-current/70 hover:text-current">
+                <X size={14} />
+              </button>
+            </span>
+          ))}
+          <input
+            value={draft}
+            onChange={(event) => setDraft(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === ",") {
+                event.preventDefault();
+                submitDraft();
+              }
+            }}
+            onBlur={submitDraft}
+            placeholder={placeholder}
+            className="min-w-[10rem] flex-1 bg-transparent outline-none text-sm py-1"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CityField({
+  label,
+  value,
+  placeholder,
+  onChange,
+  onFocus,
+  results,
+  showResults,
+  searching,
+  onSelect,
+  boxRef,
+}) {
+  return (
+    <div className="flex flex-col gap-2" ref={boxRef}>
+      <span className="text-sm font-bold text-black/70 dark:text-white/70">{label}</span>
+      <div className="relative">
+        <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" />
+        <input
+          value={value}
+          onChange={onChange}
+          onFocus={onFocus}
+          placeholder={placeholder}
+          className="w-full rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#221f1d] pl-11 pr-4 py-3 outline-none focus:ring-2 focus:ring-[#af6aff] transition"
+        />
+        {showResults && results.length > 0 ? (
+          <div className="absolute z-20 mt-2 w-full overflow-hidden rounded-2xl border border-stone-200 dark:border-white/10 bg-white dark:bg-[#1A1C1E] shadow-xl">
+            {results.map((place) => (
+              <button
+                key={place.id}
+                type="button"
+                onClick={() => onSelect(place)}
+                className="w-full px-4 py-3 text-left hover:bg-stone-50 dark:hover:bg-white/5 transition border-b last:border-b-0 border-stone-100 dark:border-white/5"
+              >
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{place.name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{place.label}</p>
+              </button>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <p className="text-xs text-black/55 dark:text-white/55">
+        {searching ? "Suche nach Staedten..." : "Nur Stadt-Vorschlaege fuer saubere Profildaten."}
+      </p>
+    </div>
+  );
+}
+
 function GalleryCard({ picture, isCover, onSetCover, onRemove }) {
   return (
     <div className="relative overflow-hidden rounded-[1.5rem] border border-stone-200 dark:border-stone-700 bg-stone-100 dark:bg-stone-800 aspect-[4/5]">
@@ -159,17 +238,17 @@ function GalleryCard({ picture, isCover, onSetCover, onRemove }) {
 }
 
 export default function EditProfile() {
-  const { user, loading, refreshProfile, updateProfile } = useAuth();
-  const [form, setForm] = useState(() =>
-    mapUserToForm({
-      firstName: "",
-      lastName: "",
-      pictures: [],
-    }),
-  );
+  const { user, loading, refreshProfile, updateProfile, searchCities } = useAuth();
+  const locationBoxRef = useRef(null);
+  const hometownBoxRef = useRef(null);
+  const [form, setForm] = useState(() => mapUserToForm({ firstName: "", lastName: "", pictures: [] }));
   const [status, setStatus] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [locationResults, setLocationResults] = useState([]);
+  const [hometownResults, setHometownResults] = useState([]);
+  const [searchingField, setSearchingField] = useState("");
+  const [activeCityField, setActiveCityField] = useState("");
 
   useEffect(() => {
     if (!user) {
@@ -183,8 +262,95 @@ export default function EditProfile() {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (!activeCityField) {
+      return;
+    }
+
+    const query = activeCityField === "location" ? form.location : form.hometown;
+    if (!query || query.trim().length < 3) {
+      if (activeCityField === "location") {
+        setLocationResults([]);
+      } else {
+        setHometownResults([]);
+      }
+      setSearchingField("");
+      return;
+    }
+
+    let active = true;
+    setSearchingField(activeCityField);
+
+    const timeoutId = window.setTimeout(() => {
+      searchCities(query)
+        .then((results) => {
+          if (!active) {
+            return;
+          }
+          if (activeCityField === "location") {
+            setLocationResults(results);
+          } else {
+            setHometownResults(results);
+          }
+        })
+        .catch(() => {
+          if (!active) {
+            return;
+          }
+          if (activeCityField === "location") {
+            setLocationResults([]);
+          } else {
+            setHometownResults([]);
+          }
+        })
+        .finally(() => {
+          if (active) {
+            setSearchingField("");
+          }
+        });
+    }, 300);
+
+    return () => {
+      active = false;
+      window.clearTimeout(timeoutId);
+    };
+  }, [activeCityField, form.location, form.hometown, searchCities]);
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (locationBoxRef.current?.contains(event.target) || hometownBoxRef.current?.contains(event.target)) {
+        return;
+      }
+      setActiveCityField("");
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
   function updateField(field, value) {
     setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  function addTag(field, value) {
+    setForm((current) => {
+      const normalized = value.trim();
+      if (!normalized) {
+        return current;
+      }
+      const entries = current[field] || [];
+      if (entries.some((entry) => entry.toLowerCase() === normalized.toLowerCase())) {
+        return current;
+      }
+      return { ...current, [field]: [...entries, normalized] };
+    });
+  }
+
+  function removeTag(field, value) {
+    setForm((current) => ({
+      ...current,
+      [field]: (current[field] || []).filter((entry) => entry !== value),
+    }));
   }
 
   async function handlePictureUpload(event) {
@@ -192,7 +358,6 @@ export default function EditProfile() {
     if (files.length === 0) {
       return;
     }
-
     const remainingSlots = Math.max(MAX_PICTURES - form.pictures.length, 0);
     if (remainingSlots === 0) {
       setStatus(`Maximal ${MAX_PICTURES} Bilder erlaubt.`);
@@ -201,7 +366,6 @@ export default function EditProfile() {
 
     setUploading(true);
     setStatus("");
-
     try {
       const nextPictures = await Promise.all(files.slice(0, remainingSlots).map(optimizeImage));
       setForm((current) => ({
@@ -237,7 +401,6 @@ export default function EditProfile() {
     event.preventDefault();
     setSubmitting(true);
     setStatus("");
-
     try {
       await updateProfile({
         firstName: form.firstName,
@@ -255,9 +418,9 @@ export default function EditProfile() {
         idealSunday: form.idealSunday,
         greenFlags: form.greenFlags,
         funFact: form.funFact,
-        languages: parseCsv(form.languages),
-        interests: parseCsv(form.interests),
-        vibeTags: parseCsv(form.vibeTags),
+        languages: form.languages,
+        interests: form.interests,
+        vibeTags: form.vibeTags,
         pictures: form.pictures,
       });
       setStatus("Profil gespeichert.");
@@ -280,13 +443,7 @@ export default function EditProfile() {
       <form className="max-w-7xl mx-auto grid gap-6 lg:grid-cols-[380px_1fr]" onSubmit={handleSubmit}>
         <aside className="rounded-[2rem] border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#1c1917] shadow-xl overflow-hidden h-fit">
           <div className="relative h-80 bg-gradient-to-br from-[#8c72ff] via-[#6c3ef0] to-[#3b82f6]">
-            {coverPicture ? (
-              <img src={coverPicture} alt={profileName} className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-white">
-                <Camera size={64} />
-              </div>
-            )}
+            {coverPicture ? <img src={coverPicture} alt={profileName} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-white"><Camera size={64} /></div>}
             <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/75 to-transparent">
               <h1 className="text-3xl font-black text-white">{profileName}</h1>
               <p className="mt-2 text-sm text-white/80">
@@ -301,7 +458,7 @@ export default function EditProfile() {
               <div>
                 <p className="text-sm font-bold text-black dark:text-white">Erster Eindruck</p>
                 <p className="text-sm text-black/65 dark:text-white/65">
-                  Coverbild + knackige Prompts schlagen hier gerade alles.
+                  Coverbild + gute Tags schlagen hier gerade alles.
                 </p>
               </div>
             </div>
@@ -309,13 +466,7 @@ export default function EditProfile() {
             <label className="flex items-center justify-center gap-3 rounded-2xl border border-dashed border-stone-300 dark:border-stone-600 px-4 py-4 text-sm font-semibold cursor-pointer hover:bg-stone-50 dark:hover:bg-white/5 transition">
               <ImagePlus size={18} />
               {uploading ? "Bilder werden geladen..." : "Bilder hinzufuegen"}
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                className="hidden"
-                onChange={handlePictureUpload}
-              />
+              <input type="file" accept="image/*" multiple className="hidden" onChange={handlePictureUpload} />
             </label>
 
             <p className="text-xs text-black/55 dark:text-white/55">
@@ -323,17 +474,15 @@ export default function EditProfile() {
             </p>
 
             <div className="grid grid-cols-2 gap-3">
-              {form.pictures.length > 0 ? (
-                form.pictures.map((picture, index) => (
-                  <GalleryCard
-                    key={`${picture.slice(0, 32)}-${index}`}
-                    picture={picture}
-                    isCover={index === 0}
-                    onSetCover={() => setCoverPicture(index)}
-                    onRemove={() => removePicture(index)}
-                  />
-                ))
-              ) : (
+              {form.pictures.length > 0 ? form.pictures.map((picture, index) => (
+                <GalleryCard
+                  key={`${picture.slice(0, 32)}-${index}`}
+                  picture={picture}
+                  isCover={index === 0}
+                  onSetCover={() => setCoverPicture(index)}
+                  onRemove={() => removePicture(index)}
+                />
+              )) : (
                 <div className="col-span-2 rounded-2xl border border-dashed border-stone-300 dark:border-stone-600 p-6 text-center text-sm text-black/55 dark:text-white/55">
                   Noch keine Bilder. Das wirkt in Swipe direkt duenn.
                 </div>
@@ -352,8 +501,44 @@ export default function EditProfile() {
             <TextField label="Anzeigename" value={form.displayName} onChange={(event) => updateField("displayName", event.target.value)} placeholder="Wie sollen dich andere nennen?" />
             <TextField label="Vorname" value={form.firstName} onChange={(event) => updateField("firstName", event.target.value)} placeholder="Vorname" />
             <TextField label="Nachname" value={form.lastName} onChange={(event) => updateField("lastName", event.target.value)} placeholder="Nachname" />
-            <TextField label="Wohnort" value={form.location} onChange={(event) => updateField("location", event.target.value)} placeholder="Wo bist du gerade?" />
-            <TextField label="Herkunft / Heimat" value={form.hometown} onChange={(event) => updateField("hometown", event.target.value)} placeholder="Wo kommst du her?" />
+            <CityField
+              label="Wohnort"
+              value={form.location}
+              placeholder="Stadt waehlen"
+              onChange={(event) => {
+                updateField("location", event.target.value);
+                setActiveCityField("location");
+              }}
+              onFocus={() => setActiveCityField("location")}
+              results={locationResults}
+              showResults={activeCityField === "location"}
+              searching={searchingField === "location"}
+              onSelect={(place) => {
+                updateField("location", place.name);
+                setLocationResults([]);
+                setActiveCityField("");
+              }}
+              boxRef={locationBoxRef}
+            />
+            <CityField
+              label="Herkunft / Heimat"
+              value={form.hometown}
+              placeholder="Heimatstadt waehlen"
+              onChange={(event) => {
+                updateField("hometown", event.target.value);
+                setActiveCityField("hometown");
+              }}
+              onFocus={() => setActiveCityField("hometown")}
+              results={hometownResults}
+              showResults={activeCityField === "hometown"}
+              searching={searchingField === "hometown"}
+              onSelect={(place) => {
+                updateField("hometown", place.name);
+                setHometownResults([]);
+                setActiveCityField("");
+              }}
+              boxRef={hometownBoxRef}
+            />
             <SelectField
               label="Ich suche"
               value={form.lookingFor}
@@ -374,11 +559,11 @@ export default function EditProfile() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
-            <TextField label="Sprachen" value={form.languages} onChange={(event) => updateField("languages", event.target.value)} placeholder="Deutsch, Englisch" />
-            <TextField label="Interessen" value={form.interests} onChange={(event) => updateField("interests", event.target.value)} placeholder="Kaffee, Konzerte, Sport" />
+            <TagEditor label="Sprachen" values={form.languages} onAdd={(value) => addTag("languages", value)} onRemove={(value) => removeTag("languages", value)} placeholder="Deutsch, Englisch" />
+            <TagEditor label="Interessen" values={form.interests} onAdd={(value) => addTag("interests", value)} onRemove={(value) => removeTag("interests", value)} placeholder="Kaffee, Konzerte, Sport" />
           </div>
 
-          <TextField label="Vibe-Tags" value={form.vibeTags} onChange={(event) => updateField("vibeTags", event.target.value)} placeholder="Dry Humor, Night Owl, Chaotic Good" />
+          <TagEditor label="Vibe-Tags" values={form.vibeTags} onAdd={(value) => addTag("vibeTags", value)} onRemove={(value) => removeTag("vibeTags", value)} placeholder="Dry Humor, Night Owl, Chaotic Good" />
 
           <div className="grid md:grid-cols-2 gap-4">
             <TextAreaField label="Bio" value={form.bio} onChange={(event) => updateField("bio", event.target.value)} placeholder="Kurz und ehrlich. Worum geht's bei dir?" />
@@ -388,7 +573,7 @@ export default function EditProfile() {
           <div className="rounded-[1.75rem] border border-stone-200 dark:border-stone-700 p-5 bg-stone-50 dark:bg-[#24201d] space-y-4">
             <div className="flex items-center gap-2">
               <MapPin size={18} className="text-[#af6aff]" />
-              <h3 className="text-xl font-black">Prompts statt BlaBla</h3>
+              <h3 className="text-xl font-black">Ueber mich</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
@@ -401,18 +586,10 @@ export default function EditProfile() {
             <TextAreaField label="Fun Fact" value={form.funFact} onChange={(event) => updateField("funFact", event.target.value)} placeholder="Etwas, das haengen bleibt." rows={3} />
           </div>
 
-          {status ? (
-            <p className={`text-sm font-medium ${status === "Profil gespeichert." ? "text-green-600" : "text-red-600"}`}>
-              {status}
-            </p>
-          ) : null}
+          {status ? <p className={`text-sm font-medium ${status === "Profil gespeichert." ? "text-green-600" : "text-red-600"}`}>{status}</p> : null}
 
           <div className="flex flex-col md:flex-row gap-3 pt-2">
-            <button
-              type="submit"
-              disabled={submitting || uploading}
-              className="flex-1 rounded-2xl bg-[#6c3ef0] hover:bg-[#5d33d2] text-white font-black px-6 py-4 transition disabled:opacity-60"
-            >
+            <button type="submit" disabled={submitting || uploading} className="flex-1 rounded-2xl bg-[#6c3ef0] hover:bg-[#5d33d2] text-white font-black px-6 py-4 transition disabled:opacity-60">
               {submitting ? "Speichert..." : "Profil speichern"}
             </button>
             <button

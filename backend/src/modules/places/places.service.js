@@ -4,6 +4,10 @@ function normalizeSearchQuery(query) {
     return String(query || '').trim();
 }
 
+function normalizeMode(mode) {
+    return String(mode || 'all').trim().toLowerCase();
+}
+
 function mapPlaceResult(entry) {
     const latitude = Number(entry.lat);
     const longitude = Number(entry.lon);
@@ -18,8 +22,9 @@ function mapPlaceResult(entry) {
     };
 }
 
-async function searchPlaces(query, fetchFn = fetch) {
+async function searchPlaces(query, options = {}, fetchFn = fetch) {
     const normalizedQuery = normalizeSearchQuery(query);
+    const mode = normalizeMode(options.mode);
 
     if (normalizedQuery.length < 3) {
         throw new AppError(400, 'Suchbegriff muss mindestens 3 Zeichen lang sein');
@@ -30,6 +35,9 @@ async function searchPlaces(query, fetchFn = fetch) {
     url.searchParams.set('format', 'jsonv2');
     url.searchParams.set('limit', '5');
     url.searchParams.set('addressdetails', '0');
+    if (mode === 'city') {
+        url.searchParams.set('featuretype', 'city');
+    }
 
     const response = await fetchFn(url, {
         headers: {
