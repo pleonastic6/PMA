@@ -6,6 +6,11 @@
 ## Sprint Goal
 - Das horizontal gedachte PMA-MVP soll technisch geschlossen, demo-faehig und fuer die Abgabe sauber dokumentiert werden.
 
+## Team und Kapazitaet
+- Beteiligte: gesamtes 10er Scrum-Team
+- Geplante Kapazitaet: 36 SP brutto, davon 22 SP committed
+- Schwerpunkt: Integration, Stabilisierung, Demo, Doku
+
 ## Geplante Inhalte
 - Events ueber echtes Backend persistieren
 - Kartenansicht auf API-Daten umstellen
@@ -26,6 +31,9 @@
 ## Risiken
 - Letzte Integrationsfehler zwischen Frontend und Backend
 - Dokumentation wird oft am Ende unterschätzt und kostet mehr Zeit als gedacht
+
+## Board-Artefakt
+- Board-Snapshot: [Sprint 4 Board](./sprint-04-board.md)
 
 ## Definition of Done
 - Events und Map laufen ueber Backend

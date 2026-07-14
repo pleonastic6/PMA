@@ -125,6 +125,10 @@ npm run build
 - Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert fuer die Demo.
 
 ## Scrum-Dokumente
-- [Sprint Planning](./docs/scrum/sprint-03-planning.md)
-- [Sprint Review](./docs/scrum/sprint-03-review.md)
-- [Sprint Retro](./docs/scrum/sprint-03-retro.md)
+- [Scrum Overview](./docs/scrum/scrum-overview.md)
+- [Team Setup](./docs/scrum/team-setup.md)
+- [Product Backlog](./docs/scrum/product-backlog.md)
+- Sprint 1: [Planning](./docs/scrum/sprint-01-planning.md), [Review](./docs/scrum/sprint-01-review.md), [Retro](./docs/scrum/sprint-01-retro.md), [Board](./docs/scrum/sprint-01-board.md)
+- Sprint 2: [Planning](./docs/scrum/sprint-02-planning.md), [Review](./docs/scrum/sprint-02-review.md), [Retro](./docs/scrum/sprint-02-retro.md), [Board](./docs/scrum/sprint-02-board.md)
+- Sprint 3: [Planning](./docs/scrum/sprint-03-planning.md), [Review](./docs/scrum/sprint-03-review.md), [Retro](./docs/scrum/sprint-03-retro.md), [Board](./docs/scrum/sprint-03-board.md)
+- Sprint 4: [Planning](./docs/scrum/sprint-04-planning.md), [Review](./docs/scrum/sprint-04-review.md), [Retro](./docs/scrum/sprint-04-retro.md), [Board](./docs/scrum/sprint-04-board.md)

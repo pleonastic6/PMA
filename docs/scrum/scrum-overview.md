@@ -4,6 +4,11 @@
 - Diese Datei fasst die simulierte Scrum-Story von PMA kompakt zusammen.
 - Sie ist als schneller Gesprächsleitfaden für Review, Abgabe oder Präsentation gedacht.
 
+## Team-Setup
+- Simuliertes Scrum-Team mit 10 Personen
+- Rollen, Arbeitsmodus und Kapazitaet: [Team Setup](team-setup.md)
+- Priorisiertes Gesamtbacklog: [Product Backlog](product-backlog.md)
+
 ## Produktidee
 - PMA ist keine reine Dating-App, sondern eine Social-Discovery-App.
 - Nutzer sollen nicht nur Personen entdecken, sondern perspektivisch auch
@@ -98,3 +103,4 @@
 - Sprint 2: [Planning](sprint-02-planning.md), [Review](sprint-02-review.md), [Retro](sprint-02-retro.md)
 - Sprint 3: [Planning](sprint-03-planning.md), [Review](sprint-03-review.md), [Retro](sprint-03-retro.md)
 - Sprint 4: [Planning](sprint-04-planning.md), [Review](sprint-04-review.md), [Retro](sprint-04-retro.md)
+- Board-Snapshots: [Sprint 1](sprint-01-board.md), [Sprint 2](sprint-02-board.md), [Sprint 3](sprint-03-board.md), [Sprint 4](sprint-04-board.md)

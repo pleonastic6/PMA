@@ -6,6 +6,11 @@
 ## Sprint Goal
 - Das horizontale Discovery-Modell soll weiter wachsen: Nach Personen und Interessen kommen soziale Interaktion, Events und Ortsbezug als erlebbare Produktteile hinzu.
 
+## Team und Kapazitaet
+- Beteiligte: 9 aktive Teammitglieder plus Scrum Master und Product Owner in Zeremonien
+- Geplante Kapazitaet: 38 SP brutto, davon 24 SP committed
+- Schwerpunkt: Match-Nutzung, Chat, Event-Vorarbeit, Map-Konzept
+
 ## Sprint Scope
 - Chat zwischen Matches im Backend und Frontend implementieren.
 - Matchliste nutzbar machen und Einstieg in Chat erlauben.
@@ -31,3 +36,6 @@
 ## Risiken
 - Events und Karte koennten zunaechst noch auf Mockdaten beruhen.
 - Kein Echtzeit-Chat; Request-basierter MVP muss reichen.
+
+## Board-Artefakt
+- Board-Snapshot: [Sprint 3 Board](./sprint-03-board.md)

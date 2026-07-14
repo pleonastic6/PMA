@@ -6,6 +6,11 @@
 ## Sprint Goal
 - Die fachliche Basis fuer horizontales Swipen soll entstehen: Nutzerprofile mit Interessen/Hobbys, echte Authentifizierung und ein Discovery-Kern, der spaeter auch Events und Locations tragen kann.
 
+## Team und Kapazitaet
+- Beteiligte: gesamtes 10er Scrum-Team
+- Geplante Kapazitaet: 42 SP brutto, davon 29 SP committed
+- Schwerpunkte: Auth, Profil, Discovery, Match-Logik
+
 ## Geplante Inhalte
 - Registrierung mit Session-Erzeugung
 - Login mit Token-basierter Authentifizierung
@@ -27,6 +32,9 @@
 ## Risiken
 - Matching-Logik kann spaeter weitere Filter brauchen
 - Token-/Session-Handling kann Frontend-Flows komplizierter machen als gedacht
+
+## Board-Artefakt
+- Board-Snapshot: [Sprint 2 Board](./sprint-02-board.md)
 
 ## Definition of Done
 - Register/Login laufen gegen echtes Backend

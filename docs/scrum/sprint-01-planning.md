@@ -6,6 +6,11 @@
 ## Sprint Goal
 - Ein erster horizontaler End-to-End-Flow soll sichtbar werden: Nutzer koennen die Grundidee von PMA sehen, sich grob orientieren und einen ersten simplen Matching-Prozess nachvollziehen.
 
+## Team und Kapazitaet
+- Beteiligte: gesamtes 10er Scrum-Team
+- Geplante Kapazitaet: 34 SP brutto, davon bewusst nur 18 SP fest committed
+- Grund: Setup-Risiko und noch unscharfe Produktgrenzen
+
 ## Geplante Inhalte
 - Projektsetup fuer Frontend und Backend
 - Landingpage und grundlegende Navigation
@@ -25,6 +30,9 @@
 ## Risiken
 - Unklare Scope-Grenzen zwischen Mockup und echter Implementierung
 - Noch keine finalen Entscheidungen zu Matching-Logik und Kartenansicht
+
+## Board-Artefakt
+- Board-Snapshot: [Sprint 1 Board](./sprint-01-board.md)
 
 ## Definition of Done
 - Code ist im Repo
