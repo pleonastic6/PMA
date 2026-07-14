@@ -5,6 +5,64 @@ function AuthHint() {
   return <main className="min-h-screen flex items-center justify-center">Bitte erst einloggen, um zu swipen.</main>;
 }
 
+function ProfilePhoto({ picture, name }) {
+  if (picture) {
+    return <img src={picture} alt={name} className="w-full h-full object-cover" />;
+  }
+
+  return (
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#af6aff] to-[#5a8dff] text-white text-5xl font-black">
+      {String(name || "?").slice(0, 1).toUpperCase()}
+    </div>
+  );
+}
+
+function buildCandidateSlides(candidate, candidateAge) {
+  const profileName = candidate.displayName || candidate.firstName || candidate.username;
+  const pictures = Array.isArray(candidate.pictures) && candidate.pictures.length > 0 ? candidate.pictures : [null];
+  const slides = pictures.map((picture, index) => ({
+    id: `picture-${index}`,
+    picture,
+    eyebrow: index === 0 ? "Profil" : `Bild ${index + 1}`,
+    title: candidateAge ? `${profileName}, ${candidateAge}` : profileName,
+    subtitle: `@${candidate.username}`,
+    body: candidate.bio || "Noch keine Bio.",
+    chips: [
+      candidate.location || "Unbekannt",
+      ...(candidate.vibeTags || []).slice(0, 3),
+    ].filter(Boolean),
+  }));
+
+  slides.push({
+    id: "about",
+    picture: pictures[0] || null,
+    eyebrow: "About",
+    title: candidate.icebreaker || "Noch kein Eisbrecher",
+    subtitle: candidate.lookingFor || "Offen fuer neue Kontakte",
+    body: candidate.favoriteHangout || candidate.jobTitle || "Hier fehlt noch etwas Persoenlichkeit.",
+    chips: [
+      candidate.jobTitle,
+      candidate.education,
+      candidate.favoriteHangout,
+    ].filter(Boolean),
+  });
+
+  slides.push({
+    id: "vibe",
+    picture: pictures[Math.min(1, pictures.length - 1)] || pictures[0] || null,
+    eyebrow: "Vibe",
+    title: candidate.weekendMood || "Wochenend-Mood folgt",
+    subtitle: candidate.idealSunday || candidate.greenFlags || "Noch keine Prompt-Antwort",
+    body: candidate.funFact || "Kein Fun Fact hinterlegt.",
+    chips: [
+      ...(candidate.languages || []).slice(0, 3),
+      ...(candidate.interests || []).slice(0, 3),
+    ].filter(Boolean),
+  });
+
+  return slides;
+}
+
 function calculateAge(birthDate) {
   if (!birthDate) {
     return null;
@@ -40,6 +98,8 @@ export default function SwipePage() {
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("");
   const [matchNotice, setMatchNotice] = useState("");
+  const [activeSlide, setActiveSlide] = useState(0);
+  const activeCandidateId = candidates[0]?.id;
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -92,6 +152,7 @@ export default function SwipePage() {
       });
 
       setCandidates((current) => current.slice(1));
+      setActiveSlide(0);
       setStatus(direction === "like" ? `${candidate.username} geliked.` : `${candidate.username} übersprungen.`);
       setMatchNotice(result.isMatch ? `It's a match mit ${candidate.username}.` : "");
     } catch (error) {
@@ -99,6 +160,10 @@ export default function SwipePage() {
       setMatchNotice("");
     }
   }
+
+  useEffect(() => {
+    setActiveSlide(0);
+  }, [activeCandidateId]);
 
   if (!isAuthenticated) {
     return <AuthHint />;
@@ -110,6 +175,28 @@ export default function SwipePage() {
 
   const candidate = candidates[0];
   const candidateAge = calculateAge(candidate?.birthDate);
+  const slides = candidate ? buildCandidateSlides(candidate, candidateAge) : [];
+  const currentSlide = slides[activeSlide];
+
+  function goToPreviousSlide() {
+    setActiveSlide((current) => (current > 0 ? current - 1 : current));
+  }
+
+  function goToNextSlide() {
+    setActiveSlide((current) => (current < slides.length - 1 ? current + 1 : current));
+  }
+
+  function handleCardNavigation(event) {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const clickedOnLeftSide = event.clientX - bounds.left < bounds.width / 2;
+
+    if (clickedOnLeftSide) {
+      goToPreviousSlide();
+      return;
+    }
+
+    goToNextSlide();
+  }
 
   return (
     <main className="min-h-screen flex items-center justify-center p-6">
@@ -119,45 +206,67 @@ export default function SwipePage() {
 
         {candidate ? (
           <div className="space-y-6">
-            <div className="rounded-[1.5rem] border border-stone-200 dark:border-stone-700 p-6 bg-stone-50 dark:bg-[#292524]">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <h2 className="text-2xl font-black">{candidate.displayName || candidate.firstName || candidate.username}</h2>
-                  <p className="text-sm text-black/60 dark:text-white/60">@{candidate.username}</p>
-                </div>
-                <span className="px-3 py-1 rounded-full bg-[#af6aff]/10 text-[#af6aff] text-xs font-bold uppercase">
-                  {candidate.location || "Unbekannt"}
-                </span>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {candidateAge ? (
-                  <span className="px-3 py-1 rounded-full bg-stone-200 dark:bg-stone-700 text-sm">
-                    {candidateAge} Jahre
-                  </span>
-                ) : null}
-                {candidate.languages?.map((language) => (
-                  <span key={language} className="px-3 py-1 rounded-full bg-stone-200 dark:bg-stone-700 text-sm">
-                    {language}
-                  </span>
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={handleCardNavigation}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowLeft") {
+                  goToPreviousSlide();
+                }
+                if (event.key === "ArrowRight") {
+                  goToNextSlide();
+                }
+              }}
+              className="rounded-[1.5rem] border border-stone-200 dark:border-stone-700 p-4 bg-stone-50 dark:bg-[#292524] cursor-pointer select-none"
+            >
+              <div className="mb-4 flex gap-2">
+                {slides.map((slide, index) => (
+                  <span
+                    key={slide.id}
+                    className={`h-1.5 flex-1 rounded-full transition ${
+                      index === activeSlide ? "bg-[#af6aff]" : "bg-stone-300 dark:bg-stone-700"
+                    }`}
+                  />
                 ))}
               </div>
-              <p className="mt-4 text-sm leading-6">{candidate.bio || "Noch keine Bio."}</p>
-              {candidate.icebreaker ? (
-                <div className="mt-4 rounded-2xl bg-white dark:bg-[#1f1b18] border border-stone-200 dark:border-stone-700 p-4">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#af6aff]">Eisbrecher</p>
-                  <p className="mt-2 text-sm text-black/80 dark:text-white/80">{candidate.icebreaker}</p>
+              <div className="relative min-h-[34rem] overflow-hidden rounded-[1.5rem] bg-stone-200 dark:bg-stone-800">
+                <div className="absolute inset-0">
+                  <ProfilePhoto picture={currentSlide?.picture} name={candidate.displayName || candidate.username} />
                 </div>
-              ) : null}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {(candidate.interests || []).length > 0 ? (
-                  candidate.interests.map((interest) => (
-                    <span key={interest} className="px-3 py-1 rounded-full bg-stone-200 dark:bg-stone-700 text-sm">
-                      {interest}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/5" />
+                <div className="absolute inset-y-0 left-0 w-1/2" />
+                <div className="absolute inset-y-0 right-0 w-1/2" />
+                <div className="relative z-10 flex min-h-[34rem] flex-col justify-end p-6 text-white">
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/70">
+                        {currentSlide?.eyebrow}
+                      </p>
+                      <h2 className="mt-2 text-3xl font-black">{currentSlide?.title}</h2>
+                      <p className="mt-1 text-sm text-white/80">{currentSlide?.subtitle}</p>
+                    </div>
+                    <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur">
+                      {activeSlide + 1}/{slides.length}
                     </span>
-                  ))
-                ) : (
-                  <span className="text-sm text-black/50 dark:text-white/50">Keine Interessen hinterlegt.</span>
-                )}
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-white/92">
+                    {currentSlide?.body}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {currentSlide?.chips?.map((chip) => (
+                      <span
+                        key={`${currentSlide.id}-${chip}`}
+                        className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur"
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-5 text-xs font-medium text-white/65">
+                    Links klicken = zurueck, rechts klicken = weiter
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -18,8 +18,18 @@ function validateRegisterBody(body) {
     const birthDate = body.birthDate ? String(body.birthDate).trim() : null;
     const gender = body.gender ? String(body.gender).trim().toLowerCase() : 'prefer_not_to_say';
     const location = String(body.location || '').trim();
+    const hometown = String(body.hometown || '').trim();
     const bio = String(body.bio || '').trim();
     const displayName = String(body.displayName || body.firstName || '').trim();
+    const jobTitle = String(body.jobTitle || '').trim();
+    const education = String(body.education || '').trim();
+    const lookingFor = String(body.lookingFor || '').trim();
+    const icebreaker = String(body.icebreaker || '').trim();
+    const favoriteHangout = String(body.favoriteHangout || '').trim();
+    const weekendMood = String(body.weekendMood || '').trim();
+    const idealSunday = String(body.idealSunday || '').trim();
+    const greenFlags = String(body.greenFlags || '').trim();
+    const funFact = String(body.funFact || '').trim();
 
     let interests = [];
     if (Object.prototype.hasOwnProperty.call(body, 'interests')) {
@@ -27,6 +37,22 @@ function validateRegisterBody(body) {
             throw new AppError(400, 'interests muss ein Array sein');
         }
         interests = body.interests.map((entry) => String(entry).trim()).filter(Boolean);
+    }
+
+    let vibeTags = [];
+    if (Object.prototype.hasOwnProperty.call(body, 'vibeTags')) {
+        if (!Array.isArray(body.vibeTags)) {
+            throw new AppError(400, 'vibeTags muss ein Array sein');
+        }
+        vibeTags = body.vibeTags.map((entry) => String(entry).trim()).filter(Boolean);
+    }
+
+    let languages = [];
+    if (Object.prototype.hasOwnProperty.call(body, 'languages')) {
+        if (!Array.isArray(body.languages)) {
+            throw new AppError(400, 'languages muss ein Array sein');
+        }
+        languages = body.languages.map((entry) => String(entry).trim()).filter(Boolean);
     }
 
     let pictures = [];
@@ -62,9 +88,21 @@ function validateRegisterBody(body) {
         birthDate,
         gender,
         location,
+        hometown,
         bio,
         displayName,
+        jobTitle,
+        education,
+        lookingFor,
         interests,
+        vibeTags,
+        languages,
+        icebreaker,
+        favoriteHangout,
+        weekendMood,
+        idealSunday,
+        greenFlags,
+        funFact,
         pictures,
     };
 }

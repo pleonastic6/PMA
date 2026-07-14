@@ -13,7 +13,16 @@ function validateProfileUpdateBody(body) {
         'birthDate',
         'gender',
         'location',
+        'hometown',
         'icebreaker',
+        'jobTitle',
+        'education',
+        'lookingFor',
+        'favoriteHangout',
+        'weekendMood',
+        'idealSunday',
+        'greenFlags',
+        'funFact',
         'meetupStatus',
     ];
     const update = {};
@@ -36,6 +45,13 @@ function validateProfileUpdateBody(body) {
             throw new AppError(400, 'languages muss ein Array sein');
         }
         update.languages = body.languages.map((value) => String(value).trim()).filter(Boolean);
+    }
+
+    if (Object.prototype.hasOwnProperty.call(body, 'vibeTags')) {
+        if (!Array.isArray(body.vibeTags)) {
+            throw new AppError(400, 'vibeTags muss ein Array sein');
+        }
+        update.vibeTags = body.vibeTags.map((value) => String(value).trim()).filter(Boolean);
     }
 
     if (Object.prototype.hasOwnProperty.call(body, 'pictures')) {

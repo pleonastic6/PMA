@@ -49,7 +49,27 @@ const userSchema = new mongoose.Schema(
             default: '',
             trim: true,
         },
+        hometown: {
+            type: String,
+            default: '',
+            trim: true,
+        },
         displayName: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        jobTitle: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        education: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        lookingFor: {
             type: String,
             default: '',
             trim: true,
@@ -58,11 +78,40 @@ const userSchema = new mongoose.Schema(
             type: [String],
             default: [],
         },
+        vibeTags: {
+            type: [String],
+            default: [],
+        },
         languages: {
             type: [String],
             default: [],
         },
         icebreaker: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        favoriteHangout: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        weekendMood: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        idealSunday: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        greenFlags: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        funFact: {
             type: String,
             default: '',
             trim: true,

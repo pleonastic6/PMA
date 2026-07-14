@@ -131,9 +131,20 @@ test('register, fetch self and update profile/preferences', async () => {
             {
                 bio: 'Ghost in the machine',
                 location: 'Munich',
+                hometown: 'Amberg',
+                jobTitle: 'Student',
+                education: 'OTH Amberg-Weiden',
+                lookingFor: 'Neue Leute fuer spontane Unternehmungen',
                 interests: ['Gaming', 'Kaffee'],
+                vibeTags: ['Dry Humor', 'Night Owl'],
                 languages: ['Deutsch', 'Englisch'],
                 icebreaker: 'Mein perfekter Tag startet mit Kaffee.',
+                favoriteHangout: 'Kleines Cafe mit Sofas',
+                weekendMood: 'Erst Kaffee, dann Chaos',
+                idealSunday: 'Brunch, Spaziergang, abends Film',
+                greenFlags: 'Kann ueber sich selbst lachen',
+                funFact: 'Ich habe zu viele Sideprojects offen',
+                pictures: ['data:image/png;base64,abc123'],
             },
             token,
         );
@@ -141,8 +152,13 @@ test('register, fetch self and update profile/preferences', async () => {
         assert.equal(profileUpdateResponse.statusCode, 200);
         assert.equal(profileUpdateResponse.body.data.bio, 'Ghost in the machine');
         assert.equal(profileUpdateResponse.body.data.location, 'Munich');
+        assert.equal(profileUpdateResponse.body.data.jobTitle, 'Student');
+        assert.equal(profileUpdateResponse.body.data.lookingFor, 'Neue Leute fuer spontane Unternehmungen');
         assert.deepEqual(profileUpdateResponse.body.data.interests, ['Gaming', 'Kaffee']);
+        assert.deepEqual(profileUpdateResponse.body.data.vibeTags, ['Dry Humor', 'Night Owl']);
         assert.deepEqual(profileUpdateResponse.body.data.languages, ['Deutsch', 'Englisch']);
+        assert.equal(profileUpdateResponse.body.data.idealSunday, 'Brunch, Spaziergang, abends Film');
+        assert.equal(profileUpdateResponse.body.data.pictures[0], 'data:image/png;base64,abc123');
 
         const preferencesUpdateResponse = await request(
             server,
