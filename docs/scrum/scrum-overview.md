@@ -17,31 +17,33 @@
   - Locations
 
 ## Entwicklungslogik
-- Das Projekt wurde horizontal gedacht:
-  Statt erst komplette Technikschichten nacheinander fertigzustellen, wurde pro Sprint ein breiterer Produktfluss aufgebaut.
+- Sprint 1 war noch deutlich frontend-lastig und eher als klickbarer Produktentwurf aufgebaut.
+- Im Review wurde klar, dass dieser Ansatz fuer das Projekt zu oberflaechlich ist und vertikaler gearbeitet werden muss.
+- Ab Sprint 2 wurde der Fokus deshalb bewusst auf echte End-to-End-Flows gelegt: Frontend, Backend und Datenmodell sollten pro Inkrement gemeinsam wachsen.
 
 ## Sprint 1
 
 ### Fokus
 - Produktidee sichtbar machen
 - Projektsetup schaffen
-- erster horizontaler Durchstich
+- klickbares Frontend-Mockup aufbauen
 
 ### Ergebnis
-- Frontend- und Backend-Grundsetup vorhanden
-- Landingpage und erste Matching-Idee sichtbar
-- Nutzerprofil-Modell grob angelegt
+- Landingpage und erste Matching-Idee im Frontend sichtbar
+- klickbarer App-Rahmen fuer Profil- und Swipe-Idee vorhanden
+- technisches Grundsetup begonnen, aber noch ohne echten vertikalen Produktfluss
 
 ### Wichtigstes Review-Feedback
 - Der Stakeholder wollte, dass nicht nur Personen swipbar sind.
 - Zusätzlich sollten Hobbys, Events und Locations Teil der Discovery-Idee werden.
+- Gleichzeitig wurde deutlich, dass ein reiner Frontend-/Mockup-Sprint nicht reicht und die naechsten Sprints deutlich vertikaler zugeschnitten werden muessen.
 
 ## Sprint 2
 
 ### Fokus
+- den reinen Frontend-Stand in einen echten Produktfluss ueberfuehren
 - Personen- und Interessenebene funktional machen
-- echte Authentifizierung und Profilpflege
-- Discovery, Swipe und Match als Kernflow
+- echte Authentifizierung, Profilpflege und Discovery als erster vertikaler Kernflow
 
 ### Ergebnis
 - Registrierung und Login
@@ -96,7 +98,7 @@
 - voll ausgebaute Event-/Location-Swipes als eigener technischer Flow
 
 ## Empfohlene Kurz-Erklärung in der Präsentation
-- „Wir haben PMA horizontal entwickelt: erst die Produktidee sichtbar gemacht, dann Personen und Interessen funktionsfähig gemacht, danach Chat, Events und Ortsbezug ergänzt und am Ende alles technisch sauber integriert und dokumentiert.“
+- „Im ersten Sprint haben wir noch zu frontend-lastig gearbeitet und vor allem ein klickbares Produktbild gebaut. Durch das Feedback im Review haben wir dann umgestellt und ab Sprint 2 deutlich vertikaler gearbeitet: echte Auth, Profile, Discovery, danach Chat, Events und Ortsbezug und am Ende Stabilisierung und Doku.“
 
 ## Zugehörige Detaildokumente
 - Sprint 1: [Planning](sprint-01-planning.md), [Review](sprint-01-review.md), [Retro](sprint-01-retro.md)

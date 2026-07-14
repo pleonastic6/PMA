@@ -4,12 +4,13 @@
 - Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
 
 ## Sprint Goal
-- Die fachliche Basis fuer horizontales Swipen soll entstehen: Nutzerprofile mit Interessen/Hobbys, echte Authentifizierung und ein Discovery-Kern, der spaeter auch Events und Locations tragen kann.
+- Der bisherige Frontend-Prototyp soll in einen ersten echten vertikalen Produktfluss ueberfuehrt werden: Nutzerprofile mit Interessen/Hobbys, echte Authentifizierung und ein Discovery-Kern, der spaeter auch Events und Locations tragen kann.
 
 ## Team und Kapazitaet
 - Beteiligte: gesamtes 10er Scrum-Team
 - Geplante Kapazitaet: 42 SP brutto, davon 29 SP committed
 - Schwerpunkte: Auth, Profil, Discovery, Match-Logik
+- Zusatzannahme: bewusst vertikaler Zuschnitt nach dem Review-Feedback aus Sprint 1
 
 ## Geplante Inhalte
 - Registrierung mit Session-Erzeugung

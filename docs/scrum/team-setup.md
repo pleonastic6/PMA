@@ -48,4 +48,5 @@
 
 ## Warum das Team so geschnitten ist
 - Das Setup wirkt fuer ein Hochschulprojekt gross, ist aber als simuliertes Scrum-Artefakt plausibel, weil Rollen, Verantwortungen und Arbeitslogik sichtbar getrennt sind.
-- Der fachliche Fokus liegt horizontal auf Produktfluss statt auf rein technischer Schichtenarbeit.
+- In Sprint 1 wurde noch stark frontend- und mockup-lastig gearbeitet.
+- Erst ab dem Review-Feedback und der Rueckmeldung zur vertikaleren Arbeitsweise wurde der Produktfluss bewusster ueber Frontend, Backend und Datenmodell zusammengeschnitten.
