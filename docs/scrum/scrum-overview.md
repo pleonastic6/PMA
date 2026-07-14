@@ -94,7 +94,7 @@
 - „Wir haben PMA horizontal entwickelt: erst die Produktidee sichtbar gemacht, dann Personen und Interessen funktionsfähig gemacht, danach Chat, Events und Ortsbezug ergänzt und am Ende alles technisch sauber integriert und dokumentiert.“
 
 ## Zugehörige Detaildokumente
-- Sprint 1: Planning, Review, Retro
-- Sprint 2: Planning, Review, Retro
-- Sprint 3: Planning, Review, Retro
-- Sprint 4: Planning, Review, Retro
+- Sprint 1: [Planning](sprint-01-planning.md), [Review](sprint-01-review.md), [Retro](sprint-01-retro.md)
+- Sprint 2: [Planning](sprint-02-planning.md), [Review](sprint-02-review.md), [Retro](sprint-02-retro.md)
+- Sprint 3: [Planning](sprint-03-planning.md), [Review](sprint-03-review.md), [Retro](sprint-03-retro.md)
+- Sprint 4: [Planning](sprint-04-planning.md), [Review](sprint-04-review.md), [Retro](sprint-04-retro.md)
