@@ -4,6 +4,22 @@ import MapWidget from '../../components/Map/MapWidget';
 import { Calendar, MapPin, Clock, Plus, List, Map as MapIcon, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
+function getCreatorLabel(creator) {
+  if (!creator) {
+    return 'Anonym';
+  }
+
+  if (typeof creator === 'string') {
+    return creator;
+  }
+
+  if (typeof creator === 'object') {
+    return creator.displayName || creator.username || creator.id || 'Anonym';
+  }
+
+  return 'Anonym';
+}
+
 export default function EventsOverview() {
   const { isAuthenticated, getEvents } = useAuth();
   const [events, setEvents] = useState([]);
@@ -100,7 +116,7 @@ export default function EventsOverview() {
                   </span>
                   <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-white/5 px-2 py-1 rounded-md">
                     <User size={14} />
-                    <span>{event.creator || 'Anonym'}</span>
+                    <span>{getCreatorLabel(event.creator)}</span>
                   </div>
                 </div>
 
