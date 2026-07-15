@@ -1,7 +1,7 @@
 # Sprint 1 Planung
 
 ## Sprintziel
-- Die Produktidee von PMA soll als klickbarer Frontend-Prototyp sichtbar werden, damit Nutzenversprechen, Wirkung und Bediengefühl und Grundnavigation früh diskutiert werden können.
+- Die Produktidee von FRIENDS soll als klickbarer Frontend-Prototyp sichtbar werden, damit Nutzenversprechen, Wirkung und Bediengefühl und Grundnavigation früh diskutiert werden können.
 
 ## Team und Kapazität
 - Beteiligte: gesamtes 10er Scrum-Team
@@ -18,11 +18,11 @@
 ## Sprint Backlog
 | ID | Story | Akzeptanzkriterium | Aufwand |
 | --- | --- | --- | --- |
-| PMA-01 | Als Team wollen wir ein lauffähiges Projektsetup | Frontend startet lokal und die Projektstruktur steht | 3 SP |
-| PMA-02 | Als Nutzer will ich die Grundidee der App verstehen | Landingpage mit Navigation und Nutzenversprechen ist erreichbar | 3 SP |
-| PMA-03 | Als Nutzer will ich erste Profilkarten sehen | Beispielprofile oder erste Profildaten sind sichtbar | 5 SP |
-| PMA-04 | Als Team wollen wir einen klickbaren Matching-Flow | Zentrale Screens können als Demo-Sequenz durchgeklickt werden | 5 SP |
-| PMA-05 | Als Team wollen wir die Architektur grob vorbereiten | Frontend/Backend-Schnitt ist als Folgeschritt beschrieben | 2 SP |
+| FRIENDS-01 | Als Team wollen wir ein lauffähiges Projektsetup | Frontend startet lokal und die Projektstruktur steht | 3 SP |
+| FRIENDS-02 | Als Nutzer will ich die Grundidee der App verstehen | Landingpage mit Navigation und Nutzenversprechen ist erreichbar | 3 SP |
+| FRIENDS-03 | Als Nutzer will ich erste Profilkarten sehen | Beispielprofile oder erste Profildaten sind sichtbar | 5 SP |
+| FRIENDS-04 | Als Team wollen wir einen klickbaren Matching-Flow | Zentrale Screens können als Demo-Sequenz durchgeklickt werden | 5 SP |
+| FRIENDS-05 | Als Team wollen wir die Architektur grob vorbereiten | Frontend/Backend-Schnitt ist als Folgeschritt beschrieben | 2 SP |
 
 ## Risiken
 - Unklare Abgrenzung zwischen Prototyp und echter Implementierung

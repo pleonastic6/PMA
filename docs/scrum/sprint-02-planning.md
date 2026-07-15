@@ -19,13 +19,13 @@
 ## Sprint Backlog
 | ID | Story | Akzeptanzkriterium | Aufwand |
 | --- | --- | --- | --- |
-| PMA-11 | Als neuer Nutzer will ich mich registrieren | Nutzerkonto wird gespeichert und Session erzeugt | 5 SP |
-| PMA-12 | Als Nutzer will ich mich einloggen | Login liefert Token und Nutzerdaten | 5 SP |
-| PMA-13 | Als Nutzer will ich mein Profil bearbeiten | Profilfelder können gespeichert werden | 5 SP |
-| PMA-14 | Als Nutzer will ich andere Profile samt Interessen sehen | Die Entdeckungsansicht liefert Kandidaten mit Hobbys und Interessen | 5 SP |
-| PMA-15 | Als Nutzer will ich Likes und Passes vergeben | Swipes werden gespeichert | 3 SP |
-| PMA-16 | Als Nutzer will ich Matches erkennen | Gegenseitige Likes erscheinen als Match | 3 SP |
-| PMA-17 | Als Team wollen wir Interessen als Grundlage der Entdeckungslogik modellieren | Profilfelder für Hobbys und Interessen sind fachlich nutzbar | 3 SP |
+| FRIENDS-11 | Als neuer Nutzer will ich mich registrieren | Nutzerkonto wird gespeichert und Session erzeugt | 5 SP |
+| FRIENDS-12 | Als Nutzer will ich mich einloggen | Login liefert Token und Nutzerdaten | 5 SP |
+| FRIENDS-13 | Als Nutzer will ich mein Profil bearbeiten | Profilfelder können gespeichert werden | 5 SP |
+| FRIENDS-14 | Als Nutzer will ich andere Profile samt Interessen sehen | Die Entdeckungsansicht liefert Kandidaten mit Hobbys und Interessen | 5 SP |
+| FRIENDS-15 | Als Nutzer will ich Likes und Passes vergeben | Swipes werden gespeichert | 3 SP |
+| FRIENDS-16 | Als Nutzer will ich Matches erkennen | Gegenseitige Likes erscheinen als Match | 3 SP |
+| FRIENDS-17 | Als Team wollen wir Interessen als Grundlage der Entdeckungslogik modellieren | Profilfelder für Hobbys und Interessen sind fachlich nutzbar | 3 SP |
 
 ## Risiken
 - Matching-Logik kann später weitere Filter brauchen

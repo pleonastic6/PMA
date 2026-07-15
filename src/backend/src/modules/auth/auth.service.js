@@ -11,7 +11,7 @@ function publicUser(user) {
         id: String(user._id),
         username: user.username,
         email: user.email,
-        isDemo: email.endsWith('@pma.local'),
+        isDemo: email.endsWith('@friends.local'),
         firstName: user.firstName,
         lastName: user.lastName,
         displayName: user.displayName,

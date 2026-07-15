@@ -1,11 +1,11 @@
-# PMA Architektur
+# FRIENDS Architektur
 
 ## Ziel
-- Diese Architekturübersicht beschreibt den aktuellen MVP-Stand von PMA auf Systemebene.
+- Diese Architekturübersicht beschreibt den aktuellen MVP-Stand von FRIENDS auf Systemebene.
 - Der Fokus liegt auf einer nachvollziehbaren Hochschulprojekt-Architektur, nicht auf produktionsreifer Skalierung.
 
 ## Systemkontext
-- PMA ist eine Webanwendung für soziale Entdeckung.
+- FRIENDS ist eine Webanwendung für soziale Entdeckung.
 - Nutzer verwenden ein React-Frontend im Browser.
 - Das Frontend kommuniziert per HTTP mit einer Node.js-/Express-API.
 - Die API speichert persistente Daten in MongoDB.
@@ -60,4 +60,3 @@
 ## Diagramme und ADRs
 - [Komponentendiagramm](./component-diagram.md)
 - [Deployment-Diagramm](./deployment-diagram.md)
-- [ADR 001 - Monolithische REST-Architektur](./adr-001-monolith-rest.md)

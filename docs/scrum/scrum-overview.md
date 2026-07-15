@@ -1,23 +1,23 @@
-# PMA Scrum-Überblick
+# FRIENDS Scrum-Überblick
 
 ## Zweck
-- Diese Datei fasst die Scrum-Story von PMA kompakt zusammen.
+- Diese Datei fasst die Scrum-Story von FRIENDS kompakt zusammen.
 - Sie ist als schneller Gesprächsleitfaden für Review, Abgabe oder Präsentation gedacht.
 
 ## Teamaufbau
 - Scrum-Team mit 10 Personen
 - Rollen, Arbeitsmodus und Kapazität: [Teamaufbau](team-setup.md)
 - Priorisiertes Gesamtbacklog: [Produkt-Backlog](product-backlog.md)
-- Nutzergeschichten und SMART-Ziele: [Projektziele](project-goals.md)
+- User Stories und SMART-Ziele: [Projektziele](project-goals.md)
 
 ## Projektziel
-- PMA soll als lauffähiger MVP zeigen, dass soziales Kennenlernen nicht nur über reines Personen-Matching gedacht werden kann, sondern über einen zusammenhängenden Produktfluss aus Profil, Entdecken, Match, Chat, swipebaren Interessen, Events, Locations und Kartenbezug.
+- FRIENDS soll als lauffähiger MVP zeigen, dass soziales Kennenlernen nicht nur über reines Personen-Matching gedacht werden kann, sondern über einen zusammenhängenden Produktfluss aus Profil, Entdecken, Match, Chat, swipebaren Interessen, Events, Locations und Kartenbezug.
 - Der Fokus der Umsetzung liegt auf einem technisch vorführbaren durchgängigen System, nicht auf vollständigem Produktionsumfang.
 
 ## Zielrahmen
 - Die verdichtete User-Story-Sicht und die explizite SMART-Formulierung stehen in [project-goals.md](project-goals.md).
 - Für die Präsentation reicht als Kurzfassung:
-  PMA soll in vier Sprints als vorführbarer MVP entstehen, der nicht nur Personen, sondern auch Hobbys, Events und Locations in den Produktfluss einbindet.
+  FRIENDS soll in vier Sprints als vorführbarer MVP entstehen, der nicht nur Personen, sondern auch Hobbys, Events und Locations in den Produktfluss einbindet.
 
 ## Grobe Meilensteine
 - M1: Produktbild und klickbarer Frontend-Rahmen sichtbar
@@ -26,7 +26,7 @@
 - M4: Events und Karte sind an echte Backend-Daten angebunden, mehrere Wischbereiche sind vorführbar, Demo und Doku sind abgabefähig
 
 ## Produktidee
-- PMA ist keine reine Dating-App, sondern eine App für soziales Kennenlernen.
+- FRIENDS ist keine reine Dating-App, sondern eine App für soziales Kennenlernen.
 - Der aktuelle MVP-Stand hat Personen weiterhin als Kernfluss, öffnet das Entdecken aber zusätzlich über weitere swipebare Kontexte:
   - Hobbys
   - Events
@@ -83,7 +83,7 @@
 - fachliche Vorbereitung für spätere Wischbereiche jenseits von Personen
 
 ### Produktwirkung
-- PMA wirkte jetzt nicht mehr wie nur „Tinder für Personen“, sondern wie eine breiter gedachte App für soziales Kennenlernen.
+- FRIENDS wirkte jetzt nicht mehr wie nur „Tinder für Personen“, sondern wie eine breiter gedachte App für soziales Kennenlernen.
 
 ## Sprint 4
 

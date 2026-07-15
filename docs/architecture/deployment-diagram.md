@@ -1,4 +1,4 @@
-# PMA Deployment-Diagramm
+# FRIENDS Deployment-Diagramm
 
 ```mermaid
 flowchart TB

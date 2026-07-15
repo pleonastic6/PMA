@@ -1,7 +1,7 @@
 # Sprint 3 Aufgabenboard
 
 ## Sprintziel
-- Aus Matches echte Interaktion machen und PMA fachlich über Personen hinaus erweitern.
+- Aus Matches echte Interaktion machen und FRIENDS fachlich über Personen hinaus erweitern.
 
 ## Verbindlich eingeplante Punkte
 - 20 Story Points aus dem Sprint-3-Backlog
@@ -9,12 +9,12 @@
 ## Arbeitsstand im Sprint
 | Status | Tickets | Owner |
 | --- | --- | --- |
-| In Arbeit | PMA-33 Chat | Georg Röben, Süleyman Gümüs |
-| In Arbeit | PMA-34 Matchliste | Paul Gempel, Matthias Kranz |
-| In Arbeit | PMA-35 Eventseiten im UI | Florian Reinhart, Artur Renner |
-| In Arbeit | PMA-36 Kartenansicht fachlich vorbereiten | Andre Guth, Lukas Leis |
-| In Arbeit | PMA-37 Kernflüsse stabil halten | Stefan Spinko |
-| In Arbeit | PMA-38 Event- und Kartenbereiche fachlich einrahmen | David Budulak |
+| In Arbeit | FRIENDS-33 Chat | Georg Roeben, Süleyman Gümüs |
+| In Arbeit | FRIENDS-34 Matchliste | Paul Gempel, Matthias Kranz |
+| In Arbeit | FRIENDS-35 Eventseiten im UI | Florian Reinhart, Artur Renner |
+| In Arbeit | FRIENDS-36 Kartenansicht fachlich vorbereiten | Andre Guth, Lukas Leis |
+| In Arbeit | FRIENDS-37 Kernflüsse stabil halten | Stefan Spinko |
+| In Arbeit | FRIENDS-38 Event- und Kartenbereiche fachlich einrahmen | David Budulak |
 
 ## Sprintdynamik
 - Ein Teil des Teams arbeitete sichtbar am Produktwert.

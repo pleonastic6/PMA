@@ -69,7 +69,7 @@ async function main() {
     const userSeeds = [
         {
             username: 'neo',
-            email: 'neo@pma.local',
+            email: 'neo@friends.local',
             password: 'demo12345',
             firstName: 'Neo',
             lastName: 'Anderson',
@@ -95,7 +95,7 @@ async function main() {
         },
         {
             username: 'trinity',
-            email: 'trinity@pma.local',
+            email: 'trinity@friends.local',
             password: 'demo12345',
             firstName: 'Trinity',
             lastName: 'Moss',
@@ -121,7 +121,7 @@ async function main() {
         },
         {
             username: 'morpheus',
-            email: 'morpheus@pma.local',
+            email: 'morpheus@friends.local',
             password: 'demo12345',
             firstName: 'Morpheus',
             lastName: 'Smith',
@@ -147,7 +147,7 @@ async function main() {
         },
         {
             username: 'switch',
-            email: 'switch@pma.local',
+            email: 'switch@friends.local',
             password: 'demo12345',
             firstName: 'Switch',
             lastName: 'Lane',
@@ -173,7 +173,7 @@ async function main() {
         },
         {
             username: 'pixel',
-            email: 'pixel@pma.local',
+            email: 'pixel@friends.local',
             password: 'demo12345',
             firstName: 'Lena',
             lastName: 'Graf',
@@ -199,7 +199,7 @@ async function main() {
         },
         {
             username: 'atlas',
-            email: 'atlas@pma.local',
+            email: 'atlas@friends.local',
             password: 'demo12345',
             firstName: 'Jonas',
             lastName: 'Berg',
@@ -225,7 +225,7 @@ async function main() {
         },
         {
             username: 'mika',
-            email: 'mika@pma.local',
+            email: 'mika@friends.local',
             password: 'demo12345',
             firstName: 'Mika',
             lastName: 'Winter',
@@ -251,7 +251,7 @@ async function main() {
         },
         {
             username: 'sora',
-            email: 'sora@pma.local',
+            email: 'sora@friends.local',
             password: 'demo12345',
             firstName: 'Sara',
             lastName: 'Noor',
@@ -277,7 +277,7 @@ async function main() {
         },
         {
             username: 'byte',
-            email: 'byte@pma.local',
+            email: 'byte@friends.local',
             password: 'demo12345',
             firstName: 'Timo',
             lastName: 'Kurz',
@@ -375,7 +375,7 @@ async function main() {
         },
     ]);
 
-    console.log('PMA Demo-Daten erfolgreich erstellt.\n');
+    console.log('FRIENDS Demo-Daten erfolgreich erstellt.\n');
     console.log('Demo-Accounts:');
     for (const seed of userSeeds) {
         console.log(`- ${seed.username} / ${seed.password}`);

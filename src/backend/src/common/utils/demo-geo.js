@@ -21,7 +21,7 @@ function normalizePosition(position) {
 }
 
 function hashSeed(seed) {
-    const input = String(seed || 'pma');
+    const input = String(seed || 'friends');
     let hash = 0;
 
     for (let index = 0; index < input.length; index += 1) {

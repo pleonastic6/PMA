@@ -1,6 +1,6 @@
-# PMA Projektziele
+# FRIENDS Projektziele
 
-## Zentrale Nutzergeschichten
+## Zentrale User Stories
 - Als neuer Nutzer will ich mich registrieren und einloggen können, damit ich einen persistenten Einstieg in die App habe.
 - Als Nutzer will ich mein Profil mit Interessen, Sprachen und persönlichen Infos pflegen können, damit andere mich sinnvoll entdecken können.
 - Als Nutzer will ich Menschen swipen können, damit ich passende Kontakte finde.
@@ -10,11 +10,11 @@
 
 ## SMART-Ziel
 - Spezifisch:
-  PMA soll als vorführbarer MVP umgesetzt werden, in dem Nutzer sich registrieren, Profile pflegen, Menschen swipen, Matches sehen und chatten sowie Events und Karte nutzen können. Zusätzlich sollen Hobbys, Events und Locations als eigene Wischkontexte sichtbar im Produkt vorkommen.
+  FRIENDS soll als vorführbarer MVP umgesetzt werden, in dem Nutzer sich registrieren, Profile pflegen, Menschen swipen, Matches sehen und chatten sowie Events und Karte nutzen können. Zusätzlich sollen Hobbys, Events und Locations als eigene Wischkontexte sichtbar im Produkt vorkommen.
 - Messbar:
   Der MVP gilt als erreicht, wenn die Kernflüsse `Register/Login`, `Profil bearbeiten`, `Personen swipen`, `Match + Chat`, `Events anlegen/listen/filtern`, `Kartenansicht` und die zusätzlichen Wischkontexte für `Hobbys/Events/Locations` in der Demo lauffähig sind. Zusätzlich müssen Backend-Tests und Frontend-Build erfolgreich durchlaufen.
 - Attraktiv:
-  Das Ziel ist fachlich relevant, weil PMA sich damit klar von einem simplen Personen-Matcher abgrenzt und soziale Entdeckung über mehrere Kontexte sichtbar macht.
+  Das Ziel ist fachlich relevant, weil FRIENDS sich damit klar von einem simplen Personen-Matcher abgrenzt und soziale Entdeckung über mehrere Kontexte sichtbar macht.
 - Realistisch:
   Der Umfang ist bewusst als MVP geschnitten und verzichtet auf produktionsreifen Bild-Upload, WebSocket-Live-Chat und eine ausgereifte persistente Empfehlungslogik für Nicht-Personen-Swipes.
 - Terminiert:

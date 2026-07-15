@@ -1,4 +1,4 @@
-# PMA Personas
+# FRIENDS Personas
 
 ## Persona 1: Spontaner Studierender
 - Name:
@@ -31,5 +31,5 @@
   Location Swipe, Event Swipe, Karte, Profilkontext.
 
 ## Konsequenz für den MVP
-- PMA darf nicht wie ein reines Dating-Produkt wirken.
+- FRIENDS darf nicht wie ein reines Dating-Produkt wirken.
 - Menschen bleiben der zentrale Einstieg, aber Hobbys, Events und Locations müssen als sichtbare Entdeckungskontexte vorkommen.

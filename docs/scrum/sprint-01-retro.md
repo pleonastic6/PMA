@@ -3,7 +3,7 @@
 ## Was gut lief
 - Das Frontend konnte schnell aufgesetzt werden und gab früh ein sichtbares Produktbild.
 - Erste Ansichten gaben dem Team früh ein sichtbares Zielbild.
-- Die Grundidee von PMA als App für soziales Kennenlernen wurde klarer abgegrenzt.
+- Die Grundidee von FRIENDS als App für soziales Kennenlernen wurde klarer abgegrenzt.
 - Der frühe Review-Termin brachte schnell fachliches Feedback, bevor zu viel in die falsche Richtung gebaut wurde.
 
 ## Was nicht gut lief

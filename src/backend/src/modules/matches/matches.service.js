@@ -31,7 +31,7 @@ async function createSwipe(currentUserId, payload) {
     let isMatch = false;
 
     if (payload.direction === 'like') {
-        const targetIsDemo = String(targetUser.email || '').toLowerCase().endsWith('@pma.local');
+        const targetIsDemo = String(targetUser.email || '').toLowerCase().endsWith('@friends.local');
 
         if (targetIsDemo) {
             await Swipe.findOneAndUpdate(

@@ -1,4 +1,4 @@
-# PMA Komponentendiagramm
+# FRIENDS Komponentendiagramm
 
 ```mermaid
 flowchart LR

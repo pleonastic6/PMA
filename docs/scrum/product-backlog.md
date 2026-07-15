@@ -1,4 +1,4 @@
-# PMA Produkt-Backlog
+# FRIENDS Produkt-Backlog
 
 ## Epics
 - EPIC A: Einstieg und Produktverständnis
@@ -10,32 +10,32 @@
 ## Priorisiertes Backlog
 | Rang | ID | Epic | Backlog Item | Geschätzter Wert |
 | --- | --- | --- | --- | --- |
-| 1 | PMA-01 | A | Projektsetup für Frontend und Backend | Hoch |
-| 2 | PMA-02 | A | Landingpage und Navigation mit klarem Nutzenversprechen | Hoch |
-| 3 | PMA-03 | B | erste Profilkarten und Nutzerdatenbasis | Hoch |
-| 4 | PMA-04 | A | erster Oberflächen-API-Datenmodell-Durchstich | Hoch |
-| 5 | PMA-11 | B | Registrierung mit Session/Token | Hoch |
-| 6 | PMA-12 | B | Login mit persistenter Authentifizierung | Hoch |
-| 7 | PMA-13 | B | Profil bearbeiten und speichern | Hoch |
-| 8 | PMA-14 | B | Entdeckungsübersicht mit Interessenbezug | Hoch |
-| 9 | PMA-15 | B | Like/Pass speichern | Mittel |
-| 10 | PMA-16 | C | gegenseitige Likes als Match sichtbar machen | Hoch |
-| 11 | PMA-17 | B | Interessen/Hobbys als feste Profilbasis modellieren | Mittel |
-| 12 | PMA-33 | C | Chat zwischen Matches | Hoch |
-| 13 | PMA-34 | C | Matchliste als Einstieg in Konversationen | Mittel |
-| 14 | PMA-35 | D | Eventseiten und Eventformular | Mittel |
-| 15 | PMA-36 | D | Kartenansicht für spätere Ortsbezüge | Mittel |
-| 16 | PMA-41 | D | Events im Backend persistent speichern | Hoch |
-| 17 | PMA-42 | D | Karte mit echten API-Daten | Hoch |
-| 18 | PMA-43 | E | Frontend-Flows stabilisieren | Hoch |
-| 19 | PMA-44 | E | Demo-Seed und reproduzierbare Datenlage | Hoch |
-| 20 | PMA-45 | E | README, Benutzerleitfaden und Scrum-Artefakte | Mittel |
-| 21 | PMA-46 | E | Test- und Projekt-Build-Verifikation | Hoch |
-| 22 | PMA-51 | D | Event-Filter nach Ort, Datum und Typ | Mittel |
-| 23 | PMA-52 | B | Profil-Detailseiten mit Galerie und Pflichtfeldern | Mittel |
-| 24 | PMA-53 | B | Swipe-Präferenzen in Profileinstellungen | Mittel |
-| 25 | PMA-54 | D | Ortssuche über Nominatim statt Freihand-Markierung | Mittel |
-| 26 | PMA-55 | D | Wischbereiche für Hobbys, Events und Locations | Mittel |
+| 1 | FRIENDS-01 | A | Projektsetup für Frontend und Backend | Hoch |
+| 2 | FRIENDS-02 | A | Landingpage und Navigation mit klarem Nutzenversprechen | Hoch |
+| 3 | FRIENDS-03 | B | erste Profilkarten und Nutzerdatenbasis | Hoch |
+| 4 | FRIENDS-04 | A | erster Oberflächen-API-Datenmodell-Durchstich | Hoch |
+| 5 | FRIENDS-11 | B | Registrierung mit Session/Token | Hoch |
+| 6 | FRIENDS-12 | B | Login mit persistenter Authentifizierung | Hoch |
+| 7 | FRIENDS-13 | B | Profil bearbeiten und speichern | Hoch |
+| 8 | FRIENDS-14 | B | Entdeckungsübersicht mit Interessenbezug | Hoch |
+| 9 | FRIENDS-15 | B | Like/Pass speichern | Mittel |
+| 10 | FRIENDS-16 | C | gegenseitige Likes als Match sichtbar machen | Hoch |
+| 11 | FRIENDS-17 | B | Interessen/Hobbys als feste Profilbasis modellieren | Mittel |
+| 12 | FRIENDS-33 | C | Chat zwischen Matches | Hoch |
+| 13 | FRIENDS-34 | C | Matchliste als Einstieg in Konversationen | Mittel |
+| 14 | FRIENDS-35 | D | Eventseiten und Eventformular | Mittel |
+| 15 | FRIENDS-36 | D | Kartenansicht für spätere Ortsbezüge | Mittel |
+| 16 | FRIENDS-41 | D | Events im Backend persistent speichern | Hoch |
+| 17 | FRIENDS-42 | D | Karte mit echten API-Daten | Hoch |
+| 18 | FRIENDS-43 | E | Frontend-Flows stabilisieren | Hoch |
+| 19 | FRIENDS-44 | E | Demo-Seed und reproduzierbare Datenlage | Hoch |
+| 20 | FRIENDS-45 | E | README, Benutzerleitfaden und Scrum-Artefakte | Mittel |
+| 21 | FRIENDS-46 | E | Test- und Projekt-Build-Verifikation | Hoch |
+| 22 | FRIENDS-51 | D | Event-Filter nach Ort, Datum und Typ | Mittel |
+| 23 | FRIENDS-52 | B | Profil-Detailseiten mit Galerie und Pflichtfeldern | Mittel |
+| 24 | FRIENDS-53 | B | Swipe-Präferenzen in Profileinstellungen | Mittel |
+| 25 | FRIENDS-54 | D | Ortssuche über Nominatim statt Freihand-Markierung | Mittel |
+| 26 | FRIENDS-55 | D | Wischbereiche für Hobbys, Events und Locations | Mittel |
 
 ## Startkriterien
 - Nutzer- oder Teamnutzen ist beschrieben.

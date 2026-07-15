@@ -1,7 +1,7 @@
 # Sprint 1 Review
 
 ## Sprintziel Ergebnis
-- Erreicht, aber mit klarer Einschränkung: Die Grundidee von PMA ist sichtbar geworden, allerdings vor allem als Frontend- und Prototyp-Inkrement.
+- Erreicht, aber mit klarer Einschränkung: Die Grundidee von FRIENDS ist sichtbar geworden, allerdings vor allem als Frontend- und Prototyp-Inkrement.
 
 ## Gezeigtes Inkrement
 - Startseite mit grundlegender Navigation
@@ -15,7 +15,7 @@
   - Hobbys
   - Events
   - Locations
-- Dadurch soll PMA nicht wie ein reiner Dating-Klon wirken, sondern wie eine allgemeinere App für soziales Kennenlernen.
+- Dadurch soll FRIENDS nicht wie ein reiner Dating-Klon wirken, sondern wie eine allgemeinere App für soziales Kennenlernen.
 - Zusätzlich war die Rückmeldung klar, dass der nächste Sprint nicht wieder nur aus Frontend bestehen sollte, sondern einen echten vertikalen Produktfluss liefern muss.
 
 ## Konsequenzen für das Produkt-Backlog

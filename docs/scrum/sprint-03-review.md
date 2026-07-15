@@ -14,7 +14,7 @@
 - Events und Locations sind im Produktbild präsent und nicht erst ein technischer Nachgedanke.
 
 ## Stakeholder-Reaktion
-- Positiv bewertet wurde, dass PMA sich von einer reinen Dating-App in Richtung Plattform für soziales Kennenlernen entwickelt.
+- Positiv bewertet wurde, dass FRIENDS sich von einer reinen Dating-App in Richtung Plattform für soziales Kennenlernen entwickelt.
 - Gewünscht wurde, dass Events und Locations im finalen MVP auch technisch sauber angebunden werden.
 
 ## Konsequenzen für Sprint 4

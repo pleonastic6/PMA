@@ -1,7 +1,7 @@
 # Sprint 2 Retrospektive
 
 ## Was gut lief
-- Der PMA-Kern wurde greifbar, weil Authentifizierung und Profile nicht mehr nur Prototypen waren.
+- Der FRIENDS-Kern wurde greifbar, weil Authentifizierung und Profile nicht mehr nur Prototypen waren.
 - Swipe und Match-Logik gaben dem Projekt einen echten Produktcharakter.
 - Die Trennung in Module für Auth, User und Matches machte das Backend übersichtlicher.
 - Der Wechsel weg vom reinen Frontend-Fokus hat dem Projekt sichtbar mehr Glaubwürdigkeit gegeben.

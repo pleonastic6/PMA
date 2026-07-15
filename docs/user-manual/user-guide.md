@@ -1,4 +1,4 @@
-# PMA Benutzer- und Demo-Leitfaden
+# FRIENDS Benutzer- und Demo-Leitfaden
 
 ## Zweck
 - Dieser Leitfaden beschreibt die Inbetriebnahme und Nutzung des aktuellen MVP.
@@ -7,7 +7,7 @@
 ## Projekt vorbereiten
 
 ### 1. MongoDB-Datenordner anlegen
-Lege im Projektverzeichnis den Ordner `data/mongodb` an. In diesem Ordner speichert MongoDB die lokale Datenbank fuer PMA.
+Lege im Projektverzeichnis den Ordner `data/mongodb` an. In diesem Ordner speichert MongoDB die lokale Datenbank fuer FRIENDS.
 
 ```bash
 mkdir -p data/mongodb
@@ -37,7 +37,7 @@ cp .env.example .env
 Wichtige Variable in `.env`:
 
 ```env
-MONGODB_URI=mongodb://127.0.0.1:27017/pma
+MONGODB_URI=mongodb://127.0.0.1:27017/friends
 ```
 
 ### 4. Demo-Daten einspielen

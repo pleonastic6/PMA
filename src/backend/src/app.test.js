@@ -301,7 +301,7 @@ test('liking a demo profile creates an instant match', async () => {
         });
         const demoRegister = await request(server, '/api/v1/auth/register', 'POST', {
             username: 'pixel',
-            email: 'pixel@pma.local',
+            email: 'pixel@friends.local',
             password: 'supersecret123',
             firstName: 'Pixel',
         });

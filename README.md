@@ -1,6 +1,6 @@
-# PMA
+# FRIENDS
 
-PMA ist ein MVP für soziales Kennenlernen mit Registrierung, Profilen, Personenentdeckung, Matches, Chat, Events und Kartenansicht.
+FRIENDS ist ein MVP für soziales Kennenlernen mit Registrierung, Profilen, Personenentdeckung, Matches, Chat, Events und Kartenansicht.
 
 ## Technik
 - Frontend: React + React Router + Tailwind + React Leaflet
@@ -22,10 +22,9 @@ PMA ist ein MVP für soziales Kennenlernen mit Registrierung, Profilen, Personen
 - `src/frontend/app` React-Frontend
 - `src/backend` Express-API
 - `docs/scrum` Scrum-Artefakte, Sprintdokumente und Projektziele
-- `docs/requirements` Nutzergeschichten und Personas
+- `docs/requirements` User Stories und Personas
 - `docs/architecture` Architekturübersicht, Diagramme und ADR
 - `docs/user-manual` kompakter Bedienleitfaden
-- `docs/presentation` OTH-Beamer-Präsentation
 
 ## Schnellstart
 
@@ -55,7 +54,7 @@ npm install
 Wichtige Variable in `.env`:
 
 ```env
-MONGODB_URI=mongodb://127.0.0.1:27017/pma
+MONGODB_URI=mongodb://127.0.0.1:27017/friends
 ```
 
 ### 4. Demo-Daten laden

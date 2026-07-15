@@ -1,11 +1,11 @@
-# PMA Nutzergeschichten
+# FRIENDS User Stories
 
 ## Ziel
-- Diese Datei sammelt die zentralen Nutzergeschichten des MVP in einer kompakten, abgabefreundlichen Form.
+- Diese Datei sammelt die zentralen User Stories des MVP in einer kompakten, abgabefreundlichen Form.
 - Die Stories verdichten das Produkt-Backlog und die Sprint-Planungen.
 
 ## Account und Einstieg
-- Als neuer Nutzer will ich mich registrieren können, damit ich PMA erstmals verwenden kann.
+- Als neuer Nutzer will ich mich registrieren können, damit ich FRIENDS erstmals verwenden kann.
 - Als registrierter Nutzer will ich mich einloggen können, damit ich auf mein Profil und meine Matches zugreifen kann.
 
 ## Profil

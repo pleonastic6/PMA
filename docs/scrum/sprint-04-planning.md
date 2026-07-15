@@ -1,7 +1,7 @@
 # Sprint 4 Planung
 
 ## Sprintziel
-- Das horizontal gedachte PMA-MVP soll technisch geschlossen, demo-fähig und für die Abgabe sauber dokumentiert werden.
+- Das horizontal gedachte FRIENDS-MVP soll technisch geschlossen, demo-fähig und für die Abgabe sauber dokumentiert werden.
 
 ## Team und Kapazität
 - Beteiligte: gesamtes 10er Scrum-Team
@@ -19,13 +19,13 @@
 ## Sprint Backlog
 | ID | Story | Akzeptanzkriterium | Aufwand |
 | --- | --- | --- | --- |
-| PMA-41 | Als Nutzer will ich Events persistent speichern | Events bleiben nach Reload erhalten | 5 SP |
-| PMA-42 | Als Nutzer will ich Karte mit echten Daten sehen | Map lädt Events und Nutzerzonen über API | 5 SP |
-| PMA-43 | Als Team wollen wir stabile Frontend-Flows | Keine offensichtlichen Lade-/Routing-Brüche | 3 SP |
-| PMA-44 | Als Team wollen wir Demo-Daten auf Knopfdruck | Skript für Demodaten erzeugt reproduzierbare Demo-Welt | 3 SP |
-| PMA-45 | Als Team wollen wir eine saubere Abgabe | README, Benutzerleitfaden und Scrum-Artefakte sind vorhanden | 3 SP |
-| PMA-46 | Als Team wollen wir technische Verifikation | Backend-Tests und Frontend-Build laufen erfolgreich | 3 SP |
-| PMA-55 | Als Nutzer will ich nicht nur Personen, sondern auch Hobbys, Events und Locations swipen können | Die Swipe-Ansicht bietet mehrere Wischbereiche mit Demo- und Bestandsdaten | 3 SP |
+| FRIENDS-41 | Als Nutzer will ich Events persistent speichern | Events bleiben nach Reload erhalten | 5 SP |
+| FRIENDS-42 | Als Nutzer will ich Karte mit echten Daten sehen | Map lädt Events und Nutzerzonen über API | 5 SP |
+| FRIENDS-43 | Als Team wollen wir stabile Frontend-Flows | Keine offensichtlichen Lade-/Routing-Brüche | 3 SP |
+| FRIENDS-44 | Als Team wollen wir Demo-Daten auf Knopfdruck | Skript für Demodaten erzeugt reproduzierbare Demo-Welt | 3 SP |
+| FRIENDS-45 | Als Team wollen wir eine saubere Abgabe | README, Benutzerleitfaden und Scrum-Artefakte sind vorhanden | 3 SP |
+| FRIENDS-46 | Als Team wollen wir technische Verifikation | Backend-Tests und Frontend-Build laufen erfolgreich | 3 SP |
+| FRIENDS-55 | Als Nutzer will ich nicht nur Personen, sondern auch Hobbys, Events und Locations swipen können | Die Swipe-Ansicht bietet mehrere Wischbereiche mit Demo- und Bestandsdaten | 3 SP |
 
 ## Risiken
 - Letzte Integrationsfehler zwischen Frontend und Backend

@@ -41,7 +41,7 @@ async function searchPlaces(query, options = {}, fetchFn = fetch) {
 
     const response = await fetchFn(url, {
         headers: {
-            'User-Agent': 'PMA/1.0 (event place lookup)',
+            'User-Agent': 'FRIENDS/1.0 (event place lookup)',
             'Accept-Language': 'de,en',
         },
     });

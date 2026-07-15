@@ -18,12 +18,12 @@
 ## Sprint Backlog
 | ID | Story | Akzeptanzkriterium | Aufwand |
 | --- | --- | --- | --- |
-| PMA-33 | Als Match will ich chatten können | Nachrichten können nur zwischen Matches gesendet und geladen werden | 5 SP |
-| PMA-34 | Als Nutzer will ich meine Matches sehen | Matchliste zeigt gegenseitige Likes | 3 SP |
-| PMA-35 | Als Nutzer will ich Events im UI sehen | Eventseiten und Eventformular sind vorbereitet | 3 SP |
-| PMA-36 | Als Nutzer will ich eine Kartenansicht als Konzept sehen | Map-Komponente kann Events/Orte grundsätzlich darstellen | 3 SP |
-| PMA-37 | Als Team wollen wir bestehende Kernflüsse stabil halten | Register/Login/Swipe/Match bleiben trotz neuer Features vorführbar | 3 SP |
-| PMA-38 | Als Team wollen wir Event- und Kartenbereiche fachlich einrahmen | Nutzerfluss und Datenbedarf für Sprint 4 sind sichtbar vorbereitet | 3 SP |
+| FRIENDS-33 | Als Match will ich chatten können | Nachrichten können nur zwischen Matches gesendet und geladen werden | 5 SP |
+| FRIENDS-34 | Als Nutzer will ich meine Matches sehen | Matchliste zeigt gegenseitige Likes | 3 SP |
+| FRIENDS-35 | Als Nutzer will ich Events im UI sehen | Eventseiten und Eventformular sind vorbereitet | 3 SP |
+| FRIENDS-36 | Als Nutzer will ich eine Kartenansicht als Konzept sehen | Map-Komponente kann Events/Orte grundsätzlich darstellen | 3 SP |
+| FRIENDS-37 | Als Team wollen wir bestehende Kernflüsse stabil halten | Register/Login/Swipe/Match bleiben trotz neuer Features vorführbar | 3 SP |
+| FRIENDS-38 | Als Team wollen wir Event- und Kartenbereiche fachlich einrahmen | Nutzerfluss und Datenbedarf für Sprint 4 sind sichtbar vorbereitet | 3 SP |
 
 ## Erledigungskriterien
 - Chat und Matches laufen über echtes Backend.

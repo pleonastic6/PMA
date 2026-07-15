@@ -1,7 +1,7 @@
 # Sprint 4 Review
 
 ## Sprintziel Ergebnis
-- Erreicht. Das PMA-MVP ist technisch geschlossen, demo-fähig und dokumentiert.
+- Erreicht. Das FRIENDS-MVP ist technisch geschlossen, demo-fähig und dokumentiert.
 
 ## Gezeigtes Inkrement
 - Persistente Events über Backend
@@ -13,7 +13,7 @@
 - Profil- und Event-UX mit Galerie, Profil-Detailseite und Event-Filtern
 
 ## Produktfazit
-- PMA deckt im MVP jetzt mehr ab als reines Personen-Swipen:
+- FRIENDS deckt im MVP jetzt mehr ab als reines Personen-Swipen:
   - Entdecken von Personen als Kernfluss
   - Hobbys als eigener swipebarer Kontext
   - Events als eigener swipebarer Kontext

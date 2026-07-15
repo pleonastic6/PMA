@@ -9,13 +9,13 @@
 ## Arbeitsstand im Sprint
 | Status | Tickets | Owner |
 | --- | --- | --- |
-| In Arbeit | PMA-11 Registrierung | Artur Renner, Stefan Spinko |
-| In Arbeit | PMA-12 Login | Süleyman Gümüs |
-| In Arbeit | PMA-13 Profil | Matthias Kranz, Florian Reinhart |
-| In Arbeit | PMA-14 Personenübersicht | Georg Röben, Lukas Leis |
-| In Arbeit | PMA-15 Wischlogik | David Budulak |
-| In Arbeit | PMA-16 Matches sichtbar machen | Andre Guth |
-| In Arbeit | PMA-17 Interessenmodell weiter schärfen | Paul Gempel |
+| In Arbeit | FRIENDS-11 Registrierung | Artur Renner, Stefan Spinko |
+| In Arbeit | FRIENDS-12 Login | Süleyman Gümüs |
+| In Arbeit | FRIENDS-13 Profil | Matthias Kranz, Florian Reinhart |
+| In Arbeit | FRIENDS-14 Personenübersicht | Georg Roeben, Lukas Leis |
+| In Arbeit | FRIENDS-15 Wischlogik | David Budulak |
+| In Arbeit | FRIENDS-16 Matches sichtbar machen | Andre Guth |
+| In Arbeit | FRIENDS-17 Interessenmodell weiter schärfen | Paul Gempel |
 
 ## Engpässe
 - Auth- und Profilthemen hingen kurz an API-Verträgen.

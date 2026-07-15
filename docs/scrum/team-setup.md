@@ -1,4 +1,4 @@
-# PMA Teamaufbau
+# FRIENDS Teamaufbau
 
 ## Teamgröße
 - 10 Personen
@@ -18,7 +18,7 @@
 | Lukas Leis | Entwickler | Chat, Events, Frontend-Interaktion |
 | Florian Reinhart | Entwickler | Oberflächengestaltung, Reaktionsfähigkeit, Inhaltsstruktur |
 | Andre Guth | Entwickler | Tests, Buildstabilität, Demodaten |
-| Georg Röben | Entwickler | Karten- und Ortsbezug, Doku, Vorbereitung des Reviews |
+| Georg Roeben | Entwickler | Karten- und Ortsbezug, Doku, Vorbereitung des Reviews |
 
 ## Stakeholder und Projektumfeld
 - Auftraggeber im Modulkontext: betreuender Dozent bzw. die Lehrveranstaltung mit klarer Erwartung an Projektmanagement, Review und Ergebnisdarstellung.

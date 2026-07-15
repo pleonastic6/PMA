@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { api } from "../services/api";
 
-const TOKEN_STORAGE_KEY = "pma_auth_token";
+const TOKEN_STORAGE_KEY = "friends_auth_token";
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
