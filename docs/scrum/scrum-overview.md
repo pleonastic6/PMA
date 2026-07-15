@@ -121,8 +121,8 @@
 - „Im ersten Sprint haben wir noch zu frontend-lastig gearbeitet und vor allem ein klickbares Produktbild gebaut. Durch das Feedback im Review haben wir dann umgestellt und ab Sprint 2 deutlich vertikaler gearbeitet: echte Auth, Profile, Discovery, danach Chat, Events und Ortsbezug und am Ende Stabilisierung und Doku.“
 
 ## Zugehörige Detaildokumente
-- Sprint 1: [Planning](sprint-01-planning.md), [Review](sprint-01-review.md), [Retro](sprint-01-retro.md)
-- Sprint 2: [Planning](sprint-02-planning.md), [Review](sprint-02-review.md), [Retro](sprint-02-retro.md)
-- Sprint 3: [Planning](sprint-03-planning.md), [Review](sprint-03-review.md), [Retro](sprint-03-retro.md)
-- Sprint 4: [Planning](sprint-04-planning.md), [Review](sprint-04-review.md), [Retro](sprint-04-retro.md)
-- Board-Snapshots: [Sprint 1](sprint-01-board.md), [Sprint 2](sprint-02-board.md), [Sprint 3](sprint-03-board.md), [Sprint 4](sprint-04-board.md)
+- Sprint 1: [Planning](sprint-01-planning.md), [Review](sprint-01-review.md), [Retro](sprint-01-retro.md), [Board-Snapshots](sprint-01-board.md)
+- Sprint 2: [Planning](sprint-02-planning.md), [Review](sprint-02-review.md), [Retro](sprint-02-retro.md), [Board-Snapshots](sprint-01-board.md)
+- Sprint 3: [Planning](sprint-03-planning.md), [Review](sprint-03-review.md), [Retro](sprint-03-retro.md), [Board-Snapshots](sprint-01-board.md)
+- Sprint 4: [Planning](sprint-04-planning.md), [Review](sprint-04-review.md), [Retro](sprint-04-retro.md), [Board-Snapshots](sprint-01-board.md)
+
