@@ -21,7 +21,11 @@ PMA ist ein Social-Matching-MVP mit Registrierung, Profilen, Personen-Discovery,
 ## Projektstruktur
 - `frontend/app` React-Frontend
 - `backend` Express-API
-- `docs/scrum` simulierte Scrum-Artefakte fuer Abgabe/Doku
+- `docs/scrum` Scrum-Artefakte, Sprintdokumente und Projektziele
+- `docs/requirements` User Stories und Personas
+- `docs/architecture` Architekturuebersicht, Diagramme und ADR
+- `docs/user-manual` kompakter Bedienleitfaden
+- `docs/presentation` OTH-Beamer-Praesentation
 
 ## Quick Start
 
@@ -126,13 +130,20 @@ npm run build
 - Bilder werden aktuell clientseitig als komprimierte Data-URLs gespeichert; es gibt noch keinen serverseitigen Datei-Upload oder externen Storage.
 - Chat ist Request-basiert, nicht in Echtzeit per WebSocket.
 - Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert fuer die Demo.
-- Discovery bezieht sich im Live-Flow auf Personen; Events und Orte sind angebundene Kontexte, aber noch keine eigenen Swipe-Decks.
+- Nicht-Personen-Swipes sind aktuell als Discovery-Kontexte umgesetzt, aber noch ohne eigene persistente Empfehlungslogik oder Matchmechanik.
 
 ## Scrum-Dokumente
 - [Scrum Overview](./docs/scrum/scrum-overview.md)
 - [Team Setup](./docs/scrum/team-setup.md)
+- [Projektziele](./docs/scrum/project-goals.md)
 - [Product Backlog](./docs/scrum/product-backlog.md)
 - Sprint 1: [Planning](./docs/scrum/sprint-01-planning.md), [Review](./docs/scrum/sprint-01-review.md), [Retro](./docs/scrum/sprint-01-retro.md), [Board](./docs/scrum/sprint-01-board.md)
 - Sprint 2: [Planning](./docs/scrum/sprint-02-planning.md), [Review](./docs/scrum/sprint-02-review.md), [Retro](./docs/scrum/sprint-02-retro.md), [Board](./docs/scrum/sprint-02-board.md)
 - Sprint 3: [Planning](./docs/scrum/sprint-03-planning.md), [Review](./docs/scrum/sprint-03-review.md), [Retro](./docs/scrum/sprint-03-retro.md), [Board](./docs/scrum/sprint-03-board.md)
 - Sprint 4: [Planning](./docs/scrum/sprint-04-planning.md), [Review](./docs/scrum/sprint-04-review.md), [Retro](./docs/scrum/sprint-04-retro.md), [Board](./docs/scrum/sprint-04-board.md)
+
+## Weitere Dokumentation
+- [Requirements](./docs/requirements/user-stories.md)
+- [Personas](./docs/requirements/personas.md)
+- [Architektur](./docs/architecture/architecture.md)
+- [User Guide](./docs/user-manual/user-guide.md)

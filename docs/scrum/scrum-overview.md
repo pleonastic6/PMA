@@ -8,10 +8,16 @@
 - Scrum-Team mit 10 Personen
 - Rollen, Arbeitsmodus und Kapazitaet: [Team Setup](team-setup.md)
 - Priorisiertes Gesamtbacklog: [Product Backlog](product-backlog.md)
+- User Stories und SMART-Ziele: [Projektziele](project-goals.md)
 
 ## Projektziel
 - PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, swipebaren Interessen/Events/Locations und Kartenbezug.
 - Der Fokus der Umsetzung liegt auf einem technisch vorfuehrbaren End-to-End-System, nicht auf vollstaendigem Produktionsumfang.
+
+## Zielrahmen
+- Die verdichtete User-Story-Sicht und die explizite SMART-Formulierung stehen in [project-goals.md](project-goals.md).
+- Fuer die Praesentation reicht als Kurzfassung:
+  PMA soll in vier Sprints als demo-faehiger Social-Discovery-MVP entstehen, der nicht nur Personen, sondern auch Hobbys, Events und Locations in den Produktfluss einbindet.
 
 ## Grobe Meilensteine
 - M1: Produktbild und klickbarer Frontend-Rahmen sichtbar
