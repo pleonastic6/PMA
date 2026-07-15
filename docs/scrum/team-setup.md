@@ -9,7 +9,7 @@
 ## Rollen
 | Name | Rolle | Fokus im Projekt |
 | --- | --- | --- |
-| David Budulak | Produktverantwortlicher | Vision, Kommunikation mit Stakeholdern, Priorisierung |
+| David Budulak | Product Owner | Vision, Kommunikation mit Stakeholdern, Priorisierung |
 | Artur Renner | Scrum Master | Moderation, Hindernisse, Prozessdisziplin |
 | Süleyman Gümüs  | Entwickler | Frontend-Integration, Nutzungsfluss, Demo-Abläufe |
 | Stefan Spinko | Entwickler | React-Komponenten, Authentifizierungsabläufe, Statusverwaltung |
@@ -45,7 +45,7 @@
 | --- | --- | --- | --- |
 | Sprint 1 | 10 | Onboarding, Setup-Aufwand | 34 SP |
 | Sprint 2 | 10 | volle Teamstärke | 42 SP |
-| Sprint 3 | 9 | eine Person teilweise durch Studium gebunden | 38 SP |
+| Sprint 3 | 10 | eine Person teilweise durch Studium gebunden | 38 SP |
 | Sprint 4 | 10 | mehr Integrations- und Dokuaufwand | 36 SP |
 
 ## Warum das Team so geschnitten ist
