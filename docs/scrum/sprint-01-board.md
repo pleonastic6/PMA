@@ -9,10 +9,10 @@
 ## Board am Sprintende
 | Status | Tickets | Owner |
 | --- | --- | --- |
-| To Do | PMA-05 Architektur fein dokumentieren | Georg, Artur |
-| In Progress | PMA-04 klickbarer Matching-Flow | Süleyman, Florian |
-| In Review | PMA-03 erste Profilkarten sichtbar machen | Matthias, Lukas, Stefan |
-| Done | PMA-01 Projektsetup, PMA-02 Landingpage | David, Paul, Andre |
+| To Do | PMA-05 Architektur fein dokumentieren | Andre |
+| In Progress | PMA-04 klickbarer Matching-Flow | Süleyman, Georg |
+| In Review | PMA-03 erste Profilkarten sichtbar machen | Artur, Florian |
+| Done | PMA-01 Projektsetup, PMA-02 Landingpage | Matthias, Stefan, Paul |
 | Blocked | - | - |
 
 ## Beobachtung

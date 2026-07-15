@@ -4,15 +4,15 @@
 - Aus Matches echte Interaktion machen und PMA fachlich ueber Personen hinaus erweitern.
 
 ## Commitment
-- 24 Story Points aus dem Sprint-3-Backlog
+- 20 Story Points aus dem Sprint-3-Backlog
 
 ## Board am Sprintende
 | Status | Tickets | Owner |
 | --- | --- | --- |
 | To Do | - | - |
-| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Georg, Flo, |
-| In Review | PMA-35 Eventseiten im UI | David, Süleyman, Matthias |
-| Done | PMA-31 Registrierungsfluss, PMA-32 Swipe-Flow, PMA-33 Chat, PMA-34 Matchliste | Stefan, Paul, Artur, Lukas, |
+| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Andre, Lukas |
+| In Review | PMA-35 Eventseiten im UI | Florian, Artur |
+| Done | PMA-33 Chat, PMA-34 Matchliste, PMA-37 Kernflows stabil halten, PMA-38 Event-/Kartenbereiche fachlich einrahmen | Georg, Süleyman, Paul, Matthias |
 | Blocked | - | - |
 
 ## Sprintdynamik
