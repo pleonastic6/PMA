@@ -18,10 +18,10 @@
 - Frueh ein User-Modell festzulegen spart spaeter Umbauten.
 - Selbst bei UI-lastigem Start sollte die API-Struktur frueh mitgedacht werden.
 - Reiner Frontend-Fortschritt sieht im Review schnell nach Scheinfortschritt aus, wenn echte Datenfluesse fehlen.
-- Die Produktidee muss fachlich breiter werden; reines Personen-Swipen ist fuer den Stakeholder zu eng gedacht.
+- Stakeholder-Feedback muss direkt in den Zuschnitt der naechsten Stories uebersetzt werden, statt nur als lose Produktidee im Raum zu stehen.
 
 ## Maßnahmen fuer Sprint 2
 - Register/Login nicht nur als UI, sondern mit echter Backend-Anbindung angehen.
-- Hobbys/Interessen als Kernobjekt fuer Discovery und Matching frueh modellieren.
-- Discovery so weiterdenken, dass Events und Locations spaeter natuerlich anschliessbar sind.
+- Hobbys/Interessen frueh im Datenmodell mitdenken, damit spaetere Erweiterungen nicht gegen die Grundstruktur laufen.
+- Discovery technisch so vorbereiten, dass spaetere Erweiterungen nicht wieder einen Komplettumbau erzwingen.
 - Stories vertikaler schneiden statt nochmal einen reinen Frontend-Sprint zu fahren.

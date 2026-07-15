@@ -19,7 +19,9 @@
 - Scrum-Artefakte lassen sich glaubhaft schreiben, wenn der technische Verlauf konsistent dokumentiert ist.
 
 ## Abschlussfazit
-- PMA ist als Hochschul-MVP in sich stimmig: Auth, Profile, Discovery, Swipes, Matches, Chat, Events und Karte sind als zusammenhaengender Flow demonstrierbar.
+- Das Team hat den Sprint trotz Doku- und Abgabedruck strukturiert abgeschlossen und technische Restarbeiten konsequent priorisiert.
+- Tests, Build und Demo-Seeding als feste Abschlusskriterien haben fuer Klarheit im Endspurt gesorgt.
+- Fuer kuenftige Projekte lohnt es sich, Dokumentation und Abgabeartefakte frueher parallel zur Entwicklung mitzuziehen.
 
 ## Falls es einen Folgesprint gaebe
 - Echter Bild-Upload

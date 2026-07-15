@@ -16,10 +16,10 @@
 ## Learnings
 - Protected Routes und Session-Hydration sollten frueh standardisiert werden.
 - Discovery braucht von Anfang an klare Regeln dafuer, wen man sieht und wen nicht.
-- Das Stakeholder-Feedback aus Sprint 1 war richtig: Interessen/Hobbys muessen fachlich mehr sein als nur Textfelder.
+- Stakeholder-Feedback muss frueh genug in Datenmodell und Story-Schnitt einfliessen, nicht erst nach UI-Nacharbeit.
 - Vertikaler Fortschritt ist im Review deutlich besser vermittelbar als viele lose UI-Screens.
 
 ## Maßnahmen fuer Sprint 3
 - Chat als naechsten logischen Schritt direkt an Matches koppeln.
 - Events und Kartenansicht nicht mehr als isolierte Mock-Komponenten behandeln.
-- Event- und Location-Swipes fachlich in die Produktstory integrieren, auch wenn technisch noch nicht alles final ist.
+- Erweiterungen fuer Discovery frueh technisch vorbereiten, auch wenn sie noch nicht vollstaendig ausgebaut werden.
