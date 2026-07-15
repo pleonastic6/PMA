@@ -29,16 +29,22 @@ PMA ist ein MVP für soziales Kennenlernen mit Registrierung, Profilen, Personen
 
 ## Schnellstart
 
-### 1. MongoDB starten
-Beispiel lokal:
+### 1. MongoDB-Datenordner anlegen
 
 ```bash
-mongod --dbpath /tmp/pma-mongo
+mkdir -p data/mongodb
+```
+
+### 2. MongoDB starten
+Starte MongoDB aus dem Projektverzeichnis:
+
+```bash
+mongod --dbpath ./data/mongodb
 ```
 
 Oder eine bestehende MongoDB-Instanz verwenden.
 
-### 2. Backend konfigurieren
+### 3. Backend konfigurieren
 
 ```bash
 cd src/backend
@@ -52,7 +58,7 @@ Wichtige Variable in `.env`:
 MONGODB_URI=mongodb://127.0.0.1:27017/pma
 ```
 
-### 3. Demo-Daten laden
+### 4. Demo-Daten laden
 
 ```bash
 npm run seed:demo
@@ -60,7 +66,7 @@ npm run seed:demo
 
 Das Script leert die relevanten Collections und legt Demo-User, Matches, Chats und Events neu an.
 
-### 4. Backend starten
+### 5. Backend starten
 
 ```bash
 npm run dev
@@ -68,7 +74,7 @@ npm run dev
 
 Das Backend läuft dann standardmäßig auf `http://localhost:5000`.
 
-### 5. Frontend starten
+### 6. Frontend starten
 
 ```bash
 cd ../frontend/app
@@ -146,4 +152,4 @@ npm run build
 - [Anforderungen](./docs/requirements/user-stories.md)
 - [Personas](./docs/requirements/personas.md)
 - [Architektur](./docs/architecture/architecture.md)
-- [Benutzerleitfaden](./docs/user-manual/user-guide.md)
+- [Benutzer- und Demo-Leitfaden](./docs/user-manual/user-guide.md)

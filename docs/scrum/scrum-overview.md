@@ -98,7 +98,7 @@
 - Wischbereiche für Hobbys, Events und Locations
 - stabile Frontend-Flows
 - Befüllung mit Demodaten
-- README, Demo-Leitfaden und Scrum-Dokumente
+- README, Benutzerleitfaden und Scrum-Dokumente
 
 ## Endstand des MVP
 - Registrierung / Login

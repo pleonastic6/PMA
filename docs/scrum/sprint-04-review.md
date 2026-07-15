@@ -9,7 +9,7 @@
 - Wischbereiche für Personen, Hobbys, Events und Locations
 - Stabilisierte Frontend-Flows
 - Befüllung mit Demodaten für reproduzierbare Präsentation
-- README, Demo-Leitfaden und Scrum-Dokumentation
+- README, Benutzerleitfaden und Scrum-Dokumentation
 - Profil- und Event-UX mit Galerie, Profil-Detailseite und Event-Filtern
 
 ## Produktfazit

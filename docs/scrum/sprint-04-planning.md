@@ -23,7 +23,7 @@
 | PMA-42 | Als Nutzer will ich Karte mit echten Daten sehen | Map lädt Events und Nutzerzonen über API | 5 SP |
 | PMA-43 | Als Team wollen wir stabile Frontend-Flows | Keine offensichtlichen Lade-/Routing-Brüche | 3 SP |
 | PMA-44 | Als Team wollen wir Demo-Daten auf Knopfdruck | Skript für Demodaten erzeugt reproduzierbare Demo-Welt | 3 SP |
-| PMA-45 | Als Team wollen wir eine saubere Abgabe | README, Demo-Leitfaden und Scrum-Artefakte sind vorhanden | 3 SP |
+| PMA-45 | Als Team wollen wir eine saubere Abgabe | README, Benutzerleitfaden und Scrum-Artefakte sind vorhanden | 3 SP |
 | PMA-46 | Als Team wollen wir technische Verifikation | Backend-Tests und Frontend-Build laufen erfolgreich | 3 SP |
 | PMA-55 | Als Nutzer will ich nicht nur Personen, sondern auch Hobbys, Events und Locations swipen können | Die Swipe-Ansicht bietet mehrere Wischbereiche mit Demo- und Bestandsdaten | 3 SP |
 

@@ -29,7 +29,7 @@
 | 17 | PMA-42 | D | Karte mit echten API-Daten | Hoch |
 | 18 | PMA-43 | E | Frontend-Flows stabilisieren | Hoch |
 | 19 | PMA-44 | E | Demo-Seed und reproduzierbare Datenlage | Hoch |
-| 20 | PMA-45 | E | README, Demo-Leitfaden und Scrum-Artefakte | Mittel |
+| 20 | PMA-45 | E | README, Benutzerleitfaden und Scrum-Artefakte | Mittel |
 | 21 | PMA-46 | E | Test- und Projekt-Build-Verifikation | Hoch |
 | 22 | PMA-51 | D | Event-Filter nach Ort, Datum und Typ | Mittel |
 | 23 | PMA-52 | B | Profil-Detailseiten mit Galerie und Pflichtfeldern | Mittel |

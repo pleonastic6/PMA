@@ -3,7 +3,7 @@
 ## Was gut lief
 - Die letzten Platzhalterdaten konnten konsequent durch echte API-Flows ersetzt werden.
 - Die Befüllung mit Demodaten macht die Präsentation reproduzierbar und stressfreier.
-- README, Demo-Leitfaden und Scrum-Dokumente geben dem Projekt jetzt auch auf Papier Struktur.
+- README, Benutzerleitfaden und Scrum-Dokumente geben dem Projekt jetzt auch auf Papier Struktur.
 - Tests und Build als Abschlusskriterium waren sinnvoll und haben Klarheit geschaffen.
 
 ## Was nicht gut lief
