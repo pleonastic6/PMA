@@ -10,9 +10,9 @@
 | Status | Tickets | Owner |
 | --- | --- | --- |
 | To Do | - | - |
-| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Fatima, Jonas |
-| In Review | PMA-35 Eventseiten im UI | Amelie, Arturo |
-| Done | PMA-31 Registrierungsfluss, PMA-32 Swipe-Flow, PMA-33 Chat, PMA-34 Matchliste | Nina, Mehmet, Sophie, Luca |
+| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Georg, Flo |
+| In Review | PMA-35 Eventseiten im UI | David, Süleyman |
+| Done | PMA-31 Registrierungsfluss, PMA-32 Swipe-Flow, PMA-33 Chat, PMA-34 Matchliste | Stefan, Paul, Artur, Lukas |
 | Blocked | - | - |
 
 ## Sprintdynamik
