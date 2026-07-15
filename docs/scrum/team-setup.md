@@ -12,16 +12,16 @@
 ## Rollen
 | Name | Rolle | Fokus im Projekt |
 | --- | --- | --- |
-| Laura Becker | Product Owner | Vision, Stakeholder-Kommunikation, Priorisierung |
-| Daniel Koch | Scrum Master | Moderation, Impediments, Prozessdisziplin |
-| Arturo Mendez | Developer | Frontend-Integration, UX-Feinschliff, Demo-Flows |
-| Nina Wagner | Developer | React-Komponenten, Auth-Flows, State-Handling |
-| Mehmet Yilmaz | Developer | Express-API, Routing, Request-Flows |
-| Sophie Hartmann | Developer | Datenmodell, Profil- und Matching-Logik |
-| Jonas Richter | Developer | Chat, Events, Frontend-Interaktion |
-| Amelie Schuster | Developer | UI-Design, Responsiveness, Content-Struktur |
-| Luca Romano | Developer | Tests, Build-Stabilitaet, Seed-Daten |
-| Fatima El Idrissi | Developer | Karten-/Ortsbezug, Doku, Review-Vorbereitung |
+| David Budulak | Product Owner | Vision, Stakeholder-Kommunikation, Priorisierung |
+| Artur Renner | Scrum Master | Moderation, Impediments, Prozessdisziplin |
+| Süleyman Gümüs  | Developer | Frontend-Integration, UX-Feinschliff, Demo-Flows |
+| Stefan Spinko | Developer | React-Komponenten, Auth-Flows, State-Handling |
+| Paul Gemple | Developer | Express-API, Routing, Request-Flows |
+| Matthias Kranz | Developer | Datenmodell, Profil- und Matching-Logik |
+| Lukas Leis | Developer | Chat, Events, Frontend-Interaktion |
+| Florian Reinhart | Developer | UI-Design, Responsiveness, Content-Struktur |
+| Andre Guth | Developer | Tests, Build-Stabilitaet, Seed-Daten |
+| Georg Roeben | Developer | Karten-/Ortsbezug, Doku, Review-Vorbereitung |
 
 ## Stakeholder und Projektumfeld
 - Auftraggeber im Modulkontext: betreuender Dozent bzw. die Lehrveranstaltung mit klarer Erwartung an Projektmanagement, Review und Ergebnisdarstellung.
