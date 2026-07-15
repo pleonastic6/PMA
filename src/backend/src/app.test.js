@@ -382,6 +382,9 @@ test('authenticated users can create and list events and map overview includes d
     const server = app.listen(0);
 
     try {
+        const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+        const eventDate = tomorrow.toISOString().slice(0, 10);
+
         const neoRegister = await request(server, '/api/v1/auth/register', 'POST', {
             username: 'neo',
             password: 'supersecret123',
@@ -400,7 +403,7 @@ test('authenticated users can create and list events and map overview includes d
         const createEventResponse = await request(server, '/api/v1/events', 'POST', {
             title: 'Kneipenquiz im Murphy\'s',
             description: 'Ein lockerer Abend mit Quiz und Bier.',
-            date: '2026-07-15',
+            date: eventDate,
             time: '19:30',
             locationName: 'Murphy\'s Law',
             category: 'Quiz',
