@@ -1,9 +1,5 @@
 # PMA Personas
 
-## Zweck
-- Die Personas konkretisieren die Zielgruppe des MVP.
-- Sie sind bewusst kompakt gehalten und auf den Hochschulkontext zugeschnitten.
-
 ## Persona 1: Spontaner Studierender
 - Name:
   Leon, 22, Informatikstudent
