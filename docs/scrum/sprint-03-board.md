@@ -10,7 +10,7 @@
 | Status | Tickets | Owner |
 | --- | --- | --- |
 | To Do | - | - |
-| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Georg, Flo, Andre |
+| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Georg, Flo, |
 | In Review | PMA-35 Eventseiten im UI | David, Süleyman, Matthias |
 | Done | PMA-31 Registrierungsfluss, PMA-32 Swipe-Flow, PMA-33 Chat, PMA-34 Matchliste | Stefan, Paul, Artur, Lukas, |
 | Blocked | - | - |
