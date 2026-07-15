@@ -1,9 +1,6 @@
 # Sprint 3 Review
 
-## Status
-- Dokumentiert das Ergebnis des dritten Reviews im PMA-Hochschulprojekt.
-
-## Sprint Goal Ergebnis
+## Sprintziel Ergebnis
 - Erreicht. Matches wurden durch Chat funktional aufgewertet, und die Event-/Map-Dimension ist im Produktbild sichtbar geworden.
 
 ## Gezeigtes Inkrement
@@ -17,9 +14,9 @@
 - Events und Locations sind im Produktbild präsent und nicht erst ein technischer Nachgedanke.
 
 ## Stakeholder-Reaktion
-- Positiv bewertet wurde, dass PMA sich von einer reinen Dating-App in Richtung Social-Discovery-Plattform entwickelt.
+- Positiv bewertet wurde, dass PMA sich von einer reinen Dating-App in Richtung Plattform für soziales Kennenlernen entwickelt.
 - Gewünscht wurde, dass Events und Locations im finalen MVP auch technisch sauber angebunden werden.
 
 ## Konsequenzen für Sprint 4
-- Mockdaten bei Events/Karte entfernen
+- Platzhalterdaten bei Events und Karte entfernen
 - Demo-Flow und Doku finalisieren

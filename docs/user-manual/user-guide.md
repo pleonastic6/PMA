@@ -1,4 +1,4 @@
-# PMA User Guide
+# PMA Benutzerleitfaden
 
 ## Zweck
 - Dieser Leitfaden beschreibt die Nutzung des aktuellen MVP aus Anwendersicht.
@@ -11,7 +11,7 @@
 
 ## Einstieg
 1. Öffne die Startseite im Browser.
-2. Wähle `Login` oder `Signup`.
+2. Wähle `Login` oder `Registrierung`.
 3. Für die Demo kann z. B. `neo / demo12345` verwendet werden.
 
 ## Profil bearbeiten
@@ -20,11 +20,11 @@
 3. Füge Bilder zur Galerie hinzu.
 4. Speichere das Profil.
 
-## Discovery und Swipe
+## Entdecken und Swipen
 1. Öffne `Swipe`.
-2. Nutze die Deck-Auswahl, um zwischen Menschen, Hobbys, Events und Locations zu wechseln.
+2. Nutze die Bereichsauswahl, um zwischen Menschen, Hobbys, Events und Locations zu wechseln.
 3. Wische oder klicke auf `Like` bzw. `Pass`.
-4. Bei People-Swipes können gegenseitige Likes zu Matches führen.
+4. Bei Personen-Swipes können gegenseitige Likes zu Matches führen.
 
 ## Matches und Chat
 1. Öffne `Matches`.
@@ -43,5 +43,5 @@
 
 ## Bekannte Einschränkungen
 - Bilder werden aktuell als komprimierte Data-URLs verarbeitet.
-- Chat aktualisiert sich request-basiert und nicht per Live-WebSocket.
-- Nicht-Personen-Swipes sind Discovery-Kontexte, aber noch keine voll persistente Empfehlungslogik.
+- Chat aktualisiert sich anfragebasiert und nicht in Echtzeit per WebSocket.
+- Nicht-Personen-Swipes sind Entdeckungskontexte, aber noch keine voll persistente Empfehlungslogik.

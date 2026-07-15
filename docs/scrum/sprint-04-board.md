@@ -1,23 +1,25 @@
-# Sprint 4 Scrum Board Snapshot
+# Sprint 4 Aufgabenboard
 
-## Sprint Goal
+## Sprintziel
 - MVP schließen, Demo absichern und Dokumentation abgabefähig machen.
 
-## Commitment
+## Verbindlich eingeplante Punkte
 - 25 Story Points aus dem Sprint-4-Backlog
 
-## Board am Sprintende
+## Arbeitsstand im Sprint
 | Status | Tickets | Owner |
 | --- | --- | --- |
-| To Do | - | David Budulak |
-| In Progress | - | - |
-| In Review | PMA-45 Abgabedoku und Scrum-Artefakte final gegenlesen | Stefan Spinko, Andre Guth |
-| Done | PMA-41 persistente Events, PMA-42 echte Kartendaten, PMA-43 Frontend-Stabilisierung, PMA-44 Seed-Daten, PMA-46 Verifikation, PMA-55 Multi-Deck-Swipe | Artur Renner, Georg Röben, Süleyman Gümüs, Paul Gempel, Matthias Kranz, Florian Reinhart, Lukas Leis |
-| Blocked | - | - |
+| In Arbeit | PMA-41 persistente Events | Artur Renner, Georg Röben |
+| In Arbeit | PMA-42 echte Kartendaten | Süleyman Gümüs, Paul Gempel |
+| In Arbeit | PMA-43 Frontend-Stabilisierung | Matthias Kranz, Florian Reinhart |
+| In Arbeit | PMA-44 Demodaten | Lukas Leis |
+| In Arbeit | PMA-45 Abgabedoku und Scrum-Artefakte | Stefan Spinko, Andre Guth |
+| In Arbeit | PMA-46 Verifikation | David Budulak |
+| In Arbeit | PMA-55 Multi-Deck-Swipe | Artur Renner |
 
-## Sprintfazit
-- Das Board ist deutlich leerer als in Sprint 1 bis 3, weil die Zielsetzung bewusst auf Schließung statt auf neue große Features lag.
-- Doku, Build und Demo-Vorbereitung tauchen hier nicht als Alibi auf, sondern als echte Lieferobjekte.
+## Arbeitsbild des Sprints
+- Der Schwerpunkt liegt auf Schließung, Absicherung und Dokumentation statt auf neuen großen Funktionsblöcken.
+- Doku, Build und Demo-Vorbereitung laufen hier als echte Lieferobjekte mit.
 
-## Ergebnis für Review
-- Das Inkrement ist vorzeigbar, technisch konsistent und reproduzierbar startbar.
+## Erwarteter Stand zum Review
+- Das Inkrement soll vorzeigbar, technisch konsistent und reproduzierbar startbar sein.

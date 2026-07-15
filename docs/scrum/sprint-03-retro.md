@@ -1,25 +1,22 @@
 # Sprint 3 Retrospektive
 
-## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt für das PMA-Hochschulprojekt formuliert.
-
-## What went well
+## Was gut lief
 - Die Aufteilung in Backend-Module für Auth, Matches, Chat und Events hat die Umsetzung beschleunigt.
-- Durch die frühen Backend-Tests liessen sich Regressionen schnell erkennen.
+- Durch die frühen Backend-Tests ließen sich Regressionen schnell erkennen.
 - Chat als Feature hat den Mehrwert von Matches sofort sichtbar gemacht.
-- Das Team hat den Scope auf einen realistischen Demo-MVP begrenzt statt zu viel Social-Feature-Kram anzufangen.
+- Das Team hat den Umfang auf einen realistischen Demo-MVP begrenzt, statt zu viele zusätzliche Sozialfunktionen anzufangen.
 
-## What did not go well
-- Frontend und Backend waren zeitweise asynchron im Stand; dadurch blieben Events und Karte zunächst auf Mockdaten.
-- Request-Logik im Frontend war anfangs nicht sauber stabilisiert und hätte mehrfaches Nachladen verursachen können.
-- Einige UI-Texte und Altlasten aus frühen Mockups mussten spät bereinigt werden.
+## Was nicht gut lief
+- Frontend und Backend waren zeitweise asynchron im Stand; dadurch blieben Events und Karte zunächst auf Platzhalterdaten.
+- Anfragelogik im Frontend war anfangs nicht sauber stabilisiert und hätte mehrfaches Nachladen verursachen können.
+- Einige Oberflächentexte und Altlasten aus frühen Prototypen mussten spät bereinigt werden.
 
-## Learnings
+## Erkenntnisse
 - Sobald ein Backend existiert, sollten lokale Service-Mocks konsequent entfernt werden.
 - Geschützte Routen und Session-Hydration müssen früh definiert werden, sonst entstehen später viele kleine Brüche.
-- Ein kleines, aber grünes Testset bringt für Studierendenprojekte mehr als ein grosser ungewarteter Testplan.
+- Ein kleines, aber grünes Testset bringt für Studierendenprojekte mehr als ein großer ungewarteter Testplan.
 
-## Action Items für nächsten Sprint
+## Maßnahmen für den nächsten Sprint
 - Events und Karte auf echte Backend-Daten umstellen.
-- Demo-Daten und reproduzierbaren Präsentationsablauf vorbereiten.
-- Build-/Test-Stabilität und Doku für die Abgabe nachziehen.
+- Demodaten und einen reproduzierbaren Präsentationsablauf vorbereiten.
+- Build-, Teststabilität und Doku für die Abgabe nachziehen.

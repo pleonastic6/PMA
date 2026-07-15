@@ -7,7 +7,7 @@ flowchart LR
     API[Express API /api/v1]
     AUTH[Auth Modul]
     USERS[Users Modul]
-    DISC[Discovery Modul]
+    DISC[Entdecken-Modul]
     MATCH[Matches Modul]
     CHAT[Chat Modul]
     EVENTS[Events Modul]

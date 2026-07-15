@@ -1,7 +1,7 @@
 # ADR 001: Monolithische REST-Architektur für den MVP
 
-## Status
-- Accepted
+## Entscheidungsstand
+- Angenommen
 
 ## Kontext
 - PMA sollte in vier Sprints als vorführbarer MVP entstehen.
@@ -14,8 +14,8 @@
 
 ## Begründung
 - Ein Monolith reduziert Integrationsaufwand und Projektkomplexität.
-- REST ist für die geplanten Kernflows gut nachvollziehbar und schnell testbar.
-- Die Architektur passt zum Hochschulprojekt und ermöglicht saubere End-to-End-Demos.
+- REST ist für die geplanten Kernflüsse gut nachvollziehbar und schnell testbar.
+- Die Architektur passt zum Hochschulprojekt und ermöglicht einen sauberen durchgängigen Demo-Ablauf.
 
 ## Konsequenzen
 - Positiv:

@@ -1,16 +1,16 @@
 # PMA
 
-PMA ist ein Social-Matching-MVP mit Registrierung, Profilen, Personen-Discovery, Matches, Chat, Events und Kartenansicht.
+PMA ist ein MVP für soziales Kennenlernen mit Registrierung, Profilen, Personenentdeckung, Matches, Chat, Events und Kartenansicht.
 
-## Stack
+## Technik
 - Frontend: React + React Router + Tailwind + React Leaflet
 - Backend: Node.js + Express + MongoDB + Mongoose
 - Tests: `node --test` mit `mongodb-memory-server`
 
-## MVP-Features
+## MVP-Funktionen
 - Registrierung und Login mit Session-Token
 - Profilpflege mit erweiterten Feldern, Galerie und Swipe-Präferenzen
-- Discovery-Feed mit Like/Pass
+- Entdeckungsübersicht mit Like/Pass
 - Gegenseitige Likes erzeugen Matches
 - Öffentliche Profilansicht für andere Nutzer innerhalb der App
 - Chat nur zwischen Matches
@@ -22,12 +22,12 @@ PMA ist ein Social-Matching-MVP mit Registrierung, Profilen, Personen-Discovery,
 - `src/frontend/app` React-Frontend
 - `src/backend` Express-API
 - `docs/scrum` Scrum-Artefakte, Sprintdokumente und Projektziele
-- `docs/requirements` User Stories und Personas
+- `docs/requirements` Nutzergeschichten und Personas
 - `docs/architecture` Architekturübersicht, Diagramme und ADR
 - `docs/user-manual` kompakter Bedienleitfaden
 - `docs/presentation` OTH-Beamer-Präsentation
 
-## Quick Start
+## Schnellstart
 
 ### 1. MongoDB starten
 Beispiel lokal:
@@ -94,7 +94,7 @@ Das Frontend läuft standardmäßig auf `http://localhost:3000`.
 7. Optional neues Event anlegen oder ein bestehendes bearbeiten.
 8. In `Map` die Event-Marker und Nutzerzonen zeigen.
 
-## Nützliche Commands
+## Nützliche Befehle
 
 ### Backend
 
@@ -119,7 +119,7 @@ cd src/backend
 npm test
 ```
 
-- Frontend-Produktionsbuild:
+- Frontend-Build:
 
 ```bash
 cd src/frontend/app
@@ -128,22 +128,22 @@ npm run build
 
 ## Bekannte MVP-Grenzen
 - Bilder werden aktuell clientseitig als komprimierte Data-URLs gespeichert; es gibt noch keinen serverseitigen Datei-Upload oder externen Storage.
-- Chat ist Request-basiert, nicht in Echtzeit per WebSocket.
+- Chat ist anfragebasiert, nicht in Echtzeit per WebSocket.
 - Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert für die Demo.
-- Nicht-Personen-Swipes sind aktuell als Discovery-Kontexte umgesetzt, aber noch ohne eigene persistente Empfehlungslogik oder Matchmechanik.
+- Nicht-Personen-Swipes sind aktuell als Entdeckungskontexte umgesetzt, aber noch ohne eigene persistente Empfehlungslogik oder Matchmechanik.
 
 ## Scrum-Dokumente
-- [Scrum Overview](./docs/scrum/scrum-overview.md)
-- [Team Setup](./docs/scrum/team-setup.md)
+- [Scrum-Überblick](./docs/scrum/scrum-overview.md)
+- [Teamaufbau](./docs/scrum/team-setup.md)
 - [Projektziele](./docs/scrum/project-goals.md)
-- [Product Backlog](./docs/scrum/product-backlog.md)
-- Sprint 1: [Planning](./docs/scrum/sprint-01-planning.md), [Review](./docs/scrum/sprint-01-review.md), [Retro](./docs/scrum/sprint-01-retro.md), [Board](./docs/scrum/sprint-01-board.md)
-- Sprint 2: [Planning](./docs/scrum/sprint-02-planning.md), [Review](./docs/scrum/sprint-02-review.md), [Retro](./docs/scrum/sprint-02-retro.md), [Board](./docs/scrum/sprint-02-board.md)
-- Sprint 3: [Planning](./docs/scrum/sprint-03-planning.md), [Review](./docs/scrum/sprint-03-review.md), [Retro](./docs/scrum/sprint-03-retro.md), [Board](./docs/scrum/sprint-03-board.md)
-- Sprint 4: [Planning](./docs/scrum/sprint-04-planning.md), [Review](./docs/scrum/sprint-04-review.md), [Retro](./docs/scrum/sprint-04-retro.md), [Board](./docs/scrum/sprint-04-board.md)
+- [Produkt-Backlog](./docs/scrum/product-backlog.md)
+- Sprint 1: [Planung](./docs/scrum/sprint-01-planning.md), [Review](./docs/scrum/sprint-01-review.md), [Retrospektive](./docs/scrum/sprint-01-retro.md), [Aufgabenboard](./docs/scrum/sprint-01-board.md)
+- Sprint 2: [Planung](./docs/scrum/sprint-02-planning.md), [Review](./docs/scrum/sprint-02-review.md), [Retrospektive](./docs/scrum/sprint-02-retro.md), [Aufgabenboard](./docs/scrum/sprint-02-board.md)
+- Sprint 3: [Planung](./docs/scrum/sprint-03-planning.md), [Review](./docs/scrum/sprint-03-review.md), [Retrospektive](./docs/scrum/sprint-03-retro.md), [Aufgabenboard](./docs/scrum/sprint-03-board.md)
+- Sprint 4: [Planung](./docs/scrum/sprint-04-planning.md), [Review](./docs/scrum/sprint-04-review.md), [Retrospektive](./docs/scrum/sprint-04-retro.md), [Aufgabenboard](./docs/scrum/sprint-04-board.md)
 
 ## Weitere Dokumentation
-- [Requirements](./docs/requirements/user-stories.md)
+- [Anforderungen](./docs/requirements/user-stories.md)
 - [Personas](./docs/requirements/personas.md)
 - [Architektur](./docs/architecture/architecture.md)
-- [User Guide](./docs/user-manual/user-guide.md)
+- [Benutzerleitfaden](./docs/user-manual/user-guide.md)

@@ -1,25 +1,26 @@
-# Sprint 3 Scrum Board Snapshot
+# Sprint 3 Aufgabenboard
 
-## Sprint Goal
+## Sprintziel
 - Aus Matches echte Interaktion machen und PMA fachlich über Personen hinaus erweitern.
 
-## Commitment
+## Verbindlich eingeplante Punkte
 - 20 Story Points aus dem Sprint-3-Backlog
 
-## Board am Sprintende
+## Arbeitsstand im Sprint
 | Status | Tickets | Owner |
 | --- | --- | --- |
-| To Do | - | David Budulak |
-| In Progress | PMA-36 Kartenansicht fachlich vorbereiten | Andre Guth, Lukas Leis |
-| In Review | PMA-35 Eventseiten im UI | Florian Reinhart, Artur Renner, Stefan Spinko |
-| Done | PMA-33 Chat, PMA-34 Matchliste, PMA-37 Kernflows stabil halten, PMA-38 Event-/Kartenbereiche fachlich einrahmen | Georg Röben, Süleyman Gümüs, Paul Gempel, Matthias Kranz |
-| Blocked | - | - |
+| In Arbeit | PMA-33 Chat | Georg Röben, Süleyman Gümüs |
+| In Arbeit | PMA-34 Matchliste | Paul Gempel, Matthias Kranz |
+| In Arbeit | PMA-35 Eventseiten im UI | Florian Reinhart, Artur Renner |
+| In Arbeit | PMA-36 Kartenansicht fachlich vorbereiten | Andre Guth, Lukas Leis |
+| In Arbeit | PMA-37 Kernflüsse stabil halten | Stefan Spinko |
+| In Arbeit | PMA-38 Event- und Kartenbereiche fachlich einrahmen | David Budulak |
 
 ## Sprintdynamik
 - Ein Teil des Teams arbeitete sichtbar am Produktwert.
 - Ein anderer Teil baute technische Grundlage für die spätere echte Event- und Kartenanbindung.
 - Dadurch war das Board nicht nur grün, sondern realistisch gemischt.
 
-## Ergebnis für Review
-- Chat und Matches machen den Social-Charakter des Produkts erlebbar.
-- Events und Karte sind vorhanden, aber noch nicht voll am echten Datenfluss.
+## Erwarteter Stand zum Review
+- Chat und Matches sollen den sozialen Nutzen des Produkts erlebbar machen.
+- Events und Karte sollen sichtbar sein, auch wenn noch nicht alles am echten Datenfluss hängt.

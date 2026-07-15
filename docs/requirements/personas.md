@@ -12,7 +12,7 @@
 - Bedarf:
   Schnell interessante Menschen finden, gemeinsame Hobbys erkennen und unkompliziert Events entdecken.
 - Relevante Funktionen:
-  Registrierung, Profil, People Swipe, Hobbys, Matches, Chat.
+  Registrierung, Profil, Personen swipen, Hobbys, Matches, Chat.
 
 ## Persona 2: Sozial aktive Organisatorin
 - Name:
@@ -36,4 +36,4 @@
 
 ## Konsequenz für den MVP
 - PMA darf nicht wie ein reines Dating-Produkt wirken.
-- Menschen bleiben der zentrale Einstieg, aber Hobbys, Events und Locations müssen als sichtbare Discovery-Kontexte vorkommen.
+- Menschen bleiben der zentrale Einstieg, aber Hobbys, Events und Locations müssen als sichtbare Entdeckungskontexte vorkommen.

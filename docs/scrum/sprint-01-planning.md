@@ -1,10 +1,7 @@
-# Sprint 1 Planning
+# Sprint 1 Planung
 
-## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt für das PMA-Hochschulprojekt formuliert.
-
-## Sprint Goal
-- Die Produktidee von PMA soll als klickbarer Frontend-Prototyp sichtbar werden, damit Nutzenversprechen, Look-and-Feel und Grundnavigation früh diskutiert werden können.
+## Sprintziel
+- Die Produktidee von PMA soll als klickbarer Frontend-Prototyp sichtbar werden, damit Nutzenversprechen, Wirkung und Bediengefühl und Grundnavigation früh diskutiert werden können.
 
 ## Team und Kapazität
 - Beteiligte: gesamtes 10er Scrum-Team
@@ -16,7 +13,7 @@
 - Landingpage und grundlegende Navigation
 - Erste einfache Nutzerprofile als Datenbasis
 - Frühe Swipe-Idee als Produktkonzept im UI sichtbar machen
-- Profil-, Signup- und Discovery-Seiten zunächst als klickbare Screens vorbereiten
+- Profil-, Registrierungs- und Entdeckungsseiten zunächst als klickbare Ansichten vorbereiten
 
 ## Sprint Backlog
 | ID | Story | Akzeptanzkriterium | Aufwand |
@@ -28,14 +25,14 @@
 | PMA-05 | Als Team wollen wir die Architektur grob vorbereiten | Frontend/Backend-Schnitt ist als Folgeschritt beschrieben | 2 SP |
 
 ## Risiken
-- Unklare Scope-Grenzen zwischen Mockup und echter Implementierung
+- Unklare Abgrenzung zwischen Prototyp und echter Implementierung
 - Gefahr, dass zu viel Oberfläche entsteht und zu wenig echte Produktlogik
 - Noch keine finalen Entscheidungen zu Matching-Logik und Kartenansicht
 
-## Board-Artefakt
-- Board-Snapshot: [Sprint 1 Board](./sprint-01-board.md)
+## Board-Verweis
+- Aufgabenboard: [Sprint 1 Aufgabenboard](./sprint-01-board.md)
 
-## Definition of Done
+## Erledigungskriterien
 - Code ist im Repo
 - Frontend startet lokal
 - Erste Kernseiten sind erreichbar
