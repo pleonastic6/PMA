@@ -12,15 +12,15 @@
 - Als Nutzer will ich Events anlegen, ansehen, filtern und ueber die Karte verorten koennen, damit spontane Treffen sichtbar organisiert werden koennen.
 
 ## SMART-Ziel
-- Spezifisch:
+- **Spezifisch:**
   PMA soll als lauffaehiger Social-Discovery-MVP umgesetzt werden, in dem Nutzer sich registrieren, Profile pflegen, Menschen sowie Hobbys, Events und Locations swipen, Matches sehen, chatten und Events mit Kartenbezug nutzen koennen.
-- Messbar:
+- **Messbar:**
   Der MVP gilt als erreicht, wenn die Kernflows `Register/Login`, `Profil bearbeiten`, `Personen swipen`, `Hobbys/Events/Locations swipen`, `Match + Chat`, `Events anlegen/listen/filtern` und `Kartenansicht` in der Demo lauffaehig sind und durch Tests bzw. Build-Verifikation technisch abgesichert werden.
-- Attraktiv:
+- **Attraktiv:**
   Das Ziel ist fachlich relevant, weil PMA sich dadurch klar von einem simplen Personen-Matcher abgrenzt und Social Discovery ueber mehrere Kontexte zeigt.
-- Realistisch:
+- **Realistisch:**
   Der Umfang ist als MVP geschnitten und verzichtet bewusst auf Themen wie produktionsreifen Bild-Upload, WebSocket-Live-Chat oder voll persistente Empfehlungslogik fuer Nicht-Personen-Swipes.
-- Terminiert:
+- **Terminiert:**
   Der MVP soll innerhalb von vier Sprints im Modulkontext fertig, demo-faehig und dokumentiert vorliegen.
 
 ## Abgrenzung
