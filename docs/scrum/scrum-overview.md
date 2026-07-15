@@ -6,35 +6,35 @@
 
 ## Team-Setup
 - Scrum-Team mit 10 Personen
-- Rollen, Arbeitsmodus und Kapazitaet: [Team Setup](team-setup.md)
+- Rollen, Arbeitsmodus und Kapazität: [Team Setup](team-setup.md)
 - Priorisiertes Gesamtbacklog: [Product Backlog](product-backlog.md)
 - User Stories und SMART-Ziele: [Projektziele](project-goals.md)
 
 ## Projektziel
-- PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, swipebaren Interessen/Events/Locations und Kartenbezug.
-- Der Fokus der Umsetzung liegt auf einem technisch vorfuehrbaren End-to-End-System, nicht auf vollstaendigem Produktionsumfang.
+- PMA soll als lauffähiger MVP zeigen, dass Social Discovery nicht nur über reines Personen-Matching gedacht werden kann, sondern über einen zusammenhängenden Produktfluss aus Profil, Discovery, Match, Chat, swipebaren Interessen/Events/Locations und Kartenbezug.
+- Der Fokus der Umsetzung liegt auf einem technisch vorführbaren End-to-End-System, nicht auf vollständigem Produktionsumfang.
 
 ## Zielrahmen
 - Die verdichtete User-Story-Sicht und die explizite SMART-Formulierung stehen in [project-goals.md](project-goals.md).
-- Fuer die Praesentation reicht als Kurzfassung:
-  PMA soll in vier Sprints als demo-faehiger Social-Discovery-MVP entstehen, der nicht nur Personen, sondern auch Hobbys, Events und Locations in den Produktfluss einbindet.
+- Für die Präsentation reicht als Kurzfassung:
+  PMA soll in vier Sprints als demo-fähiger Social-Discovery-MVP entstehen, der nicht nur Personen, sondern auch Hobbys, Events und Locations in den Produktfluss einbindet.
 
 ## Grobe Meilensteine
 - M1: Produktbild und klickbarer Frontend-Rahmen sichtbar
-- M2: Vertikaler Kernflow mit Auth, Profil und Personen-Discovery laeuft
+- M2: Vertikaler Kernflow mit Auth, Profil und Personen-Discovery läuft
 - M3: Match-Nutzung durch Chat sowie Event-/Map-Bereiche sind im Produkt erlebbar
-- M4: Events und Karte sind an echte Backend-Daten angebunden, mehrere Swipe-Decks sind vorfuehrbar, Demo und Doku sind abgabefaehig
+- M4: Events und Karte sind an echte Backend-Daten angebunden, mehrere Swipe-Decks sind vorführbar, Demo und Doku sind abgabefähig
 
 ## Produktidee
 - PMA ist keine reine Dating-App, sondern eine Social-Discovery-App.
-- Der aktuelle Live-MVP hat Personen weiterhin als Kernflow, oeffnet Discovery aber zusaetzlich ueber weitere swipebare Kontexte:
+- Der aktuelle Live-MVP hat Personen weiterhin als Kernflow, öffnet Discovery aber zusätzlich über weitere swipebare Kontexte:
   - Hobbys
   - Events
   - Locations
 
 ## Entwicklungslogik
 - Sprint 1 war noch deutlich frontend-lastig und eher als klickbarer Produktentwurf aufgebaut.
-- Im Review wurde klar, dass dieser Ansatz fuer das Projekt zu oberflaechlich ist und vertikaler gearbeitet werden muss.
+- Im Review wurde klar, dass dieser Ansatz für das Projekt zu oberflächlich ist und vertikaler gearbeitet werden muss.
 - Ab Sprint 2 wurde der Fokus deshalb bewusst auf echte End-to-End-Flows gelegt: Frontend, Backend und Datenmodell sollten pro Inkrement gemeinsam wachsen.
 
 ## Sprint 1
@@ -46,18 +46,18 @@
 
 ### Ergebnis
 - Landingpage und erste Matching-Idee im Frontend sichtbar
-- klickbarer App-Rahmen fuer Profil- und Swipe-Idee vorhanden
+- klickbarer App-Rahmen für Profil- und Swipe-Idee vorhanden
 - technisches Grundsetup begonnen, aber noch ohne echten vertikalen Produktfluss
 
 ### Wichtigstes Review-Feedback
 - Der Stakeholder wollte, dass die Produktidee nicht auf reines Personen-Swipen verengt bleibt.
-- Zusaetzlich sollten Hobbys, Events und Locations sichtbar in das Gesamtprodukt einzahlen.
-- Gleichzeitig wurde deutlich, dass ein reiner Frontend-/Mockup-Sprint nicht reicht und die naechsten Sprints deutlich vertikaler zugeschnitten werden muessen.
+- Zusätzlich sollten Hobbys, Events und Locations sichtbar in das Gesamtprodukt einzahlen.
+- Gleichzeitig wurde deutlich, dass ein reiner Frontend-/Mockup-Sprint nicht reicht und die nächsten Sprints deutlich vertikaler zugeschnitten werden müssen.
 
 ## Sprint 2
 
 ### Fokus
-- den reinen Frontend-Stand in einen echten Produktfluss ueberfuehren
+- den reinen Frontend-Stand in einen echten Produktfluss überführen
 - Personen- und Interessenebene funktional machen
 - echte Authentifizierung, Profilpflege und Discovery als erster vertikaler Kernflow
 
@@ -80,10 +80,10 @@
 - Chat zwischen Matches
 - Eventseiten im Frontend
 - erste Kartenintegration
-- fachliche Vorbereitung fuer spaetere Swipe-Decks jenseits von Personen
+- fachliche Vorbereitung für spätere Swipe-Decks jenseits von Personen
 
 ### Produktwirkung
-- PMA wirkte jetzt nicht mehr wie nur „Tinder fuer Personen“, sondern wie eine breiter gedachte Social-App.
+- PMA wirkte jetzt nicht mehr wie nur „Tinder für Personen“, sondern wie eine breiter gedachte Social-App.
 
 ## Sprint 4
 
@@ -95,7 +95,7 @@
 ### Ergebnis
 - Events über echtes Backend
 - Kartenansicht mit API-Daten
-- Swipe-Decks fuer Hobbys, Events und Locations
+- Swipe-Decks für Hobbys, Events und Locations
 - stabile Frontend-Flows
 - Demo-Seeding
 - README, Demo-Guide und Scrum-Dokumente
@@ -105,7 +105,7 @@
 - Profilpflege
 - Profilgalerie und Profil-Detailansichten
 - Personen-Discovery
-- Swipe-Decks fuer Hobbys, Events und Locations
+- Swipe-Decks für Hobbys, Events und Locations
 - Interessen/Hobbys und Sprachen als Profilbasis
 - Swipe und Match
 - Chat
@@ -115,7 +115,7 @@
 ## Was bewusst offen blieb
 - serverseitiger Bild-Upload mit echter Dateispeicherung
 - Live-Chat per WebSocket
-- Persistenz und eigene Empfehlungslogik fuer Nicht-Personen-Swipes
+- Persistenz und eigene Empfehlungslogik für Nicht-Personen-Swipes
 
 ## Empfohlene Kurz-Erklärung in der Präsentation
 - „Im ersten Sprint haben wir noch zu frontend-lastig gearbeitet und vor allem ein klickbares Produktbild gebaut. Durch das Feedback im Review haben wir dann umgestellt und ab Sprint 2 deutlich vertikaler gearbeitet: echte Auth, Profile, Discovery, danach Chat, Events und Ortsbezug und am Ende Stabilisierung und Doku.“

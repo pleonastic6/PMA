@@ -38,7 +38,7 @@ flowchart LR
 ```
 
 ## Lesart
-- Das Frontend ist der einzige direkte Einstiegspunkt fuer Nutzer.
+- Das Frontend ist der einzige direkte Einstiegspunkt für Nutzer.
 - Das Backend kapselt die Fachlogik in klar getrennten Modulen.
-- MongoDB ist die zentrale Persistenz fuer den MVP.
+- MongoDB ist die zentrale Persistenz für den MVP.
 - Extern angebunden ist nur die Ortssuche.

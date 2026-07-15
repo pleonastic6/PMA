@@ -9,16 +9,16 @@
 ## Board am Sprintende
 | Status | Tickets | Owner |
 | --- | --- | --- |
-| To Do | - | - |
-| In Progress | PMA-17 Interessenmodell weiter schaerfen | Paul |
-| In Review | PMA-16 Matches im Frontend sauber darstellen | Georg, Lukas |
-| Done | PMA-11 Registrierung, PMA-12 Login, PMA-13 Profil, PMA-14 Discovery, PMA-15 Swipe | Artur, Süleyman, Matthias, Florian |
+| To Do | - | David Budulak |
+| In Progress | PMA-17 Interessenmodell weiter schärfen | Paul Gempel, Andre Guth |
+| In Review | PMA-16 Matches im Frontend sauber darstellen | Georg Röben, Lukas Leis |
+| Done | PMA-11 Registrierung, PMA-12 Login, PMA-13 Profil, PMA-14 Discovery, PMA-15 Swipe | Artur Renner, Süleyman Gümüs, Matthias Kranz, Florian Reinhart, Stefan Spinko |
 | Blocked | - | - |
 
-## Engpaesse
-- Auth- und Profilthemen hingen kurz an API-Vertraegen.
+## Engpässe
+- Auth- und Profilthemen hingen kurz an API-Verträgen.
 - Discovery war fachlich klarer als technisch; die eigentliche Filterlogik wurde bewusst klein gehalten.
 
-## Ergebnis fuer Review
-- Der Hauptflow Register -> Login -> Profil -> Discovery -> Swipe ist vorfuehrbar.
+## Ergebnis für Review
+- Der Hauptflow Register -> Login -> Profil -> Discovery -> Swipe ist vorführbar.
 - Matching ist sichtbar, aber noch nicht sozial eingebettet.

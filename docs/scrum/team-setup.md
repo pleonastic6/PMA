@@ -1,9 +1,9 @@
 # PMA Scrum Team Setup
 
 ## Status
-- Diese Datei dokumentiert das fuer PMA verwendete Scrum-Setup im Hochschulkontext.
+- Diese Datei dokumentiert das für PMA verwendete Scrum-Setup im Hochschulkontext.
 
-## Teamgroesse
+## Teamgröße
 - 10 Personen
 - 1 Product Owner
 - 1 Scrum Master
@@ -20,16 +20,16 @@
 | Matthias Kranz | Developer | Datenmodell, Profil- und Matching-Logik |
 | Lukas Leis | Developer | Chat, Events, Frontend-Interaktion |
 | Florian Reinhart | Developer | UI-Design, Responsiveness, Content-Struktur |
-| Andre Guth | Developer | Tests, Build-Stabilitaet, Seed-Daten |
-| Georg Roeben | Developer | Karten-/Ortsbezug, Doku, Review-Vorbereitung |
+| Andre Guth | Developer | Tests, Build-Stabilität, Seed-Daten |
+| Georg Röben | Developer | Karten-/Ortsbezug, Doku, Review-Vorbereitung |
 
 ## Stakeholder und Projektumfeld
 - Auftraggeber im Modulkontext: betreuender Dozent bzw. die Lehrveranstaltung mit klarer Erwartung an Projektmanagement, Review und Ergebnisdarstellung.
 - Nutzergruppe im Produktkontext: Studierende bzw. junge Erwachsene, die neue Kontakte, spontane Treffen und Events entdecken wollen.
-- Stakeholder-Feedback wurde vor allem in Sprint Reviews aufgenommen und in Product-Backlog-Priorisierung uebersetzt.
+- Stakeholder-Feedback wurde vor allem in Sprint Reviews aufgenommen und in Product-Backlog-Priorisierung übersetzt.
 
 ## Arbeitsmodus
-- Sprintlaenge: 2 Wochen
+- Sprintlänge: 2 Wochen
 - Planning: Montag, 90 Minuten
 - Daily: werktags, 15 Minuten
 - Review: letzter Donnerstag des Sprints, 45 Minuten
@@ -38,13 +38,13 @@
 
 ## Working Agreements
 - Stories werden nur in den Sprint gezogen, wenn Akzeptanzkriterien klar sind.
-- Jede Story bekommt einen primaeren Owner und mindestens eine zweite Person fuer Review oder Sparring.
-- Frontend- und Backend-Aenderungen werden moeglichst in einem fachlichen Story-Schnitt umgesetzt.
+- Jede Story bekommt einen primären Owner und mindestens eine zweite Person für Review oder Sparring.
+- Frontend- und Backend-Änderungen werden möglichst in einem fachlichen Story-Schnitt umgesetzt.
 - Demo-relevante Bugs haben Vorrang vor kosmetischen Nebenbaustellen.
-- Doku ist Teil von Done und nicht der Muelleimer am Sprintende.
+- Doku ist Teil von Done und nicht der Mülleimer am Sprintende.
 
-## Kapazitaetsannahme
-| Sprint | Verfuegbare Personen | Besondere Annahme | Grobe Teamkapazitaet |
+## Kapazitätsannahme
+| Sprint | Verfügbare Personen | Besondere Annahme | Grobe Teamkapazität |
 | --- | --- | --- | --- |
 | Sprint 1 | 10 | Onboarding, Setup-Aufwand | 34 SP |
 | Sprint 2 | 10 | volle Teamstärke | 42 SP |
@@ -52,6 +52,6 @@
 | Sprint 4 | 10 | mehr Integrations- und Dokuaufwand | 36 SP |
 
 ## Warum das Team so geschnitten ist
-- Das Setup ist fuer ein Hochschulprojekt bewusst klar in Rollen, Verantwortungen und Arbeitslogik getrennt dokumentiert.
+- Das Setup ist für ein Hochschulprojekt bewusst klar in Rollen, Verantwortungen und Arbeitslogik getrennt dokumentiert.
 - In Sprint 1 wurde noch stark frontend- und mockup-lastig gearbeitet.
-- Erst ab dem Review-Feedback und der Rueckmeldung zur vertikaleren Arbeitsweise wurde der Produktfluss bewusster ueber Frontend, Backend und Datenmodell zusammengeschnitten.
+- Erst ab dem Review-Feedback und der Rückmeldung zur vertikaleren Arbeitsweise wurde der Produktfluss bewusster über Frontend, Backend und Datenmodell zusammengeschnitten.

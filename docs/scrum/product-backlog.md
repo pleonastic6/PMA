@@ -1,20 +1,20 @@
 # PMA Product Backlog
 
 ## Status
-- Simuliertes Product Backlog fuer die Abgabe.
-- Die Eintraege sind bewusst grob genug fuer Refinement, aber konkret genug fuer Sprint-Zuschnitte.
+- Simuliertes Product Backlog für die Abgabe.
+- Die Einträge sind bewusst grob genug für Refinement, aber konkret genug für Sprint-Zuschnitte.
 
 ## Epics
-- EPIC A: Einstieg und Produktverstaendnis
+- EPIC A: Einstieg und Produktverständnis
 - EPIC B: Profile und Personen-Discovery
 - EPIC C: Social Interaktion
 - EPIC D: Events und Orte
-- EPIC E: Demo, Stabilitaet und Abgabe
+- EPIC E: Demo, Stabilität und Abgabe
 
 ## Priorisiertes Backlog
-| Rang | ID | Epic | Backlog Item | Geschaetzter Wert |
+| Rang | ID | Epic | Backlog Item | Geschätzter Wert |
 | --- | --- | --- | --- | --- |
-| 1 | PMA-01 | A | Projektsetup fuer Frontend und Backend | Hoch |
+| 1 | PMA-01 | A | Projektsetup für Frontend und Backend | Hoch |
 | 2 | PMA-02 | A | Landingpage und Navigation mit klarem Nutzenversprechen | Hoch |
 | 3 | PMA-03 | B | erste Profilkarten und Nutzerdatenbasis | Hoch |
 | 4 | PMA-04 | A | erster UI-API-Datenmodell-Durchstich | Hoch |
@@ -28,7 +28,7 @@
 | 12 | PMA-33 | C | Chat zwischen Matches | Hoch |
 | 13 | PMA-34 | C | Matchliste als Einstieg in Konversationen | Mittel |
 | 14 | PMA-35 | D | Eventseiten und Eventformular | Mittel |
-| 15 | PMA-36 | D | Kartenansicht fuer spaetere Ortsbezuege | Mittel |
+| 15 | PMA-36 | D | Kartenansicht für spätere Ortsbezüge | Mittel |
 | 16 | PMA-41 | D | Events im Backend persistent speichern | Hoch |
 | 17 | PMA-42 | D | Karte mit echten API-Daten | Hoch |
 | 18 | PMA-43 | E | Frontend-Flows stabilisieren | Hoch |
@@ -37,12 +37,12 @@
 | 21 | PMA-46 | E | Test- und Build-Verifikation | Hoch |
 | 22 | PMA-51 | D | Event-Filter nach Ort, Datum und Typ | Mittel |
 | 23 | PMA-52 | B | Profil-Detailseiten mit Galerie und Pflichtfeldern | Mittel |
-| 24 | PMA-53 | B | Swipe-Praeferenzen in Profileinstellungen | Mittel |
-| 25 | PMA-54 | D | Ortssuche ueber Nominatim statt Freihand-Markierung | Mittel |
-| 26 | PMA-55 | D | Swipe-Decks fuer Hobbys, Events und Locations | Mittel |
+| 24 | PMA-53 | B | Swipe-Präferenzen in Profileinstellungen | Mittel |
+| 25 | PMA-54 | D | Ortssuche über Nominatim statt Freihand-Markierung | Mittel |
+| 26 | PMA-55 | D | Swipe-Decks für Hobbys, Events und Locations | Mittel |
 
 ## Definition of Ready
 - Nutzer- oder Teamnutzen ist beschrieben.
 - Akzeptanzkriterien sind testbar.
-- Story ist klein genug fuer einen Sprint oder bewusst geschnitten.
-- Abhaengigkeiten zu Frontend, Backend oder Doku sind sichtbar.
+- Story ist klein genug für einen Sprint oder bewusst geschnitten.
+- Abhängigkeiten zu Frontend, Backend oder Doku sind sichtbar.

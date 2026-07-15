@@ -17,4 +17,4 @@ flowchart TB
 ## Lesart
 - Frontend und Backend laufen im Entwicklungsbetrieb getrennt.
 - Die Browser-App spricht nur mit dem Backend.
-- Das Backend uebernimmt Persistenz und externe Ortsabfragen.
+- Das Backend übernimmt Persistenz und externe Ortsabfragen.

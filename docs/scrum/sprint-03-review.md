@@ -20,6 +20,6 @@
 - Positiv bewertet wurde, dass PMA sich von einer reinen Dating-App in Richtung Social-Discovery-Plattform entwickelt.
 - Gewünscht wurde, dass Events und Locations im finalen MVP auch technisch sauber angebunden werden.
 
-## Konsequenzen fuer Sprint 4
+## Konsequenzen für Sprint 4
 - Mockdaten bei Events/Karte entfernen
 - Demo-Flow und Doku finalisieren

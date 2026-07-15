@@ -18,9 +18,9 @@
 - Name:
   Mila, 24, Werkstudentin und Event-affin
 - Situation:
-  Moechte kleine Treffen, Bar-Abende oder Freizeitaktionen planen, ohne fuer jede Idee eine neue Gruppe aufzusetzen.
+  Möchte kleine Treffen, Bar-Abende oder Freizeitaktionen planen, ohne für jede Idee eine neue Gruppe aufzusetzen.
 - Bedarf:
-  Leute mit passenden Interessen finden und Aktivitaeten sichtbar machen.
+  Leute mit passenden Interessen finden und Aktivitäten sichtbar machen.
 - Relevante Funktionen:
   Profil, Events, Locations, Kartenansicht, Chat.
 
@@ -28,12 +28,12 @@
 - Name:
   Sam, 23, neu in der Region
 - Situation:
-  Kennt Cafes, Parks und Treffpunkte vor Ort kaum und braucht Ankerpunkte fuer soziale Aktivitaeten.
+  Kennt Cafes, Parks und Treffpunkte vor Ort kaum und braucht Ankerpunkte für soziale Aktivitäten.
 - Bedarf:
   Orte und Events als Kontext entdecken statt nur Profile durchzuklicken.
 - Relevante Funktionen:
   Location Swipe, Event Swipe, Karte, Profilkontext.
 
-## Konsequenz fuer den MVP
+## Konsequenz für den MVP
 - PMA darf nicht wie ein reines Dating-Produkt wirken.
-- Menschen bleiben der zentrale Einstieg, aber Hobbys, Events und Locations muessen als sichtbare Discovery-Kontexte vorkommen.
+- Menschen bleiben der zentrale Einstieg, aber Hobbys, Events und Locations müssen als sichtbare Discovery-Kontexte vorkommen.

@@ -1,7 +1,7 @@
 # Sprint 4 Retrospektive
 
 ## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+- Dokument ist bewusst als simuliertes Scrum-Artefakt für das PMA-Hochschulprojekt formuliert.
 
 ## Was gut lief
 - Die letzten Mockdaten konnten konsequent durch echte API-Flows ersetzt werden.
@@ -10,21 +10,21 @@
 - Tests und Build als Abschlusskriterium waren sinnvoll und haben Klarheit geschaffen.
 
 ## Was nicht gut lief
-- Einige Stabilitaetsprobleme im Frontend wurden erst ganz am Ende sichtbar.
-- Dokumentationsarbeit war weniger spektakulaer, aber noetig und zeitintensiv.
+- Einige Stabilitätsprobleme im Frontend wurden erst ganz am Ende sichtbar.
+- Dokumentationsarbeit war weniger spektakulär, aber nötig und zeitintensiv.
 
 ## Learnings
-- Mockdaten muessen vor der Abgabe wirklich verschwinden, sonst wirkt ein Projekt halb fertig.
-- Ein Seed-Script ist fuer Demos Gold wert.
+- Mockdaten müssen vor der Abgabe wirklich verschwinden, sonst wirkt ein Projekt halb fertig.
+- Ein Seed-Script ist für Demos Gold wert.
 - Scrum-Artefakte lassen sich glaubhaft schreiben, wenn der technische Verlauf konsistent dokumentiert ist.
 
 ## Abschlussfazit
 - Das Team hat den Sprint trotz Doku- und Abgabedruck strukturiert abgeschlossen und technische Restarbeiten konsequent priorisiert.
-- Tests, Build und Demo-Seeding als feste Abschlusskriterien haben fuer Klarheit im Endspurt gesorgt.
-- Fuer kuenftige Projekte lohnt es sich, Dokumentation und Abgabeartefakte frueher parallel zur Entwicklung mitzuziehen.
+- Tests, Build und Demo-Seeding als feste Abschlusskriterien haben für Klarheit im Endspurt gesorgt.
+- Für künftige Projekte lohnt es sich, Dokumentation und Abgabeartefakte früher parallel zur Entwicklung mitzuziehen.
 
-## Falls es einen Folgesprint gaebe
+## Falls es einen Folgesprint gäbe
 - Echter Bild-Upload
 - Live-Chat
 - Distanz-/Interessenfilter
-- Deployment auf eine oeffentlich erreichbare Demo-Umgebung
+- Deployment auf eine öffentlich erreichbare Demo-Umgebung

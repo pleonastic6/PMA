@@ -9,23 +9,23 @@ PMA ist ein Social-Matching-MVP mit Registrierung, Profilen, Personen-Discovery,
 
 ## MVP-Features
 - Registrierung und Login mit Session-Token
-- Profilpflege mit erweiterten Feldern, Galerie und Swipe-Praeferenzen
+- Profilpflege mit erweiterten Feldern, Galerie und Swipe-Präferenzen
 - Discovery-Feed mit Like/Pass
 - Gegenseitige Likes erzeugen Matches
-- Oeffentliche Profilansicht fuer andere Nutzer innerhalb der App
+- Öffentliche Profilansicht für andere Nutzer innerhalb der App
 - Chat nur zwischen Matches
-- Events erstellen, bearbeiten, loeschen und filtern
+- Events erstellen, bearbeiten, löschen und filtern
 - Karte mit Event-Markern und anonymisierten Nutzerzonen
-- Orts- und Stadtvorschlaege ueber Nominatim/OSM
+- Orts- und Stadtvorschläge über Nominatim/OSM
 
 ## Projektstruktur
-- `frontend/app` React-Frontend
-- `backend` Express-API
+- `src/frontend/app` React-Frontend
+- `src/backend` Express-API
 - `docs/scrum` Scrum-Artefakte, Sprintdokumente und Projektziele
 - `docs/requirements` User Stories und Personas
-- `docs/architecture` Architekturuebersicht, Diagramme und ADR
+- `docs/architecture` Architekturübersicht, Diagramme und ADR
 - `docs/user-manual` kompakter Bedienleitfaden
-- `docs/presentation` OTH-Beamer-Praesentation
+- `docs/presentation` OTH-Beamer-Präsentation
 
 ## Quick Start
 
@@ -41,7 +41,7 @@ Oder eine bestehende MongoDB-Instanz verwenden.
 ### 2. Backend konfigurieren
 
 ```bash
-cd backend
+cd src/backend
 cp .env.example .env
 npm install
 ```
@@ -66,7 +66,7 @@ Das Script leert die relevanten Collections und legt Demo-User, Matches, Chats u
 npm run dev
 ```
 
-Das Backend laeuft dann standardmaessig auf `http://localhost:5000`.
+Das Backend läuft dann standardmäßig auf `http://localhost:5000`.
 
 ### 5. Frontend starten
 
@@ -76,7 +76,7 @@ npm install
 npm start
 ```
 
-Das Frontend laeuft standardmaessig auf `http://localhost:3000`.
+Das Frontend läuft standardmäßig auf `http://localhost:3000`.
 
 ## Demo-Accounts
 - `neo / demo12345`
@@ -87,8 +87,8 @@ Das Frontend laeuft standardmaessig auf `http://localhost:3000`.
 ## Empfohlener Demo-Ablauf
 1. Mit `neo` einloggen.
 2. Profil kurz zeigen, inklusive Galerie und Interessen/Sprachen.
-3. `Swipe` oeffnen und die Karten mit Mehrfach-Slides erklaeren.
-4. `Matches` oeffnen, vorhandene Matches zeigen und ein Profil aufrufen.
+3. `Swipe` öffnen und die Karten mit Mehrfach-Slides erklären.
+4. `Matches` öffnen, vorhandene Matches zeigen und ein Profil aufrufen.
 5. In `Chat` die Demo-Unterhaltung mit `trinity` zeigen.
 6. In `Events` die vorhandenen Events samt Filtern zeigen.
 7. Optional neues Event anlegen oder ein bestehendes bearbeiten.
@@ -115,21 +115,21 @@ npm run build
 - Backend-Tests:
 
 ```bash
-cd backend
+cd src/backend
 npm test
 ```
 
 - Frontend-Produktionsbuild:
 
 ```bash
-cd frontend/app
+cd src/frontend/app
 npm run build
 ```
 
 ## Bekannte MVP-Grenzen
 - Bilder werden aktuell clientseitig als komprimierte Data-URLs gespeichert; es gibt noch keinen serverseitigen Datei-Upload oder externen Storage.
 - Chat ist Request-basiert, nicht in Echtzeit per WebSocket.
-- Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert fuer die Demo.
+- Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert für die Demo.
 - Nicht-Personen-Swipes sind aktuell als Discovery-Kontexte umgesetzt, aber noch ohne eigene persistente Empfehlungslogik oder Matchmechanik.
 
 ## Scrum-Dokumente

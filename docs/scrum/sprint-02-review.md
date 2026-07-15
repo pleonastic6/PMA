@@ -4,7 +4,7 @@
 - Dokumentiert das Ergebnis des zweiten Reviews im PMA-Hochschulprojekt.
 
 ## Sprint Goal Ergebnis
-- Erreicht. Nutzer koennen sich registrieren, einloggen, Profile pflegen und andere Profile mit Interessenbasis entdecken.
+- Erreicht. Nutzer können sich registrieren, einloggen, Profile pflegen und andere Profile mit Interessenbasis entdecken.
 
 ## Gezeigtes Inkrement
 - Registrierung und Login gegen echtes Backend
@@ -14,7 +14,7 @@
 
 ## Bezug zum Stakeholder-Feedback aus Sprint 1
 - Das Sprint-2-Inkrement hat die Personen- und Interessenebene priorisiert.
-- Vor allem wurde die Arbeitsweise geaendert: Statt nur klickbare Screens zu bauen, wurde erstmals ein echter End-to-End-Flow geliefert.
+- Vor allem wurde die Arbeitsweise geändert: Statt nur klickbare Screens zu bauen, wurde erstmals ein echter End-to-End-Flow geliefert.
 - Hobbys wurden als Profilbestandteil aufgenommen, damit spätere Swipe-Objekte wie Events und Locations nicht losgelöst wirken.
 
 ## Offene Erkenntnisse
@@ -22,6 +22,6 @@
 - Die Discovery-Logik funktioniert fachlich, ist aber noch stark auf Personen fokussiert.
 - Der Umstieg von Frontend-Mockup auf vertikales Arbeiten war richtig, hat aber mehr Integrationsaufwand erzeugt als anfangs gedacht.
 
-## Konsequenzen fuer Sprint 3
+## Konsequenzen für Sprint 3
 - Match-Nutzen durch Chat erlebbar machen
 - Event- und Location-Dimension deutlicher in die Produktstruktur bringen
