@@ -18,7 +18,7 @@ nometaot
 \addbibresource{quellen.bib}
 
 \title[PMA]{PMA}
-\subtitle{Social-Matching-MVP als Hochschulprojekt}
+\subtitle{Social-Discovery-MVP als Hochschulprojekt}
 \author{Arturo Mendez \and Team PMA}
 \institute{OTH Amberg-Weiden}
 \date{\today}
@@ -35,15 +35,25 @@ nometaot
 
 \begin{frame}{Projektziel}
   \begin{block}{Zielbild}
-    PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, Events und Kartenbezug.
+    PMA zeigt Social Discovery nicht nur ueber Personen-Matching, sondern ueber einen Produktfluss aus Profil, Discovery, Match, Chat, swipebaren Kontexten und Karte.
   \end{block}
 
   \vspace{0.3cm}
 
   \begin{itemize}
-    \item Fokus auf ein technisch vorfuehrbares End-to-End-System
-    \item kein Anspruch auf vollstaendigen Produktionsumfang
-    \item iterative Umsetzung ueber vier Sprints
+    \item technisch vorfuehrbarer End-to-End-MVP
+    \item bewusster MVP statt Produktivsystem
+    \item Umsetzung in vier Sprints
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{SMART-Ziel}
+  \begin{itemize}
+    \item \textbf{S:} Profil, Swipe, Match, Chat, Events und Karte in einem lauffaehigen MVP
+    \item \textbf{M:} alle Kernflows sind in der Demo benutzbar
+    \item \textbf{A:} breiter als reines Personen-Matching
+    \item \textbf{R:} ohne Live-Chat, echten Upload und tiefe Empfehlungslogik
+    \item \textbf{T:} Umsetzung in vier Sprints
   \end{itemize}
 \end{frame}
 
@@ -54,17 +64,17 @@ nometaot
     \begin{itemize}
       \item neues Produktziel
       \item begrenzter Zeitrahmen
-      \item eigene Rollen und Zuständigkeiten
-      \item sichtbare Risiken bei Scope und Integration
+      \item Rollen und Zuständigkeiten
+      \item Integrations- und Scope-Risiken
     \end{itemize}
 
     \column{0.48\textwidth}
     \textbf{Nicht Routine}
     \begin{itemize}
-      \item kein standardisierter Ablauf
-      \item Produktbild musste erst geschärft werden
-      \item Anforderungen veraenderten sich durch Feedback
-      \item Frontend, Backend und Datenmodell mussten gemeinsam wachsen
+      \item kein Standardprozess
+      \item Produktbild entstand iterativ
+      \item Anforderungen aenderten sich durch Reviews
+      \item Frontend, Backend und Datenmodell wuchsen gemeinsam
     \end{itemize}
   \end{columns}
 \end{frame}
@@ -74,14 +84,14 @@ nometaot
 \begin{frame}{Produktidee}
   \begin{itemize}
     \item PMA ist keine reine Dating-App, sondern ein Social-Discovery-MVP.
-    \item Der Live-Flow fokussiert aktuell Personen-Discovery.
-    \item Zusaetzliche soziale Kontexte werden ueber Interessen, Events und Kartenbezug sichtbar angebunden.
+    \item Menschen bleiben der zentrale Flow fuer Match und Chat.
+    \item Discovery wird um Hobbys, Events und Locations erweitert.
   \end{itemize}
 
   \vspace{0.3cm}
 
   \begin{block}{Kernfrage}
-    Wie laesst sich Kennenlernen digital nicht nur ueber Profile, sondern auch ueber gemeinsame Interessen, spontane Treffen und Orte denken?
+    Wie laesst sich Kennenlernen digital ueber Personen, gemeinsame Interessen, Events und Orte denken?
   \end{block}
 \end{frame}
 
@@ -92,7 +102,8 @@ nometaot
     \begin{itemize}
       \item Registrierung und Login
       \item Profilpflege mit Galerie
-      \item Personen-Discovery mit Swipe und Match
+      \item Swipe fuer Menschen, Hobbys, Events und Locations
+      \item Match-Logik fuer Menschen
       \item Chat zwischen Matches
     \end{itemize}
 
@@ -101,7 +112,7 @@ nometaot
     \begin{itemize}
       \item Events erstellen, filtern und bearbeiten
       \item Kartenansicht mit Event-Markern
-      \item Nutzerzonen in pseudoanonymisierter Form
+      \item pseudoanonymisierte Nutzerzonen
       \item Orts- und Stadtvorschlaege ueber Nominatim/OSM \cite{nominatim}
     \end{itemize}
   \end{columns}
@@ -123,14 +134,40 @@ nometaot
   \end{block}
 \end{frame}
 
+\begin{frame}{Architektur auf einen Blick}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Frontend}
+    \begin{itemize}
+      \item React SPA mit geschuetzten Routen
+      \item Swipe, Matches, Chat, Events, Karte
+      \item REST-Kommunikation
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Backend}
+    \begin{itemize}
+      \item Express-API unter \texttt{/api/v1}
+      \item Module fuer Auth, Discovery, Matches, Chat, Events, Map
+      \item MongoDB als zentrale Persistenz
+    \end{itemize}
+  \end{columns}
+
+  \vspace{0.3cm}
+
+  \begin{block}{Wichtige Entscheidung}
+    Monolithisches REST-Backend: weniger Integrationsaufwand, schneller demo-faehig.
+  \end{block}
+\end{frame}
+
 \section{Vorgehen}
 
 \begin{frame}{Vorgehensmodell}
   \begin{itemize}
-    \item Organisation als Scrum-basiertes, iterativ-inkrementelles Softwareprojekt \cite{scrumguide}
-    \item zweiwoechige Sprints mit Planning, Daily, Review und Retrospektive
+    \item Scrum-basiertes, iterativ-inkrementelles Vorgehen \cite{scrumguide}
+    \item zweiwoechige Sprints mit Planning, Review und Retrospektive
     \item Product Backlog als priorisierte Arbeitsgrundlage
-    \item Reviews dienten nicht nur zur Demo, sondern zur aktiven Scope-Korrektur
+    \item Reviews dienten auch zur Scope-Korrektur
   \end{itemize}
 \end{frame}
 
@@ -148,8 +185,8 @@ nometaot
     \textbf{Stakeholder}
     \begin{itemize}
       \item betreuender Dozent im Modulkontext
-      \item Nutzergruppe: Studierende und junge Erwachsene
-      \item Feedback floss ueber Sprint Reviews in die Priorisierung ein
+      \item Zielgruppe: Studierende und junge Erwachsene
+      \item Feedback floss ueber Reviews in die Priorisierung ein
     \end{itemize}
   \end{columns}
 \end{frame}
@@ -159,7 +196,7 @@ nometaot
     M1 & Produktbild und klickbarer Frontend-Rahmen sichtbar \\
     M2 & Auth, Profil und Personen-Discovery als erster vertikaler Kernflow \\
     M3 & Matchliste, Chat sowie Event-/Map-Bereiche als erlebbare Produktteile \\
-    M4 & Events und Karte an echte Backend-Daten angebunden, Demo und Doku abgabefaehig \\
+    M4 & Events und Karte an echte Backend-Daten angebunden, mehrere Swipe-Decks, Demo und Doku abgabefaehig \\
   \end{tabularx}
 \end{frame}
 
@@ -170,19 +207,29 @@ nometaot
     \item \textbf{Sprint 1:} klickbares Produktbild, aber noch stark mockup-lastig
     \item \textbf{Sprint 2:} echter Kernflow mit Auth, Profil, Discovery, Swipe und Match
     \item \textbf{Sprint 3:} Match-Nutzen durch Chat, dazu erste Event- und Kartenbereiche
-    \item \textbf{Sprint 4:} Backend-Anbindung fuer Events und Karte, Demo-Seed, Doku und Stabilisierung
+    \item \textbf{Sprint 4:} Backend-Anbindung fuer Events und Karte, Multi-Deck-Discovery, Demo-Seed, Doku und Stabilisierung
   \end{enumerate}
 \end{frame}
 
 \begin{frame}{Wichtigstes Review-Learning}
   \begin{block}{Rueckmeldung nach Sprint 1}
-    Ein reiner Frontend-Prototyp reicht nicht aus. Das Produkt musste frueh als echter Ende-zu-Ende-Flow erfahrbar werden.
+    Ein reiner Frontend-Prototyp reicht nicht aus. PMA musste frueh als echter End-to-End-Flow erfahrbar werden.
   \end{block}
 
   \begin{itemize}
     \item Wechsel von Mockup-Denken zu vertikaler Umsetzung
-    \item Personen-Discovery blieb Kern, wurde aber in ein breiteres Social-Discovery-Bild eingebettet
-    \item Events und Locations wurden nicht als Deko, sondern als Produktkontext mitgedacht
+    \item Personen-Discovery blieb Kern
+    \item Stakeholder-Wunsch nach Hobbys, Events und Locations floss sichtbar in den spaeteren Scope ein
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Zentrale User Stories}
+  \begin{itemize}
+    \item Als neuer Nutzer will ich mich registrieren und einloggen koennen, damit ich PMA nutzen kann.
+    \item Als Nutzer will ich mein Profil pflegen koennen, damit andere mich sinnvoll entdecken koennen.
+    \item Als Nutzer will ich Menschen, Hobbys, Events und Locations swipen koennen, damit Discovery breiter als Dating gedacht ist.
+    \item Als Match will ich chatten koennen, damit aus einem Match echte Interaktion wird.
+    \item Als Nutzer will ich Events ansehen, filtern und auf einer Karte einordnen koennen, damit spontane Treffen sichtbar werden.
   \end{itemize}
 \end{frame}
 
@@ -192,14 +239,14 @@ nometaot
   \begin{itemize}
     \item Bilder werden aktuell clientseitig als komprimierte Data-URLs gespeichert
     \item kein Echtzeit-Chat per WebSocket
-    \item keine eigenen Swipe-Decks fuer Events oder Orte
+    \item Nicht-Personen-Swipes haben noch keine persistente Logik oder Matchmechanik
     \item Kartenzonen sind fuer die Demo bewusst pseudoanonymisiert
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Fazit}
   \begin{itemize}
-    \item PMA zeigt einen technisch durchgaengigen Social-Matching-MVP.
+    \item PMA zeigt einen technisch durchgaengigen Social-Discovery-MVP.
     \item Der groesste methodische Fortschritt war der Wechsel von klickbaren Screens zu vertikalen Inkrementen.
     \item Scrum war fuer das Projekt vor allem als Struktur fuer Priorisierung, Review-Feedback und Steuerung nuetzlich.
   \end{itemize}
