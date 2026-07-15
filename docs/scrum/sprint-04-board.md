@@ -4,15 +4,15 @@
 - MVP schliessen, Demo absichern und Dokumentation abgabefaehig machen.
 
 ## Commitment
-- 22 Story Points aus dem Sprint-4-Backlog
+- 25 Story Points aus dem Sprint-4-Backlog
 
 ## Board am Sprintende
 | Status | Tickets | Owner |
 | --- | --- | --- |
 | To Do | - | - |
 | In Progress | - | - |
-| In Review | PMA-45 Abgabedoku und Scrum-Artefakte final gegenlesen | David, Flo, Andre |
-| Done | PMA-41 persistente Events, PMA-42 echte Kartendaten, PMA-43 Frontend-Stabilisierung, PMA-44 Seed-Daten, PMA-46 Verifikation | Artur, Süleyman, Stefan, Lukas, Georg, Paul, Matthias |
+| In Review | PMA-45 Abgabedoku und Scrum-Artefakte final gegenlesen | Stefan, Andre |
+| Done | PMA-41 persistente Events, PMA-42 echte Kartendaten, PMA-43 Frontend-Stabilisierung, PMA-44 Seed-Daten, PMA-46 Verifikation, PMA-55 Multi-Deck-Swipe | Artur, Georg, Süleyman, Paul, Matthias, Florian, Lukas |
 | Blocked | - | - |
 
 ## Sprintfazit

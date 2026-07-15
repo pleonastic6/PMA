@@ -8,7 +8,7 @@
 
 ## Team und Kapazitaet
 - Beteiligte: 9 aktive Teammitglieder plus Scrum Master und Product Owner in Zeremonien
-- Geplante Kapazitaet: 38 SP brutto, davon 24 SP committed
+- Geplante Kapazitaet: 38 SP brutto, davon 20 SP committed
 - Schwerpunkt: Match-Nutzung, Chat, Event-Vorarbeit, Map-Konzept
 
 ## Sprint Scope

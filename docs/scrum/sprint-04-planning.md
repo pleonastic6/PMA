@@ -8,7 +8,7 @@
 
 ## Team und Kapazitaet
 - Beteiligte: gesamtes 10er Scrum-Team
-- Geplante Kapazitaet: 36 SP brutto, davon 22 SP committed
+- Geplante Kapazitaet: 36 SP brutto, davon 25 SP committed
 - Schwerpunkt: Integration, Stabilisierung, Demo, Doku
 
 ## Geplante Inhalte

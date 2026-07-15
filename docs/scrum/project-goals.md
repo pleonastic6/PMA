@@ -12,15 +12,15 @@
 - Als Nutzer will ich Events anlegen, ansehen, filtern und ueber die Karte verorten koennen, damit spontane Treffen sichtbar organisiert werden koennen.
 
 ## SMART-Ziel
-- **Spezifisch:**
-  PMA soll als lauffaehiger Social-Discovery-MVP umgesetzt werden, in dem Nutzer sich registrieren, Profile pflegen, Menschen sowie Hobbys, Events und Locations swipen, Matches sehen, chatten und Events mit Kartenbezug nutzen koennen.
-- **Messbar:**
-  Der MVP gilt als erreicht, wenn die Kernflows `Register/Login`, `Profil bearbeiten`, `Personen swipen`, `Hobbys/Events/Locations swipen`, `Match + Chat`, `Events anlegen/listen/filtern` und `Kartenansicht` in der Demo lauffaehig sind und durch Tests bzw. Build-Verifikation technisch abgesichert werden.
-- **Attraktiv:**
-  Das Ziel ist fachlich relevant, weil PMA sich dadurch klar von einem simplen Personen-Matcher abgrenzt und Social Discovery ueber mehrere Kontexte zeigt.
-- **Realistisch:**
-  Der Umfang ist als MVP geschnitten und verzichtet bewusst auf Themen wie produktionsreifen Bild-Upload, WebSocket-Live-Chat oder voll persistente Empfehlungslogik fuer Nicht-Personen-Swipes.
-- **Terminiert:**
+- Spezifisch:
+  PMA soll als demo-faehiger Social-Discovery-MVP umgesetzt werden, in dem Nutzer sich registrieren, Profile pflegen, Menschen swipen, Matches sehen und chatten sowie Events und Karte nutzen koennen. Zusaetzlich sollen Hobbys, Events und Locations als eigene Swipe-Kontexte sichtbar im Produkt vorkommen.
+- Messbar:
+  Der MVP gilt als erreicht, wenn die Kernflows `Register/Login`, `Profil bearbeiten`, `Personen swipen`, `Match + Chat`, `Events anlegen/listen/filtern`, `Kartenansicht` und die zusaetzlichen Swipe-Kontexte fuer `Hobbys/Events/Locations` in der Demo lauffaehig sind. Zusaetzlich muessen Backend-Tests und Frontend-Build erfolgreich durchlaufen.
+- Attraktiv:
+  Das Ziel ist fachlich relevant, weil PMA sich damit klar von einem simplen Personen-Matcher abgrenzt und Social Discovery ueber mehrere Kontexte sichtbar macht.
+- Realistisch:
+  Der Umfang ist bewusst als MVP geschnitten und verzichtet auf produktionsreifen Bild-Upload, WebSocket-Live-Chat und eine ausgereifte persistente Empfehlungslogik fuer Nicht-Personen-Swipes.
+- Terminiert:
   Der MVP soll innerhalb von vier Sprints im Modulkontext fertig, demo-faehig und dokumentiert vorliegen.
 
 ## Abgrenzung

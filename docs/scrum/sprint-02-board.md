@@ -10,9 +10,9 @@
 | Status | Tickets | Owner |
 | --- | --- | --- |
 | To Do | - | - |
-| In Progress | PMA-17 Interessenmodell weiter schaerfen | Andre, Lukas |
-| In Review | PMA-16 Matches im Frontend sauber darstellen | Süleyman, Flo, Paul |
-| Done | PMA-11 Registrierung, PMA-12 Login, PMA-13 Profil, PMA-14 Discovery, PMA-15 Swipe | Artur, David, Matthias, Georg, Stefan |
+| In Progress | PMA-17 Interessenmodell weiter schaerfen | Paul |
+| In Review | PMA-16 Matches im Frontend sauber darstellen | Georg, Lukas |
+| Done | PMA-11 Registrierung, PMA-12 Login, PMA-13 Profil, PMA-14 Discovery, PMA-15 Swipe | Artur, Süleyman, Matthias, Florian |
 | Blocked | - | - |
 
 ## Engpaesse
