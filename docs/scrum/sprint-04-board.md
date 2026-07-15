@@ -11,7 +11,7 @@
 | --- | --- | --- |
 | To Do | - | - |
 | In Progress | - | - |
-| In Review | PMA-45 Abgabedoku und Scrum-Artefakte final gegenlesen | David, Flo |
+| In Review | PMA-45 Abgabedoku und Scrum-Artefakte final gegenlesen | David, Flo, Andre |
 | Done | PMA-41 persistente Events, PMA-42 echte Kartendaten, PMA-43 Frontend-Stabilisierung, PMA-44 Seed-Daten, PMA-46 Verifikation | Artur, Süleyman, Stefan, Lukas, Georg, Paul, Matthias |
 | Blocked | - | - |
 
