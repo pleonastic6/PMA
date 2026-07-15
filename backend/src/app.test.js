@@ -259,8 +259,11 @@ test('discovery lists other users and like-like creates a match', async () => {
 
         const discoveryResponse = await request(server, '/api/v1/discovery', 'GET', null, neoToken);
         assert.equal(discoveryResponse.statusCode, 200);
-        assert.equal(discoveryResponse.body.data.length, 1);
-        assert.equal(discoveryResponse.body.data[0].username, 'trinity');
+        assert.equal(discoveryResponse.body.data.people.length, 1);
+        assert.equal(discoveryResponse.body.data.people[0].username, 'trinity');
+        assert.ok(Array.isArray(discoveryResponse.body.data.interests));
+        assert.ok(Array.isArray(discoveryResponse.body.data.events));
+        assert.ok(Array.isArray(discoveryResponse.body.data.locations));
 
         const neoSwipeResponse = await request(server, '/api/v1/matches/swipe', 'POST', {
             targetUserId: trinityId,

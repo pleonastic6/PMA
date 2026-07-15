@@ -39,6 +39,7 @@
 | 23 | PMA-52 | B | Profil-Detailseiten mit Galerie und Pflichtfeldern | Mittel |
 | 24 | PMA-53 | B | Swipe-Praeferenzen in Profileinstellungen | Mittel |
 | 25 | PMA-54 | D | Ortssuche ueber Nominatim statt Freihand-Markierung | Mittel |
+| 26 | PMA-55 | D | Swipe-Decks fuer Hobbys, Events und Locations | Mittel |
 
 ## Definition of Ready
 - Nutzer- oder Teamnutzen ist beschrieben.

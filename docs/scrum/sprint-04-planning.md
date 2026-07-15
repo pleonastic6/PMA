@@ -14,6 +14,7 @@
 ## Geplante Inhalte
 - Events ueber echtes Backend persistieren
 - Kartenansicht auf API-Daten umstellen
+- Swipe-Bereich um Hobbys, Events und Locations erweitern
 - Frontend-Stabilisierung und Request-Flows bereinigen
 - Tests und Build absichern
 - Demo-Seeding und Projektdokumentation vorbereiten
@@ -27,6 +28,7 @@
 | PMA-44 | Als Team wollen wir Demo-Daten auf Knopfdruck | Seed-Script erzeugt reproduzierbare Demo-Welt | 3 SP |
 | PMA-45 | Als Team wollen wir eine saubere Abgabe | README, Demo-Guide und Scrum-Artefakte sind vorhanden | 3 SP |
 | PMA-46 | Als Team wollen wir technische Verifikation | Backend-Tests und Frontend-Build laufen erfolgreich | 3 SP |
+| PMA-55 | Als Nutzer will ich nicht nur Personen, sondern auch Hobbys, Events und Locations swipen koennen | Swipe-Ansicht bietet mehrere Discovery-Decks mit Demo-/Bestandsdaten | 3 SP |
 
 ## Risiken
 - Letzte Integrationsfehler zwischen Frontend und Backend
@@ -37,6 +39,7 @@
 
 ## Definition of Done
 - Events und Map laufen ueber Backend
+- Swipe-Ansicht zeigt mehrere Discovery-Kontexte
 - Seed-Script ist nutzbar
 - README und Demo-Doku sind aktuell
 - Tests/Build laufen grün

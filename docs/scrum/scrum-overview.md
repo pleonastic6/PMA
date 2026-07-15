@@ -10,19 +10,18 @@
 - Priorisiertes Gesamtbacklog: [Product Backlog](product-backlog.md)
 
 ## Projektziel
-- PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, Events und Kartenbezug.
+- PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, swipebaren Interessen/Events/Locations und Kartenbezug.
 - Der Fokus der Umsetzung liegt auf einem technisch vorfuehrbaren End-to-End-System, nicht auf vollstaendigem Produktionsumfang.
 
 ## Grobe Meilensteine
 - M1: Produktbild und klickbarer Frontend-Rahmen sichtbar
 - M2: Vertikaler Kernflow mit Auth, Profil und Personen-Discovery laeuft
 - M3: Match-Nutzung durch Chat sowie Event-/Map-Bereiche sind im Produkt erlebbar
-- M4: Events und Karte sind an echte Backend-Daten angebunden, Demo und Doku sind abgabefaehig
+- M4: Events und Karte sind an echte Backend-Daten angebunden, mehrere Swipe-Decks sind vorfuehrbar, Demo und Doku sind abgabefaehig
 
 ## Produktidee
 - PMA ist keine reine Dating-App, sondern eine Social-Discovery-App.
-- Der aktuelle Live-MVP fokussiert den Discovery-Flow auf Personen.
-- Zusaetzliche soziale Kontexte sind bereits sichtbar angebunden oder fuer Folgeschritte vorbereitet:
+- Der aktuelle Live-MVP hat Personen weiterhin als Kernflow, oeffnet Discovery aber zusaetzlich ueber weitere swipebare Kontexte:
   - Hobbys
   - Events
   - Locations
@@ -75,6 +74,7 @@
 - Chat zwischen Matches
 - Eventseiten im Frontend
 - erste Kartenintegration
+- fachliche Vorbereitung fuer spaetere Swipe-Decks jenseits von Personen
 
 ### Produktwirkung
 - PMA wirkte jetzt nicht mehr wie nur „Tinder fuer Personen“, sondern wie eine breiter gedachte Social-App.
@@ -89,6 +89,7 @@
 ### Ergebnis
 - Events über echtes Backend
 - Kartenansicht mit API-Daten
+- Swipe-Decks fuer Hobbys, Events und Locations
 - stabile Frontend-Flows
 - Demo-Seeding
 - README, Demo-Guide und Scrum-Dokumente
@@ -98,6 +99,7 @@
 - Profilpflege
 - Profilgalerie und Profil-Detailansichten
 - Personen-Discovery
+- Swipe-Decks fuer Hobbys, Events und Locations
 - Interessen/Hobbys und Sprachen als Profilbasis
 - Swipe und Match
 - Chat
@@ -107,7 +109,7 @@
 ## Was bewusst offen blieb
 - serverseitiger Bild-Upload mit echter Dateispeicherung
 - Live-Chat per WebSocket
-- voll ausgebaute Event-/Location-Swipes als eigener technischer Flow
+- Persistenz und eigene Empfehlungslogik fuer Nicht-Personen-Swipes
 
 ## Empfohlene Kurz-Erklärung in der Präsentation
 - „Im ersten Sprint haben wir noch zu frontend-lastig gearbeitet und vor allem ein klickbares Produktbild gebaut. Durch das Feedback im Review haben wir dann umgestellt und ab Sprint 2 deutlich vertikaler gearbeitet: echte Auth, Profile, Discovery, danach Chat, Events und Ortsbezug und am Ende Stabilisierung und Doku.“
