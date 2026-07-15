@@ -16,7 +16,7 @@
 | Artur Renner | Scrum Master | Moderation, Impediments, Prozessdisziplin |
 | Süleyman Gümüs  | Developer | Frontend-Integration, UX-Feinschliff, Demo-Flows |
 | Stefan Spinko | Developer | React-Komponenten, Auth-Flows, State-Handling |
-| Paul Gemple | Developer | Express-API, Routing, Request-Flows |
+| Paul Gempel | Developer | Express-API, Routing, Request-Flows |
 | Matthias Kranz | Developer | Datenmodell, Profil- und Matching-Logik |
 | Lukas Leis | Developer | Chat, Events, Frontend-Interaktion |
 | Florian Reinhart | Developer | UI-Design, Responsiveness, Content-Struktur |
