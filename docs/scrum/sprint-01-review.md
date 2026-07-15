@@ -1,7 +1,7 @@
 # Sprint 1 Review
 
 ## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+- Dokumentiert das Ergebnis des ersten Reviews im PMA-Hochschulprojekt.
 
 ## Sprint Goal Ergebnis
 - Erreicht, aber mit klarer Einschraenkung: Die Grundidee von PMA ist sichtbar geworden, allerdings vor allem als Frontend- und Mockup-Inkrement.
@@ -14,7 +14,7 @@
 
 ## Stakeholder-Feedback
 - Der Stakeholder fand die Swipe-Idee grundsaetzlich stark, wollte das Konzept aber breiter sehen:
-  Nicht nur Personen sollen swipbar sein, sondern perspektivisch auch
+  Nicht nur Personen sollen das Produkt praegen, sondern perspektivisch auch
   - Hobbys
   - Events
   - Locations
@@ -22,7 +22,7 @@
 - Zusaetzlich war die Rueckmeldung klar, dass der naechste Sprint nicht wieder nur aus Frontend bestehen sollte, sondern einen echten vertikalen Produktfluss liefern muss.
 
 ## Konsequenzen fuer das Product Backlog
-- Discovery wird fachlich erweitert: Swipe ist nicht nur eine Personeninteraktion, sondern ein allgemeiner Mechanismus fuer Interessen, Orte und Events.
+- Discovery wird fachlich erweitert: Personen bleiben der erste Kernflow, weitere soziale Kontexte wie Interessen, Orte und Events muessen aber sichtbar ins Produktbild einzahlen.
 - Event- und Location-Bezug muessen frueher mitgedacht werden.
 - Profilmodell braucht Interessen/Hobbys als echte Datenbasis und nicht nur als Dekoration.
 - Auth, Profilspeicherung und Discovery muessen jetzt gegen ein echtes Backend gebaut werden.

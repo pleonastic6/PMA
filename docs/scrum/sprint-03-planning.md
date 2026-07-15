@@ -1,10 +1,10 @@
 # Sprint 3 Planning
 
 ## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+- Dokumentiert die Planung des dritten Sprints im PMA-Hochschulprojekt.
 
 ## Sprint Goal
-- Das horizontale Discovery-Modell soll weiter wachsen: Nach Personen und Interessen kommen soziale Interaktion, Events und Ortsbezug als erlebbare Produktteile hinzu.
+- Der Personen-Discovery-Kern soll um echten sozialen Nutzen erweitert werden: Matches sollen in Chat uebergehen, und Event-/Kartenbereiche sollen als naechste Produktdimension sichtbar werden.
 
 ## Team und Kapazitaet
 - Beteiligte: 9 aktive Teammitglieder plus Scrum Master und Product Owner in Zeremonien
@@ -21,12 +21,12 @@
 ## Sprint Backlog
 | ID | Story | Akzeptanzkriterium | Aufwand |
 | --- | --- | --- | --- |
-| PMA-31 | Als neuer Nutzer will ich mich registrieren und direkt ein Profil besitzen | Registrierung erzeugt Session und Profil ist aufrufbar | 5 SP |
-| PMA-32 | Als Nutzer will ich andere Profile swipen koennen | Likes/Passes werden gespeichert und Matches entstehen bei Gegenseitigkeit | 5 SP |
 | PMA-33 | Als Match will ich chatten koennen | Nachrichten koennen nur zwischen Matches gesendet und geladen werden | 5 SP |
 | PMA-34 | Als Nutzer will ich meine Matches sehen | Matchliste zeigt gegenseitige Likes | 3 SP |
 | PMA-35 | Als Nutzer will ich Events im UI sehen | Eventseiten und Eventformular sind vorbereitet | 3 SP |
 | PMA-36 | Als Nutzer will ich eine Kartenansicht als Konzept sehen | Map-Komponente kann Events/Orte grundsaetzlich darstellen | 3 SP |
+| PMA-37 | Als Team wollen wir bestehende Kernflows stabil halten | Register/Login/Swipe/Match bleiben trotz neuer Features vorfuehrbar | 3 SP |
+| PMA-38 | Als Team wollen wir Event- und Kartenbereiche fachlich einrahmen | Nutzerfluss und Datenbedarf fuer Sprint 4 sind sichtbar vorbereitet | 3 SP |
 
 ## Definition of Done
 - Chat und Matches laufen ueber echtes Backend.

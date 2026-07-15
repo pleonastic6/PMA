@@ -1,7 +1,7 @@
 # Sprint 4 Planning
 
 ## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+- Dokumentiert die Planung des vierten Sprints im PMA-Hochschulprojekt.
 
 ## Sprint Goal
 - Das horizontal gedachte PMA-MVP soll technisch geschlossen, demo-faehig und fuer die Abgabe sauber dokumentiert werden.

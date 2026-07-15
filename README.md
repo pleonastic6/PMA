@@ -1,6 +1,6 @@
 # PMA
 
-PMA ist ein kleines Social-Matching-MVP mit Registrierung, Profilen, Swipes, Matches, Chat, Events und Kartenansicht.
+PMA ist ein Social-Matching-MVP mit Registrierung, Profilen, Personen-Discovery, Matches, Chat, Events und Kartenansicht.
 
 ## Stack
 - Frontend: React + React Router + Tailwind + React Leaflet
@@ -9,12 +9,14 @@ PMA ist ein kleines Social-Matching-MVP mit Registrierung, Profilen, Swipes, Mat
 
 ## MVP-Features
 - Registrierung und Login mit Session-Token
-- Profilpflege mit Bio, Interessen, Sprachen und Eisbrecher
+- Profilpflege mit erweiterten Feldern, Galerie und Swipe-Praeferenzen
 - Discovery-Feed mit Like/Pass
 - Gegenseitige Likes erzeugen Matches
+- Oeffentliche Profilansicht fuer andere Nutzer innerhalb der App
 - Chat nur zwischen Matches
-- Events erstellen und anzeigen
+- Events erstellen, bearbeiten, loeschen und filtern
 - Karte mit Event-Markern und anonymisierten Nutzerzonen
+- Orts- und Stadtvorschlaege ueber Nominatim/OSM
 
 ## Projektstruktur
 - `frontend/app` React-Frontend
@@ -80,12 +82,13 @@ Das Frontend laeuft standardmaessig auf `http://localhost:3000`.
 
 ## Empfohlener Demo-Ablauf
 1. Mit `neo` einloggen.
-2. Profil kurz zeigen.
-3. `Matches` oeffnen und vorhandene Matches erklaeren.
-4. In `Chat` die Demo-Unterhaltung mit `trinity` zeigen.
-5. In `Events` die vorhandenen Events zeigen.
-6. In `Map` die Event-Marker und Nutzerzonen zeigen.
-7. Optional neues Event anlegen und direkt wieder in Uebersicht/Karte auftauchen lassen.
+2. Profil kurz zeigen, inklusive Galerie und Interessen/Sprachen.
+3. `Swipe` oeffnen und die Karten mit Mehrfach-Slides erklaeren.
+4. `Matches` oeffnen, vorhandene Matches zeigen und ein Profil aufrufen.
+5. In `Chat` die Demo-Unterhaltung mit `trinity` zeigen.
+6. In `Events` die vorhandenen Events samt Filtern zeigen.
+7. Optional neues Event anlegen oder ein bestehendes bearbeiten.
+8. In `Map` die Event-Marker und Nutzerzonen zeigen.
 
 ## Nützliche Commands
 
@@ -120,9 +123,10 @@ npm run build
 ```
 
 ## Bekannte MVP-Grenzen
-- Profilbilder sind aktuell nur Platzhalter-/Dateinamen-Logik, kein echter Upload.
+- Bilder werden aktuell clientseitig als komprimierte Data-URLs gespeichert; es gibt noch keinen serverseitigen Datei-Upload oder externen Storage.
 - Chat ist Request-basiert, nicht in Echtzeit per WebSocket.
 - Nutzerpositionen auf der Karte sind bewusst pseudoanonymisiert fuer die Demo.
+- Discovery bezieht sich im Live-Flow auf Personen; Events und Orte sind angebundene Kontexte, aber noch keine eigenen Swipe-Decks.
 
 ## Scrum-Dokumente
 - [Scrum Overview](./docs/scrum/scrum-overview.md)

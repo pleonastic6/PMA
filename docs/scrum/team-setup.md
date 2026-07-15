@@ -1,7 +1,7 @@
 # PMA Scrum Team Setup
 
 ## Status
-- Diese Datei dokumentiert bewusst ein simuliertes, aber konsistent aufgebautes Scrum-Setup fuer das PMA-Hochschulprojekt.
+- Diese Datei dokumentiert das fuer PMA verwendete Scrum-Setup im Hochschulkontext.
 
 ## Teamgroesse
 - 10 Personen
@@ -22,6 +22,11 @@
 | Amelie Schuster | Developer | UI-Design, Responsiveness, Content-Struktur |
 | Luca Romano | Developer | Tests, Build-Stabilitaet, Seed-Daten |
 | Fatima El Idrissi | Developer | Karten-/Ortsbezug, Doku, Review-Vorbereitung |
+
+## Stakeholder und Projektumfeld
+- Auftraggeber im Modulkontext: betreuender Dozent bzw. die Lehrveranstaltung mit klarer Erwartung an Projektmanagement, Review und Ergebnisdarstellung.
+- Nutzergruppe im Produktkontext: Studierende bzw. junge Erwachsene, die neue Kontakte, spontane Treffen und Events entdecken wollen.
+- Stakeholder-Feedback wurde vor allem in Sprint Reviews aufgenommen und in Product-Backlog-Priorisierung uebersetzt.
 
 ## Arbeitsmodus
 - Sprintlaenge: 2 Wochen
@@ -47,6 +52,6 @@
 | Sprint 4 | 10 | mehr Integrations- und Dokuaufwand | 36 SP |
 
 ## Warum das Team so geschnitten ist
-- Das Setup wirkt fuer ein Hochschulprojekt gross, ist aber als simuliertes Scrum-Artefakt plausibel, weil Rollen, Verantwortungen und Arbeitslogik sichtbar getrennt sind.
+- Das Setup ist fuer ein Hochschulprojekt bewusst klar in Rollen, Verantwortungen und Arbeitslogik getrennt dokumentiert.
 - In Sprint 1 wurde noch stark frontend- und mockup-lastig gearbeitet.
 - Erst ab dem Review-Feedback und der Rueckmeldung zur vertikaleren Arbeitsweise wurde der Produktfluss bewusster ueber Frontend, Backend und Datenmodell zusammengeschnitten.

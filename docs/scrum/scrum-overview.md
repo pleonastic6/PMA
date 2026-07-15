@@ -1,17 +1,28 @@
 # PMA Scrum Overview
 
 ## Zweck
-- Diese Datei fasst die simulierte Scrum-Story von PMA kompakt zusammen.
+- Diese Datei fasst die Scrum-Story von PMA kompakt zusammen.
 - Sie ist als schneller Gesprächsleitfaden für Review, Abgabe oder Präsentation gedacht.
 
 ## Team-Setup
-- Simuliertes Scrum-Team mit 10 Personen
+- Scrum-Team mit 10 Personen
 - Rollen, Arbeitsmodus und Kapazitaet: [Team Setup](team-setup.md)
 - Priorisiertes Gesamtbacklog: [Product Backlog](product-backlog.md)
 
+## Projektziel
+- PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, Events und Kartenbezug.
+- Der Fokus der Umsetzung liegt auf einem technisch vorfuehrbaren End-to-End-System, nicht auf vollstaendigem Produktionsumfang.
+
+## Grobe Meilensteine
+- M1: Produktbild und klickbarer Frontend-Rahmen sichtbar
+- M2: Vertikaler Kernflow mit Auth, Profil und Personen-Discovery laeuft
+- M3: Match-Nutzung durch Chat sowie Event-/Map-Bereiche sind im Produkt erlebbar
+- M4: Events und Karte sind an echte Backend-Daten angebunden, Demo und Doku sind abgabefaehig
+
 ## Produktidee
 - PMA ist keine reine Dating-App, sondern eine Social-Discovery-App.
-- Nutzer sollen nicht nur Personen entdecken, sondern perspektivisch auch
+- Der aktuelle Live-MVP fokussiert den Discovery-Flow auf Personen.
+- Zusaetzliche soziale Kontexte sind bereits sichtbar angebunden oder fuer Folgeschritte vorbereitet:
   - Hobbys
   - Events
   - Locations
@@ -34,8 +45,8 @@
 - technisches Grundsetup begonnen, aber noch ohne echten vertikalen Produktfluss
 
 ### Wichtigstes Review-Feedback
-- Der Stakeholder wollte, dass nicht nur Personen swipbar sind.
-- Zusätzlich sollten Hobbys, Events und Locations Teil der Discovery-Idee werden.
+- Der Stakeholder wollte, dass die Produktidee nicht auf reines Personen-Swipen verengt bleibt.
+- Zusaetzlich sollten Hobbys, Events und Locations sichtbar in das Gesamtprodukt einzahlen.
 - Gleichzeitig wurde deutlich, dass ein reiner Frontend-/Mockup-Sprint nicht reicht und die naechsten Sprints deutlich vertikaler zugeschnitten werden muessen.
 
 ## Sprint 2
@@ -66,7 +77,7 @@
 - erste Kartenintegration
 
 ### Produktwirkung
-- PMA wirkte jetzt nicht mehr wie nur „Tinder für Personen“, sondern wie eine breiter gedachte Social-App.
+- PMA wirkte jetzt nicht mehr wie nur „Tinder fuer Personen“, sondern wie eine breiter gedachte Social-App.
 
 ## Sprint 4
 
@@ -85,15 +96,16 @@
 ## Endstand des MVP
 - Registrierung / Login
 - Profilpflege
+- Profilgalerie und Profil-Detailansichten
 - Personen-Discovery
-- Interessen/Hobbys als Profilbasis
+- Interessen/Hobbys und Sprachen als Profilbasis
 - Swipe und Match
 - Chat
-- Events
+- Events inkl. Suche/Filter und Bearbeitung
 - Kartenansicht mit Event-/Location-Bezug
 
 ## Was bewusst offen blieb
-- echter Bild-Upload
+- serverseitiger Bild-Upload mit echter Dateispeicherung
 - Live-Chat per WebSocket
 - voll ausgebaute Event-/Location-Swipes als eigener technischer Flow
 

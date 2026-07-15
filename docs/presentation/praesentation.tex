@@ -1,0 +1,220 @@
+% !TeX program = pdflatex
+\documentclass[
+amberg,
+toc=fancy,
+footlinebox,
+nometaot
+]{OTHAWbeamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{quellen.bib}
+
+\title[PMA]{PMA}
+\subtitle{Social-Matching-MVP als Hochschulprojekt}
+\author{Arturo Mendez \and Team PMA}
+\institute{OTH Amberg-Weiden}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Inhaltsverzeichnis}
+  \tableofcontents
+\end{frame}
+
+\section{Projektkontext}
+
+\begin{frame}{Projektziel}
+  \begin{block}{Zielbild}
+    PMA soll als lauffaehiger MVP zeigen, dass Social Discovery nicht nur ueber reines Personen-Matching gedacht werden kann, sondern ueber einen zusammenhaengenden Produktfluss aus Profil, Discovery, Match, Chat, Events und Kartenbezug.
+  \end{block}
+
+  \vspace{0.3cm}
+
+  \begin{itemize}
+    \item Fokus auf ein technisch vorfuehrbares End-to-End-System
+    \item kein Anspruch auf vollstaendigen Produktionsumfang
+    \item iterative Umsetzung ueber vier Sprints
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Warum ist PMA ein Projekt?}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Projektcharakter}
+    \begin{itemize}
+      \item neues Produktziel
+      \item begrenzter Zeitrahmen
+      \item eigene Rollen und Zuständigkeiten
+      \item sichtbare Risiken bei Scope und Integration
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Nicht Routine}
+    \begin{itemize}
+      \item kein standardisierter Ablauf
+      \item Produktbild musste erst geschärft werden
+      \item Anforderungen veraenderten sich durch Feedback
+      \item Frontend, Backend und Datenmodell mussten gemeinsam wachsen
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\section{Produkt}
+
+\begin{frame}{Produktidee}
+  \begin{itemize}
+    \item PMA ist keine reine Dating-App, sondern ein Social-Discovery-MVP.
+    \item Der Live-Flow fokussiert aktuell Personen-Discovery.
+    \item Zusaetzliche soziale Kontexte werden ueber Interessen, Events und Kartenbezug sichtbar angebunden.
+  \end{itemize}
+
+  \vspace{0.3cm}
+
+  \begin{block}{Kernfrage}
+    Wie laesst sich Kennenlernen digital nicht nur ueber Profile, sondern auch ueber gemeinsame Interessen, spontane Treffen und Orte denken?
+  \end{block}
+\end{frame}
+
+\begin{frame}{Umgesetzter MVP-Umfang}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Nutzerfluss}
+    \begin{itemize}
+      \item Registrierung und Login
+      \item Profilpflege mit Galerie
+      \item Personen-Discovery mit Swipe und Match
+      \item Chat zwischen Matches
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Sozialer Kontext}
+    \begin{itemize}
+      \item Events erstellen, filtern und bearbeiten
+      \item Kartenansicht mit Event-Markern
+      \item Nutzerzonen in pseudoanonymisierter Form
+      \item Orts- und Stadtvorschlaege ueber Nominatim/OSM \cite{nominatim}
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Technischer Aufbau}
+  \begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
+    Frontend & React, React Router, Tailwind, React Leaflet \\
+    Backend & Node.js, Express, MongoDB, Mongoose \\
+    Auth & tokenbasierte Session-Authentifizierung \\
+    Tests & \texttt{node --test} mit \texttt{mongodb-memory-server} \\
+    Demo & Seed-Script fuer reproduzierbare Datenlage \\
+  \end{tabularx}
+
+  \vspace{0.4cm}
+
+  \begin{block}{Architekturidee}
+    Statt isolierter Screens wurde ab Sprint 2 bewusst auf vertikale Inkremente gesetzt: UI, API und Datenmodell pro Kernfunktion gemeinsam.
+  \end{block}
+\end{frame}
+
+\section{Vorgehen}
+
+\begin{frame}{Vorgehensmodell}
+  \begin{itemize}
+    \item Organisation als Scrum-basiertes, iterativ-inkrementelles Softwareprojekt \cite{scrumguide}
+    \item zweiwoechige Sprints mit Planning, Daily, Review und Retrospektive
+    \item Product Backlog als priorisierte Arbeitsgrundlage
+    \item Reviews dienten nicht nur zur Demo, sondern zur aktiven Scope-Korrektur
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Rollen und Stakeholder}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Teamrollen}
+    \begin{itemize}
+      \item Product Owner
+      \item Scrum Master
+      \item Developers
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Stakeholder}
+    \begin{itemize}
+      \item betreuender Dozent im Modulkontext
+      \item Nutzergruppe: Studierende und junge Erwachsene
+      \item Feedback floss ueber Sprint Reviews in die Priorisierung ein
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Meilensteine}
+  \begin{tabularx}{\textwidth}{@{}l X@{}}
+    M1 & Produktbild und klickbarer Frontend-Rahmen sichtbar \\
+    M2 & Auth, Profil und Personen-Discovery als erster vertikaler Kernflow \\
+    M3 & Matchliste, Chat sowie Event-/Map-Bereiche als erlebbare Produktteile \\
+    M4 & Events und Karte an echte Backend-Daten angebunden, Demo und Doku abgabefaehig \\
+  \end{tabularx}
+\end{frame}
+
+\section{Sprintverlauf}
+
+\begin{frame}{Sprintverlauf in Kurzform}
+  \begin{enumerate}
+    \item \textbf{Sprint 1:} klickbares Produktbild, aber noch stark mockup-lastig
+    \item \textbf{Sprint 2:} echter Kernflow mit Auth, Profil, Discovery, Swipe und Match
+    \item \textbf{Sprint 3:} Match-Nutzen durch Chat, dazu erste Event- und Kartenbereiche
+    \item \textbf{Sprint 4:} Backend-Anbindung fuer Events und Karte, Demo-Seed, Doku und Stabilisierung
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Wichtigstes Review-Learning}
+  \begin{block}{Rueckmeldung nach Sprint 1}
+    Ein reiner Frontend-Prototyp reicht nicht aus. Das Produkt musste frueh als echter Ende-zu-Ende-Flow erfahrbar werden.
+  \end{block}
+
+  \begin{itemize}
+    \item Wechsel von Mockup-Denken zu vertikaler Umsetzung
+    \item Personen-Discovery blieb Kern, wurde aber in ein breiteres Social-Discovery-Bild eingebettet
+    \item Events und Locations wurden nicht als Deko, sondern als Produktkontext mitgedacht
+  \end{itemize}
+\end{frame}
+
+\section{Einordnung}
+
+\begin{frame}{Bewusste MVP-Grenzen}
+  \begin{itemize}
+    \item Bilder werden aktuell clientseitig als komprimierte Data-URLs gespeichert
+    \item kein Echtzeit-Chat per WebSocket
+    \item keine eigenen Swipe-Decks fuer Events oder Orte
+    \item Kartenzonen sind fuer die Demo bewusst pseudoanonymisiert
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fazit}
+  \begin{itemize}
+    \item PMA zeigt einen technisch durchgaengigen Social-Matching-MVP.
+    \item Der groesste methodische Fortschritt war der Wechsel von klickbaren Screens zu vertikalen Inkrementen.
+    \item Scrum war fuer das Projekt vor allem als Struktur fuer Priorisierung, Review-Feedback und Steuerung nuetzlich.
+  \end{itemize}
+
+  \vspace{0.3cm}
+
+  \begin{block}{Kurz gesagt}
+    Aus einer fruehen UI-Idee wurde ein vorfuehrbares Produkt mit nachvollziehbarem Sprintverlauf und klaren MVP-Grenzen.
+  \end{block}
+\end{frame}
+
+\appendix
+\nocite{scrumguide,agilemanifesto,nominatim}
+
+\begin{frame}[allowframebreaks]{Quellen}
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

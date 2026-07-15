@@ -1,7 +1,7 @@
 # Sprint 2 Review
 
 ## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+- Dokumentiert das Ergebnis des zweiten Reviews im PMA-Hochschulprojekt.
 
 ## Sprint Goal Ergebnis
 - Erreicht. Nutzer koennen sich registrieren, einloggen, Profile pflegen und andere Profile mit Interessenbasis entdecken.

@@ -13,13 +13,13 @@
 
 ## Beste Reihenfolge
 1. Login mit `neo / demo12345`
-2. Profilseite kurz zeigen
-3. Swipe/Discovery erklaeren
-4. Matches anzeigen
+2. Profilseite mit Galerie, Interessen, Sprachen und Swipe-Praeferenzen zeigen
+3. Swipe/Discovery erklaeren und durch die Mehrfach-Slides eines Profils klicken
+4. Matches anzeigen und ein Match-Profil oeffnen
 5. Chat mit vorhandenem Verlauf zeigen
-6. Events-Uebersicht zeigen
-7. Neues Event erstellen
-8. Karte oeffnen und Event/Personenzonen zeigen
+6. Events-Uebersicht inklusive Suche/Filter zeigen
+7. Neues Event erstellen oder ein vorhandenes Event bearbeiten
+8. Karte oeffnen und Event-/Personenzonen zeigen
 
 ## Falls etwas live schiefgeht
 - `npm run seed:demo` im Backend erneut ausfuehren
@@ -28,4 +28,8 @@
 
 ## Kurzargument fuer die Praesentation
 - PMA kombiniert Social Discovery, Match-Logik, Chat und spontane Community-Events in einer App.
-- Der Fokus des MVP liegt auf dem technisch durchgaengigen Flow statt auf perfektem Produktionsumfang.
+- Der Fokus des MVP liegt auf einem technisch durchgaengigen End-to-End-Flow statt auf perfektem Produktionsumfang.
+
+## Ehrlicher Hinweis bei Nachfragen
+- Profilbilder funktionieren fuer den MVP bereits, aber noch ohne dedizierten Datei-Upload-Service oder Cloud-Storage.
+- Chat ist bewusst noch polling-/request-basiert und nicht in Echtzeit umgesetzt.

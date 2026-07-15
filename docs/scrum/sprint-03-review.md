@@ -1,7 +1,7 @@
 # Sprint 3 Review
 
 ## Status
-- Dokument ist bewusst als simuliertes Scrum-Artefakt fuer das PMA-Hochschulprojekt formuliert.
+- Dokumentiert das Ergebnis des dritten Reviews im PMA-Hochschulprojekt.
 
 ## Sprint Goal Ergebnis
 - Erreicht. Matches wurden durch Chat funktional aufgewertet, und die Event-/Map-Dimension ist im Produktbild sichtbar geworden.
