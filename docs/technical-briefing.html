@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMA Technisches Briefing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      margin: 2.5cm;
+      color: #111827;
+    }
+    h1, h2 {
+      color: #0f172a;
+      margin-bottom: 0.4em;
+    }
+    h1 {
+      font-size: 24px;
+      border-bottom: 2px solid #cbd5e1;
+      padding-bottom: 0.3em;
+    }
+    h2 {
+      font-size: 17px;
+      margin-top: 1.4em;
+    }
+    p, li {
+      font-size: 11.5pt;
+    }
+    ul, ol {
+      padding-left: 1.2em;
+    }
+    code {
+      font-family: "Courier New", monospace;
+      background: #f1f5f9;
+      padding: 0.08em 0.3em;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>PMA Technisches Briefing</h1>
+
+  <p>
+    PMA ist technisch als klassische Webanwendung aufgebaut: ein React-Frontend
+    kommuniziert per REST mit einem Node.js-/Express-Backend, das seine Daten in
+    MongoDB speichert. Für Orts- und Stadtvorschläge wird zusätzlich die externe
+    Nominatim-/OSM-Suche angebunden.
+  </p>
+
+  <h2>Verwendete Technologien</h2>
+  <ul>
+    <li><strong>Frontend:</strong> React, React Router, Tailwind CSS, Leaflet, React Leaflet</li>
+    <li><strong>Backend:</strong> Node.js, Express</li>
+    <li><strong>Datenbank:</strong> MongoDB mit Mongoose</li>
+    <li><strong>Tests:</strong> <code>node --test</code> mit <code>mongodb-memory-server</code></li>
+    <li><strong>Externe API:</strong> Nominatim / OpenStreetMap für Ortsvorschläge</li>
+  </ul>
+
+  <h2>Frontend-Aufbau</h2>
+  <p>
+    Das Frontend ist als Single-Page-Application umgesetzt. React Router verwaltet
+    die Seitenübergänge zwischen Home, Login, Registrierung, Profil, Swipe, Matches,
+    Chat, Events und Kartenansicht. Geschützte Bereiche werden nur angezeigt, wenn
+    ein gültiger Login-Status vorliegt.
+  </p>
+  <p>
+    Die Authentifizierung wird zentral über einen React Context verwaltet. Das
+    Session-Token liegt im <code>localStorage</code>. Beim Start der App wird über
+    einen API-Aufruf geprüft, ob das Token noch gültig ist; dadurch kann die Session
+    automatisch wiederhergestellt werden.
+  </p>
+  <p>
+    Für die Kartenansicht werden <code>leaflet</code> und <code>react-leaflet</code>
+    eingesetzt. Das Styling kombiniert Tailwind-Klassen mit normalem CSS.
+  </p>
+
+  <h2>Backend-Aufbau</h2>
+  <p>
+    Das Backend ist als Express-Monolith aufgebaut und stellt seine REST-Schnittstellen
+    unter dem Prefix <code>/api/v1</code> bereit. Die API ist in fachliche Module
+    aufgeteilt:
+  </p>
+  <ul>
+    <li><strong>auth:</strong> Registrierung, Login, Session-Token</li>
+    <li><strong>users:</strong> Profilpflege, öffentliche Profilansicht</li>
+    <li><strong>discovery:</strong> Datenbasis für den Swipe-Bereich</li>
+    <li><strong>matches:</strong> Like/Pass-Logik und Match-Erkennung</li>
+    <li><strong>chat:</strong> Nachrichten zwischen gematchten Nutzern</li>
+    <li><strong>events:</strong> Erstellen, Bearbeiten, Löschen und Filtern von Events</li>
+    <li><strong>map:</strong> Kartenübersicht mit Events und Nutzerzonen</li>
+    <li><strong>places:</strong> Orts- und Stadtvorschläge über OSM</li>
+  </ul>
+  <p>
+    Intern folgt das Backend grob dem Muster <code>routes -&gt; controller -&gt; service -&gt; model</code>.
+    Dadurch sind HTTP-Handling, Fachlogik und Datenzugriff sauber getrennt.
+  </p>
+
+  <h2>Datenhaltung</h2>
+  <p>
+    Die Persistenz läuft über MongoDB. Mongoose-Modelle definieren die wichtigsten
+    Collections:
+  </p>
+  <ul>
+    <li><strong>User:</strong> Kontodaten, Profil, Präferenzen, Bilder, Status</li>
+    <li><strong>Session:</strong> Login-Sessions mit Bearer-Token</li>
+    <li><strong>Swipe:</strong> Likes und Passes</li>
+    <li><strong>Message:</strong> Chatnachrichten</li>
+    <li><strong>Event:</strong> Eventdaten inklusive Position und Ersteller</li>
+  </ul>
+  <p>
+    Bilder werden aktuell noch nicht als echte Dateien hochgeladen, sondern als
+    Data-URLs im JSON gespeichert. Das spart Infrastruktur, ist aber klar eine
+    MVP-Vereinfachung.
+  </p>
+
+  <h2>Wie die Teile verbunden sind</h2>
+  <ol>
+    <li>Ein Nutzer registriert sich oder loggt sich im React-Frontend ein.</li>
+    <li>Das Frontend sendet die Daten per HTTP an das Express-Backend.</li>
+    <li>Das Backend erzeugt bei erfolgreichem Login ein Session-Token und speichert es in MongoDB.</li>
+    <li>Das Frontend speichert dieses Token lokal und sendet es bei geschützten Requests als <code>Authorization: Bearer ...</code> mit.</li>
+    <li>Die API prüft das Token und ordnet den Request einem Nutzer zu.</li>
+    <li>Die jeweiligen Fachmodule lesen oder schreiben dann Daten in MongoDB.</li>
+    <li>Für Ortsvorschläge fragt das <code>places</code>-Modul zusätzlich Nominatim/OSM ab.</li>
+  </ol>
+
+  <h2>Wichtige Architekturentscheidungen</h2>
+  <ul>
+    <li><strong>Monolith statt Microservices:</strong> weniger Overhead, leichter testbar und für einen MVP schneller umzusetzen</li>
+    <li><strong>REST statt WebSockets:</strong> der Chat ist anfragebasiert und bewusst noch nicht in Echtzeit umgesetzt</li>
+    <li><strong>MongoDB statt relationaler Datenbank:</strong> flexibel für profilspezifische, unterschiedlich strukturierte Nutzerdaten</li>
+    <li><strong>Data-URL-Bilder statt Dateispeicher:</strong> pragmatische MVP-Lösung mit klaren Grenzen</li>
+  </ul>
+
+  <h2>Fazit</h2>
+  <p>
+    Die technische Architektur ist bewusst simpel, aber sauber strukturiert. Sie
+    reicht für einen funktionierenden MVP mit Registrierung, Swipe-Flow, Matches,
+    Chat, Events und Karte. Gleichzeitig ist gut erkennbar, wo spätere Ausbaustufen
+    liegen würden, etwa bei Echtzeit-Chat, echtem Datei-Upload oder produktionsreifem
+    Deployment.
+  </p>
+</body>
+</html>
